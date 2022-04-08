@@ -15,7 +15,7 @@
 本仓库同步托管在Github和Gitee中
 
 - Gitee仓库：https://gitee.com/codeOflI/LearningNotes
-- Github仓库：https://github.com/codeOflI/codeOflI.github.io
+- Github仓库：https://github.com/codeOflI/LearningNotes
 
 
 
