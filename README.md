@@ -17,7 +17,13 @@
 - Gitee仓库：https://gitee.com/codeOflI/LearningNotes
 - Github仓库：https://github.com/codeOflI/LearningNotes
 
+## 在线阅读
 
+为了更方便小伙伴的查看，把本仓库做成一个在线的博客
+
+- 在线博客：https://codeofli.github.io/
+
+> 博客使用hexo搭建
 
 ## 赞赏
 
