@@ -45,7 +45,7 @@ request({
 
 我们知道GET请求的参数都是在URL上的，服务器并不会读取http body里面的数据,这样我们传递的就是Params里的请求的参数了；如果想让服务器读取http body里面的数据那就需要用POST请求了，POST请求的参数就存放在body；
 
-以后如果是GET请求最好是在parameters里面设置，而POST请求就在Body Data里面设置.
+以后**如果是GET请求最好是在parameters里面设置，而POST请求就在Body Data里面设置**.
 
 
 

@@ -21,7 +21,7 @@ tags: 学习笔记
 
 我们已经在[初始化和清理 ]() 这章章看到，调用 enum 的 values() 方法，可以遍历 enum 实例 .values() 方法返回 enum 实例的数组，而且该数组中的元素严格保持其在 enum 中声明时的顺序，因此你可以在循环中使用 values() 返回的数组。
 
-创建 enum 时，编译器会为你生成一个相关的类，这个类继承自 Java.lang.Enum。下面的例子演示了 Enum 提供的一些功能：
+创建 enum 时，编译器会**为你生成一个相关的类，这个类继承自 Java.lang.Enum**。下面的例子演示了 Enum 提供的一些功能：
 
 ```java
 // enums/EnumClass.java
@@ -348,7 +348,7 @@ final class Explore extends java.lang.Enum<Explore> {
 }
 ```
 
-答案是，values() 是由编译器添加的 static 方法。可以看出，在创建 Explore 的过程中，编译器还为其添加了 valueOf() 方法。这可能有点令人迷惑，Enum 类不是已经有 valueOf() 方法了吗。
+答案是，**values() 是由编译器添加的 static 方法**。可以看出，在创建 Explore 的过程中，编译器还为其添加了 valueOf() 方法。这可能有点令人迷惑，Enum 类不是已经有 valueOf() 方法了吗。
 
 不过 Enum 中的 valueOf() 方法需要两个参数，而这个新增的方法只需一个参数。由于这里使用的 Set 只存储方法的名字，而不考虑方法的签名，所以在调用 Explore.removeAll(Enum) 之后，就只剩下[values] 了。
 
@@ -371,7 +371,6 @@ public class UpcastEnum {
             System.out.println(en);
     }
 }
-
 ```
 
 输出为：
@@ -379,10 +378,9 @@ public class UpcastEnum {
 ```
 HITHER
 YON
-
 ```
 
-因为 getEnumConstants() 是 Class 上的方法，所以你甚至可以对不是枚举的类调用此方法：
+因为 **getEnumConstants() 是 Class 上的方法，所以你甚至可以对不是枚举的类调用此方法**：
 
 ```java
 // enums/NonEnum.java
@@ -415,7 +413,6 @@ Expected: java.lang.NullPointerException
 
 ```java
 enum NotPossible extends Pet { ... // Won't work
-
 ```
 
 然而，在我们创建一个新的 enum 时，可以同时实现一个或多个接口：

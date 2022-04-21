@@ -6,7 +6,9 @@ categories: java
 tags: [java]  
 ---
 
-[TOC]
+# 自己相关笔记
+
+[OnJava8](.\..\Onjava8\OnJava8.md)
 
 # java控制台执行  
 
@@ -15,6 +17,26 @@ tags: [java]
 ```cmd  
  java Create.java  
 ```
+
+# 基础语法
+
+## switch语法结构
+
+1、语句结构
+  switch语句从字面上讲，可以称为开关语句，是一种多分支选择结构，一般与case、break、default配合使用，对流程进行控制。
+  switch语句的语法格式如下：
+
+```java
+switch(表达式){ 
+    case 常量表达式1:  语句1;break;
+    case 常量表达式2:  语句2;break;
+    …… 
+    case 常量表达式n:  语句n;break;
+    default:  语句n+1;
+}
+```
+switch作为一个开关，当变量表达式的值对应case中的值时，执行case后面的语句后跳出switch语句，如果都不符合则执行default后面的语句后跳出switch语句。
+注：**case进入语句后遇到break才会退出**，没有break，会一直运行下去直到整个语句结束。
 
 # 基础类型
 
@@ -82,6 +104,54 @@ public native String intern();
 
 容易找出空间浪费，不建议使用	  
 
+
+
+# 枚举enum 
+枚举中定义的对象都是当前枚举的类型。
+```java
+enum  Season{
+ 
+    //提供当前枚举类的多个对象: public static final的
+    //每个对象都是Seaon类型
+    SPRING("春天","春暖花开"),
+    SUMMER("夏天","夏日炎炎"),
+    AUTUMN("秋天","秋高气爽"),
+    WINTER("冬天","白雪皑皑");
+    //声明Season对象的属性priavte final修饰
+    private final String seasonName;
+    private final String seasonDesc;
+ 
+    //私有化的构造器,并给对象属性赋值
+    private Season(String seasonName,String seasonDesc){
+        this.seasonName=seasonName;
+        this.seasonDesc=seasonDesc;
+    }
+ 
+ 
+ 
+    //其他诉求:获取枚举类对象的属性
+    public String getSeasonName() {
+        return seasonName;
+    }
+ 
+    public String getSeasonDesc() {
+        return seasonDesc;
+    }
+ 
+    //4.其他诉灭1:提供toString()
+ 
+    @Override
+    public String toString() {
+        return "Season{" +
+                "seasonName='" + seasonName + '\'' +
+                ", seasonDesc='" + seasonDesc + '\'' +
+                '}';
+    }
+}
+```
+
+
+
 # 常用类  
 
 ## 数字类  
@@ -114,6 +184,37 @@ BigDecimal.ROUND_HALF_UP)
 四舍五入round  
 	public static long round(double a)  
 	如果负数进行四舍五入时，大于-0.5才为-1  
+
+# 集合
+
+## HashMap
+
+Java中的HashMap是一种常用的数据结构，一般用来做数据字典或者Hash查找的容器。
+
+### 在一个表达式中完成初始化并赋初值的操作
+
+
+一般我们初始化并赋初值是这样做的：
+
+```java
+HashMap<String, Object> map = new HashMap<>();map.put("name", "yanggb");  map.put("name1", "huangq");
+```
+
+
+
+但是有时候我们会想在一个表达式中完成初始化并赋初值的操作：
+
+```java
+HashMap<String, Object> map = new HashMap<>() {    {        put("name", "yanggb");        put("name1", "huangq");    }};
+```
+
+这里用了双括号【{{}}】来初始化，使代码简洁易读。第一层括弧实际是**定义了一个匿名内部类 （Anonymous Inner Class）**，第二层括弧实际上是一个**实例初始化块 （Instance Initializer Block）**，这个块在内部匿名类构造时被执行。这种写法的好处很明显，就是一目了然。但是这种写法可能导致这个对象串行化失败的问题。
+
+其一，因为这种方式是匿名内部类的声明方式，所以引用中持有着外部类的引用。所以当串行化这个集合时，外部类也会被不知不觉的串行化，而当外部类没有实现Serialize接口时，就会报错。其二，在上面的例子中，其实是声明了一个继承自HashMap的子类，然而有些串行化方法，例如要通过Gson串行化为json，或者要串行化为xml时，类库中提供的方式，是无法串行化Hashset或者HashMap的子类的，也就导致了串行化失败。解决办法是重新初始化为一个HashMap对象【new HashMap(map);】，这样就可以正常进行初始化了。
+
+另外要注意的是，**这种使用双括号进行初始化的语法在执行效率上要比普通的初始化写法要稍低。**
+
+最后，这个使用**双括号进行初始化的语法同样适用于ArrayList和Set等集合。**
 
 # JDBC  
 
