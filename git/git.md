@@ -505,20 +505,37 @@ git remote rm origin
 
 ## 克隆远程仓库
 
-已经初始化完成的仓库
-		已执行
-			Initialize this repository with a README
+**git clone**
 **克隆远程仓库：**（直接在当前目录新建远程仓库的项目文件）
-
-
 
 ```
 git clone （HTTPS）https://github.com/codeOflI/ssm-crud
 ```
 
+注：**==git clone默认只会克隆master==**
 
+### git克隆下来只有master分支的问题
 
-​		
+一. git克隆下来只有master分支，切换其它分支
+当我们 git clone + 远程仓库地址 下来代码之后，git branch 发现只有master分支，而我们大多时候都是在其它分支处理事情的，所以我们用git branch -a 查看所有分支
+
+```bash
+-a, --all             list both remote-tracking and local branches
+```
+
+![在这里插入图片描述](git/18fd36f35c28447d84408f843d7740b1.png)
+
+上图我已经切换到非master的dev_1.5分支,已经正式使用，要想达到这个最终目的，我们只需要
+git checkout -t origin/xxx (xxx指你要切换的分支名,比如我的就是dev_1.5)
+
+```bash
+D:\Users\Lenovo\Desktop\note>git checkout -h
+    -t, --track           set upstream info for new branch
+```
+
+现在 git branch 查看一下 ，大功告成
+
+![在这里插入图片描述](git/d22e52971d4e4cf59f21b83172e7137a.png)
 
 # 分支操作
 
@@ -671,7 +688,7 @@ bug分支,暂挂工作区
 ​			git stash pop
 feature,扩展分支
 ​	已经开发，但不准备使用的功能等
-​	强制删除有不同修改的分支
+​	**强制删除有不同修改的分支**
 ​		git branch -D feature
 补丁
 
@@ -833,6 +850,22 @@ git push origin dev其中origin dev为分支名称
 
 # git-me
 
+##  git项目流程中常用命令
+
+git克隆远程仓库代码 ：git clone xx (远程仓库地址)
+克隆下来之后启动项目，按需求修改问题，完成之后准备提交代码
+这时候不能直接提交push的，我们需要先 git add .
+然后git commit -m "xx(需求的描述)"
+再 git pull 拉取最新代码 看看是否有冲突，有冲突解决冲突合并代码，没有冲突，就可以git push 大功告成等待进一步测试
+
+## git其它一些常用命令
+
+查看本地分支: git branch
+查看所有分支: git branch -a
+切换到本地xxx分支: git checkout xxx
+查看状态: git status
+切换到远程xxx分支: git checkout -t origin/xxx
+查看commit日志: git log
 
 
 ## 开发时不使用master(保存)分支

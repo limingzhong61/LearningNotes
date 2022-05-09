@@ -104,6 +104,14 @@ public native String intern();
 
 容易找出空间浪费，不建议使用	  
 
+## 常用函数
+
+| 函数                                                         | 作用                                   |                          |
+| ------------------------------------------------------------ | -------------------------------------- | ------------------------ |
+| str.trim()                                                   | 除去开头和末尾的空白字符               |                          |
+| public static String **join(CharSequence delimiter,         Iterable<? extends CharSequence> elements)** | 给字符数组添加分隔符，并返回一个字符串 | String.join(" ",strList) |
+|                                                              |                                        |                          |
+
 
 
 # 枚举enum 
