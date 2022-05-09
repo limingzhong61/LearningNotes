@@ -6,7 +6,7 @@ date: 2021-10-24 10:40:06
 
 categories: elasticsearch
 
-tags: [elasticsearch]
+tags: elasticsearch
 
 ---
 

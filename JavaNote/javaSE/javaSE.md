@@ -3,12 +3,30 @@ title: javaSE
 p: java-note/javaSE/javaSE  
 date: 2019-10-12 10:32:06  
 categories: java  
-tags: [java]  
 ---
+
+[[toc]]
+# 1  
+
+## 2
+
+
+### 3
+
+
+#### 4
+
+
+##### 5
+
+
+
+###### 6
+
 
 # 自己相关笔记
 
-[OnJava8](.\..\Onjava8\OnJava8.md)
+<!-- [OnJava8](.\..\Onjava8\OnJava8.md) -->
 
 # java控制台执行  
 
@@ -111,6 +129,14 @@ public native String intern();
 | str.trim()                                                   | 除去开头和末尾的空白字符               |                          |
 | public static String **join(CharSequence delimiter,         Iterable<? extends CharSequence> elements)** | 给字符数组添加分隔符，并返回一个字符串 | String.join(" ",strList) |
 |                                                              |                                        |                          |
+
+## 常见使用
+
+### 字符串逆置
+
+```java
+String reversedStr = new StringBuffer(strs).reverse().toString()
+```
 
 
 
@@ -514,12 +540,17 @@ for(Field field: fields){
 		工厂模式  
 构造方法调用  
 	最好保留无参构造方法，以便构造  
+
+```java
 	取得指定构造方法  
 		public Constructor<T> getConstructor(Class<?>... parameterTypes)  
 			public类型构造方法  
 		public Constructor<T> getDeclaredConstructor(Class<?>... parameterTypes)  
 			所有构造方法  
 	取得一些构造方法    
+```
+
+
 
 # 函数式编程（Lambda）、流式编程
 

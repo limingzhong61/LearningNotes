@@ -531,7 +531,7 @@ Serlvet2.5：web.xml
     ...
   <servlet>
   		<servlet-name>WelcomeServlet</servlet-name>
-  		<servlet-class>org.lanqiao.servlet.WelcomeServlet</servlet-class>
+  		`<servlet-class>`org.lanqiao.servlet.WelcomeServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -556,7 +556,7 @@ Serlvet2.5：web.xml:
 
 Servlet流程：  
 
-请求 ->`<url-pattern>` -> 根据`<servlet-mapping>`中的`<servlet-name>` 去匹配  `<servlet> `中的`<servlet-name>`，然后寻找到<servlet-class>，求中将请求交由该<servlet-class>执行。  2个/:  
+请求 ->`<url-pattern>` -> 根据`<servlet-mapping>`中的`<servlet-name>` 去匹配  `<servlet> `中的`<servlet-name>`，然后寻找到`<servlet-class>`，求中将请求交由该`<servlet-class>`执行。  2个/:  
 jsp:/  localhost:8888  
 web.xml: /   http://localhost:8888/项目名/  
 

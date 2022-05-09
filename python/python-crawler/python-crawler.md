@@ -3,7 +3,6 @@ title: python-crawler
 p: python/python-crawler/python-crawler  
 date: 2019-10-16 21:27:10  
 categories: python  
-tags: [python,crawler]  
 ---
 
 ![1572765034346](python-crawler/1572765034346.png)  

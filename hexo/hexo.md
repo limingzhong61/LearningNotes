@@ -1,7 +1,6 @@
 ---
 title: hexo
 date: 2019-9-27 22:19:09
-tags: 学习笔记
 ---
 [TOC]
 
@@ -100,7 +99,7 @@ date: 2019-11-12 10:40:06 (创建时间)
 
 categories: java 
 
-tags: [java,mybatis]
+tags: java,mybatis
 
 ---
 ```
@@ -116,7 +115,7 @@ date: 2021-10-24 10:40:06
 
 categories: java
 
-tags: [java,mybatis]
+tags: java,mybatis
 
 ---
 ```
@@ -239,9 +238,10 @@ categories: 一级分类-二级分类
 
 例如 categories: java-SpringMVC
 标签↓↓↓↓
-tags: [标签1,标签2，...] 
+```
 
-例如 tags: [java,SpringMVC]
+```
+例如 tags: java,SpringMVC
 
 # hexo clean
 

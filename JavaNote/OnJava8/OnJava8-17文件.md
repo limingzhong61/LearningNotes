@@ -6,7 +6,7 @@ date: 2021-10-21 10:40:06
 
 categories: Java
 
-tags: [Java,OnJava8]
+tags: Java,OnJava8
 
 ---
 

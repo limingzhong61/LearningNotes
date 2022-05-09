@@ -1,9 +1,5 @@
 ---
-title: javaScript
-p: js-note/javaScript/javaScript
-date: 2019-11-12 10:18:21  
-categories: js
-tags: [js,前端]
+
 ---
 **[github笔记下载地址](https://github.com/codeOflI/codeOflI.github.io/blob/dev/source/_posts/js-note/javaScript/javaScript.md)**
 [TOC]
@@ -15,6 +11,8 @@ JavaScript负责页面中的的行为。
 它是一门运行在浏览器端的脚本语言。  
 
 [JavaScript MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+
+[w3school JS教程](https://www.w3school.com.cn/js/index.asp)
 
 ## JS的编写的位置  
 
@@ -1046,19 +1044,26 @@ arr[1] = "hello";
 
 ## 数组的方法  
 
-| functionName                                                 | function                                                     | usage                                   |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- |
-| push()                                                       | **用来向数组的末尾添加一个或多个元素**，并返回数组新的长度   | 语法：数组.push(元素1,元素2,元素N)pop() |
-| pop()                                                        | 用来删除数组的最后一个元素，并返回被删除的元素               |                                         |
-| unshift()                                                    | 向数组的开头添加一个或多个元素，并返回数组的新的长度         |                                         |
-| shift()                                                      | 删除数组的开头的一个元素，并返回被删除的元素                 |                                         |
-| reverse()                                                    | 可以用来反转一个数组，它会对原数组产生影响                   |                                         |
-| concat()                                                     | 可以连接两个或多个数组，它不会影响原数组，而是新数组作为返回值返回 |                                         |
-| [slice()](https://www.w3school.com.cn/jsref/jsref_slice_array.asp) | 选择数组的一部分，并返回新数组。                             |                                         |
-|                                                              |                                                              |                                         |
-|                                                              |                                                              |                                         |
+| functionName                                                 | function                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| push()                                                       | **用来向数组的末尾添加一个或多个元素**，并**返回数组新的长度** |
+| pop()                                                        | 用来删除数组的最后一个元素，并返回被删除的元素               |
+| unshift()                                                    | 向数组的开头添加一个或多个元素，并返回数组的新的长度         |
+| shift()                                                      | 删除数组的开头的一个元素，并返回被删除的元素                 |
+| reverse()                                                    | 可以用来反转一个数组，它会对原数组产生影响                   |
+| concat()                                                     | 可以连接两个或多个数组，它不会影响原数组，而是新数组作为返回值返回 |
+| [slice()](https://www.w3school.com.cn/jsref/jsref_slice_array.asp) | 选择数组的一部分，并返回新数组。                             |
+| includes()                                                   | includes() 方法用来判断一个数组是否包含一个指定的值，如果是返回 true，否则false。 |
+|                                                              |                                                              |
+
+### push
+
+**用来向数组的末尾添加一个或多个元素**，并**返回数组新的长度**
+
+语法：数组.push(元素1,元素2,元素N)
 
 ### slice(sart,[end])  
+
 #### 定义和用法
 
 slice() 方法以新的数组对象，返回数组中被选中的元素。
@@ -1257,27 +1262,56 @@ https://www.w3school.com.cn/js/js_object_maps.asp
 
 ## 字符串的相关的方法  
 
+[W3C JavaScript 字符串方法](https://www.w3school.com.cn/js/js_string_methods.asp)
+
+### 转换为大写和小写
+
+- toLowerCase()   
+  将字符串转换为小写并返回  
+
+- toUpperCase()   
+  将字符串转换为大写并返回  
+
+| 方法             | 作用                                                         |      |
+| ---------------- | ------------------------------------------------------------ | ---- |
+| includes(string) | 此函数检查字符串**是否包含子字符串**。Returns true if key is included in the range, and false otherwise. |      |
+|                  |                                                              |      |
+|                  |                                                              |      |
+
+方法
+
 使用ES6中的字符串新方法  
 
  **String.prototype.padStart(maxLength, fillString='')** 或 **String.prototype.padEnd(maxLength, fillString='')**来填充字符串；  
 
 - length  
    获取字符串的长度  
+   
 - charAt()  
    根据索引获取指定的字符  
+   
 - charCodeAt()  
    根据索引获取指定的字符编码  
+   
 - **String.fromCharCode()**  
    **根据字符编码获取字符**  
+   
+- 
+
 - indexOf()  
+
+   查找字符/子字符串在大字符串中**第一次出现的位置，找到了返回下标，找不到返回-1；**
+
 - lastIndexOf()  
    从一个字符串中检索指定内容  
    需要一个字符串作为参数，这个字符串就是要检索的内容，  
     	如果找到该内容，则会返回其第一次出现的索引，如果没有找到则返回-1。  
    可以指定一个第二个参数，来表示开始查找的位置  
--  indexOf()是从前向后找  
+   
+- indexOf()是从前向后找  
 
 - lastIndexOf()是从后向前找  
+
 - slice(start,[end])  
    可以从一个字符串中截取指定的内容，并将截取到内容返回，不会影响原变量  
    参数：  
@@ -1285,6 +1319,7 @@ https://www.w3school.com.cn/js/js_object_maps.asp
     	第二个：截取结束的位置**（不包括结束）**  
     		 可以省略第二个参数，如果省略则一直截取到最后  
     	 可以传负数，如果是负数则从后往前数  
+   
 - substr()	  
    和slice()基本一致，不同的是它第二个参数不是索引，而是截取的数量  
 
@@ -1294,11 +1329,7 @@ substring()
  和slice()基本一致，不同的是它不能接受负值作为参数，如果设置一个负值，则会自动修正为0，  
 	**substring()中如果第二个参数小于第一个，自动调整位置**  
 
-- toLowerCase()   
-   将字符串转换为小写并返回  
 
-- toUpperCase()   
-   将字符串转换为大写并返回  
 
 ### 正则表达相关方法  
 
@@ -2414,10 +2445,10 @@ var obj2 = '{"arr":[1,2,3]}';
 var arr2 ='[{"name":"孙悟空","age":18,"gender":"男"},{"name":"孙悟空","age":18,"gender":"男"}]';  
 ```
 
-JSON工具类  
+## JSON工具类  
 
-json > js对象  
-JSON.parse()  
+json -------> js对象  
+`JSON.parse()`  
  可以将以JSON字符串转换为js对象  
  它需要一个JSON字符串作为参数，会将该字符串转换为JS对象并返回  
 
@@ -2427,7 +2458,7 @@ var o2 = JSON.parse(arr);
 var obj3 = {name:"猪八戒" , age:28 , gender:"男"};  
 
 JS对象 > JSON  
-JSON.stringify()                -ify/fy，表示"使……化。  
+`JSON.stringify()`                -ify/fy，表示"使……化。  
  可以将一个JS对象转换为JSON字符串  
  需要一个js对象作为参数，会返回一个JSON字符串  
 

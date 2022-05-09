@@ -2,7 +2,6 @@
 title: maven
 date: 2019-10-13 15:09:35
 categories: java
-tags: [java,maven]
 ---
 
 [TOC]

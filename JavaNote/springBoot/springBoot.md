@@ -2,7 +2,7 @@
 title: springBoot
 date: 2019-11-17 15:27:48
 categories: java 
-tags: [java,springBoot]
+tags: java,springBoot
 ---
 # **一、**Spring Boot 入门
 

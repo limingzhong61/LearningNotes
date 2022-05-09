@@ -3,7 +3,6 @@ title: mybatis
 p: java-note/mybatis/mybatis
 date: 2019-10-12 10:40:06
 categories: java
-tags: [java,mybatis]
 ---
 [TOC]
 
@@ -1961,6 +1960,49 @@ public void testPageHelper() throws IOException {
 - navigatepageNums：导航分页的页码，\[1,2,3,4,5]
 
 
+
+# Other
+
+## mybatis 中的＜![CDATA[ ]]＞用法及说明
+
+### 一、简要概述
+
+平时在mybatis的映射文件写sql时，很多时候都需要写一些特殊的字符。例如："<" 字符 “>” 字符 “>=” 字符 “<=” 字符，但是在xml文件中并不能直接写上述列举的字符，否则就会报错。
+因为在解析xml文件时候，我们如果书写了特殊字符，在没有特殊处理的情况下。这些字符会被转义，但我们并不希望它被转义，所以我们要使用`<![CDATA[ ]]>`来解决。
+那为什么要这样书写呢？`<![CDATA[ ]]>` ，不言而喻：这是XML语法。在CDATA内部的所有内容都会被解析器忽略。
+所以，当我们在xml文本中包含了很多的"<" 字符 “<=” 和 “&” 字符—就像程序代码一样，那么最好把他们都放到CDATA部件中。
+
+### 二、实际书写规范
+
+有个问题需要注意的就是在我们的mybatis的映射文件中，以下 等这些标签都不会被解析，所以我们只把有特殊字符的语句放在 `<![CDATA[ ]]>`中，尽量缩小 `<![CDATA[ ]]>` 的范围。
+案例
+
+```sql
+ SELECT * FROM (SELECT t.*, rownum FROM bst_busi_msg t
+                <where>
+                <if test="targetId != null">
+                and (t.busi_sys_order = #{targetId,jdbcType=VARCHAR}
+                     or t.busi_intf_seq = #{targetId,jdbcType=VARCHAR}
+                    )
+                </if>
+                <if test="targetId == null and shardingTotal > 0">
+                and (t.task_status = '0'
+                     OR (t.task_status = '3'
+                         AND t.task_count <![CDATA[ < ]]> ${@com.asiainfo.bst.common.Constant@max_handle_count()}
+                        )
+                    )
+                and MOD(t.msg_id,#{shardingTotal,jdbcType=NUMERIC}) = #{shardingIndex,jdbcType=NUMERIC}
+                </if>
+                </where>
+                ORDER BY t.msg_id ASC
+               ) WHERE rownum <![CDATA[ <= ]]> #{rownum,jdbcType=NUMERIC}
+```
+
+[说明]
+因为这里有 ">" "<=" 特殊字符所以要使用 `<![CDATA[ ]]>` 来注释，但是有`<if>`标签，所以把`<if>`等放外面
+CSDN博主「技匠三石弟弟」链接：https://blog.csdn.net/xiaoleilei666/article/details/109695510
+
+# 以下均为原来的笔记
 
 # 入门
 

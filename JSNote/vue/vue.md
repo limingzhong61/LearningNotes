@@ -3,7 +3,6 @@ title: vue
 p: js-note/vue/vue
 date: 2019-11-11 23:23:44
 categories: js
-tags: [js,vue]
 ---
 # 第 1 章： Vue 核心
 ## 1.1. Vue 的基本认识

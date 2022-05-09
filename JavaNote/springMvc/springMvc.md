@@ -2,7 +2,6 @@
 title: springMvc
 date: 2019-10-20 15:24:32
 categories: java 
-tags: [java,spring,springMvc]
 ---
 
 [TOC]
@@ -266,9 +265,50 @@ HttpServletRequest requestToUse = request;
 required=false:该属性 不是必须的。
 defaultValue="23"：默认值23
 
+## 将url上的参数引入
+
+**@RequestParam**
+
+1、作用：
+
+localhost:
+
+```java
+@RequestParam：将请求参数绑定到你控制器的方法参数上（是springmvc中接收普通参数的注解）
+```
 
 
+2、语法：
 
+```js
+语法：@RequestParam(value=”参数名”,required=”true/false”,defaultValue=””)
+
+value：参数名
+
+required：是否包含该参数，默认为true，表示该请求路径中必须包含该参数，如果不包含就报错。
+
+defaultValue：默认参数值，如果设置了该值，required=true将失效，自动为false,如果没有传该参数，就使用默认值
+```
+
+3.使用
+
+```java
+/**
+     * 接收普通请求参数
+     * http://localhost:8080/hello/show16?name=linuxsir
+     * url参数中的name必须要和@RequestParam("name")一致
+     * @return
+     */
+@RequestMapping("show16")
+public ModelAndView test16(@RequestParam("name")String name){
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("hello2");
+    mv.addObject("msg", "接收普通的请求参数：" + name);
+    return mv;
+}
+```
+
+原文链接：https://blog.csdn.net/sswqzx/article/details/84195043
 
 ## 获取请求头信息 @RequestHeader
 public String  testRequestHeader(@RequestHeader("Accept-Language")  String al  ) {
