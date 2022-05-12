@@ -1,12 +1,12 @@
 ---
-title: springMvc
+title: SpringMVC
 date: 2019-10-20 15:24:32
 categories: java 
 ---
 
 [TOC]
 
-# springmvc:
+# SpringMVC:
 
 1.jar
 spring-aop.jar
@@ -106,8 +106,6 @@ url
 /WEB-INF/**（web.xml配置中）servetname的值**-servlet.xml
 
 **可以提示工具自动生成alt+/ ,选**
-
-![1561949336976](E:\pictures\Language\spring\提示自动生成springMvc配置.png)
 
 ## 映射是 去匹配@RequestMapping注解
 

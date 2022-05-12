@@ -4935,7 +4935,7 @@ public class ParameterizedArrayType {
 你不能创建泛型类型的数组，这种说法并不完全正确。是的，编译器不会让你 *实例化* 一个泛型的数组。但是，它将允许您创建对此类数组的引用。例如：
 
 ```Java
-List<String>[] ls;
+`List<String>[]` ls;
 ```
 
 无可争议的，这可以通过编译。尽管不能创建包含泛型的实际数组对象，但是你可以创建一个非泛型的数组并对其进行强制类型转换：
@@ -4947,9 +4947,9 @@ import java.util.*;
 public class ArrayOfGenerics {
   @SuppressWarnings("unchecked")
   public static void main(String[] args) {
-    List<String>[] ls;
+    `List<String>[]` ls;
     List[] la = new List[10];
-    ls = (List<String>[])la; // Unchecked cast
+    ls = (`List<String>[]`)la; // Unchecked cast
     ls[0] = new ArrayList<>();
 
     //- ls[1] = new ArrayList<Integer>();
@@ -4973,7 +4973,7 @@ public class ArrayOfGenerics {
 }
 ```
 
-一旦你有了对 **List<String>[]** 的引用 , 你会发现多了一些编译时检查。问题是数组是协变的，所以 **List<String>[]** 也是一个 **Object[]**  ，你可以用这来将 **ArrayList<Integer> ** 分配进你的数组，在编译或者运行时都不会出错。
+一旦你有了对 **`List<String>[]`** 的引用 , 你会发现多了一些编译时检查。问题是数组是协变的，所以 **`List<String>[]`** 也是一个 **Object[]**  ，你可以用这来将 **`ArrayList<Integer> `** 分配进你的数组，在编译或者运行时都不会出错。
 
 如果你知道你不会进行向上类型转换，你的需求相对简单，那么可以创建一个泛型数组，它将提供基本的编译时类型检查。然而，一个泛型 **Collection** 实际上是一个比泛型数组更好的选择。
 
@@ -5070,7 +5070,7 @@ a9: [Hello, Hello, Hello, World, World, Hello]
 - **void setAll(int[] a, IntUnaryOperator gen)**
 - **void setAll(long[] a, IntToLongFunction gen)**
 - **void setAll(double[] a, IntToDoubleFunctiongen)**
-- **<T> void setAll(T[] a, IntFunction<? extendsT> gen)**
+- **`<T> void setAll(T[] a, IntFunction<? extendsT> gen)`**
 
 除了 **int** , **long** , **double** 有特殊的版本，其他的一切都由泛型版本处理。生成器不是 **Supplier** 因为它们不带参数，并且必须将 **int** 数组索引作为参数。
 

@@ -6,8 +6,6 @@ date: 2021-10-24 10:40:06
 
 categories: elasticsearch
 
-tags: elasticsearch
-
 ---
 
 # 安装elasticsearch
@@ -32,7 +30,7 @@ docker network create es-net
 
 课前资料提供了镜像的tar包：
 
-![image-20210510165308064](安装elasticsearch/image-20210510165308064.png)
+![image-20210510165308064](./安装elasticsearch/image-20210510165308064.png)
 
 大家将其上传到虚拟机中，然后运行命令加载即可：
 
@@ -80,7 +78,7 @@ elasticsearch:7.12.1
 
 在浏览器中输入：http://192.168.150.101:9200 即可看到elasticsearch的响应结果：
 
-![image-20210506101053676](安装elasticsearch/image-20210506101053676.png)
+![image-20210506101053676](./安装elasticsearch/image-20210506101053676.png)
 
 
 
@@ -115,7 +113,7 @@ docker logs -f kibana
 
 查看运行日志，当查看到下面的日志，说明成功：
 
-![image-20210109105135812](安装elasticsearch/image-20210109105135812.png)
+![image-20210109105135812](./安装elasticsearch/image-20210109105135812.png)
 
 此时，在浏览器输入地址访问：http://192.168.150.101:5601，即可看到结果
 
@@ -123,7 +121,7 @@ docker logs -f kibana
 
 kibana中提供了一个DevTools界面：
 
-![image-20210506102630393](安装elasticsearch/image-20210506102630393.png)
+![image-20210506102630393](./安装elasticsearch/image-20210506102630393.png)
 
 这个界面中可以编写DSL来操作elasticsearch。并且对DSL语句有自动补全功能。
 
@@ -182,13 +180,13 @@ docker volume inspect es-plugins
 
 下面我们需要把课前资料中的ik分词器解压缩，重命名为ik
 
-![image-20210506110249144](安装elasticsearch/image-20210506110249144.png)
+![image-20210506110249144](./安装elasticsearch/image-20210506110249144.png)
 
 ### 3）上传到es容器的插件数据卷中
 
 也就是`/var/lib/docker/volumes/es-plugins/_data `：
 
-![image-20210506110704293](安装elasticsearch/image-20210506110704293.png)
+![image-20210506110704293](./安装elasticsearch/image-20210506110704293.png)
 
 
 
@@ -306,7 +304,7 @@ GET /_analyze
 
 1）打开IK分词器config目录：
 
-![image-20210506112225508](安装elasticsearch/image-20210506112225508.png)
+![image-20210506112225508](./安装elasticsearch/image-20210506112225508.png)
 
 2）在IKAnalyzer.cfg.xml配置文件内容添加：
 
@@ -336,7 +334,7 @@ docker restart es
 docker logs -f elasticsearch
 ```
 
-![image-20201115230900504](安装elasticsearch/image-20201115230900504.png)
+![image-20201115230900504](./安装elasticsearch/image-20201115230900504.png)
 
 日志中已经成功加载ext.dic配置文件
 
@@ -529,35 +527,35 @@ kibana可以监控es集群，不过新版本需要依赖es的x-pack 功能，配
 
 课前资料已经提供了安装包：
 
-![image-20210602220751081](安装elasticsearch/image-20210602220751081.png)
+![image-20210602220751081](./安装elasticsearch/image-20210602220751081.png)
 
 解压即可使用，非常方便。
 
 解压好的目录如下：
 
-![image-20210602220824668](安装elasticsearch/image-20210602220824668.png)
+![image-20210602220824668](./安装elasticsearch/image-20210602220824668.png)
 
 进入对应的bin目录：
 
-![image-20210602220846137](安装elasticsearch/image-20210602220846137.png)
+![image-20210602220846137](./安装elasticsearch/image-20210602220846137.png)
 
 
 
 双击其中的cerebro.bat文件即可启动服务。
 
-![image-20210602220941101](安装elasticsearch/image-20210602220941101.png)
+![image-20210602220941101](./安装elasticsearch/image-20210602220941101.png)
 
 
 
 访问http://localhost:9000 即可进入管理界面：
 
-![image-20210602221115763](安装elasticsearch/image-20210602221115763.png)
+![image-20210602221115763](./安装elasticsearch/image-20210602221115763.png)
 
 输入你的elasticsearch的任意节点的地址和端口，点击connect即可：
 
 
 
-![image-20210109181106866](安装elasticsearch/image-20210109181106866.png)
+![image-20210109181106866](./安装elasticsearch/image-20210109181106866.png)
 
 绿色的条，代表集群处于绿色（健康状态）。
 
@@ -592,15 +590,15 @@ PUT /itcast
 
 利用cerebro还可以创建索引库：
 
-![image-20210602221409524](安装elasticsearch/image-20210602221409524.png)
+![image-20210602221409524](./安装elasticsearch/image-20210602221409524.png)
 
 填写索引库信息：
 
-![image-20210602221520629](安装elasticsearch/image-20210602221520629.png)
+![image-20210602221520629](./安装elasticsearch/image-20210602221520629.png)
 
 点击右下角的create按钮：
 
-![image-20210602221542745](安装elasticsearch/image-20210602221542745.png)
+![image-20210602221542745](./安装elasticsearch/image-20210602221542745.png)
 
 
 
@@ -608,5 +606,5 @@ PUT /itcast
 
 回到首页，即可查看索引库分片效果：
 
-![image-20210602221914483](安装elasticsearch/image-20210602221914483.png)
+![image-20210602221914483](./安装elasticsearch/image-20210602221914483.png)
 

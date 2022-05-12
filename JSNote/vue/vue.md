@@ -3356,21 +3356,21 @@ module.exports = {
 特别提醒：在样式中使用引用路径时，前面需要加“~”
 
 示例代码
-
+```html
 <style lang="less" scoped>
 @import "~@/styles/variables.less";
 .test {
     background: url('~@/assets/images/logo.png')
 }
 </style>
-
+```
 溯源
 
 在less官网（Less 快速入门 | Less.js 中文文档 - Less 中文网），可以找到关于引入less文件的语法出处，但并未发现有关使用引用路径前面需要加“~”的说明。
 
 继而来到Vue CLI官网（CSS 相关 | Vue CLI），找到了使用引用路径时需要在路径前加上“~”的相关说明。
 
-但其实，这个规则从根本上了来讲，由webpack官网（less-loader | webpack 中文文档）的less-loader部分文档决定，因为Vue CLI的打包功能是由webpack实现的。
+但其实，这个规则从根本上了来讲，由webpack官网（`less-loader` | webpack 中文文档）的`less-loader`部分文档决定，因为Vue CLI的打包功能是由webpack实现的。
 
 ————————————————
 原文链接：https://blog.csdn.net/m0_60692814/article/details/120242411

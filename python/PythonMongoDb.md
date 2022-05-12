@@ -1,7 +1,7 @@
 ---
 title: pythonMongoDb
 date: 2019-11-14 22:19:09
-tags: python
+
 ---
 [TOC]
 

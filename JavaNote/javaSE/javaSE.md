@@ -6,29 +6,29 @@ categories: java
 ---
 
 [[toc]]
-# 1  
+## 1  
 
-## 2
-
-
-### 3
+### 2
 
 
-#### 4
+#### 3
 
 
-##### 5
+##### 4
+
+
+###### 5
 
 
 
-###### 6
+####### 6
 
 
-# 自己相关笔记
+## 自己相关笔记
 
 <!-- [OnJava8](.\..\Onjava8\OnJava8.md) -->
 
-# java控制台执行  
+## java控制台执行  
 
 可以直接编译＋运行  
 
@@ -36,9 +36,9 @@ categories: java
  java Create.java  
 ```
 
-# 基础语法
+## 基础语法
 
-## switch语法结构
+### switch语法结构
 
 1、语句结构
   switch语句从字面上讲，可以称为开关语句，是一种多分支选择结构，一般与case、break、default配合使用，对流程进行控制。
@@ -56,9 +56,9 @@ switch(表达式){
 switch作为一个开关，当变量表达式的值对应case中的值时，执行case后面的语句后跳出switch语句，如果都不符合则执行default后面的语句后跳出switch语句。
 注：**case进入语句后遇到break才会退出**，没有break，会一直运行下去直到整个语句结束。
 
-# 基础类型
+## 基础类型
 
-## int
+### int
 主要是有符号整数在计算机中存储采用的补码
 
 在java（任何 32 位字节存储整数的系统）中 -(-2147483648)==(-2147483648)，即
@@ -69,9 +69,9 @@ Integer.MIN_VALUE = -Integer.MIN_VALUE
 
 
 
-# 字符串String  
+## 字符串String  
 
-## 特点  
+### 特点  
 
 String内容不可改变  
 
@@ -83,7 +83,7 @@ String内容不可改变
 String类的匿名对象是由系统自动设置，而不是有用户自己定义的  
 String当做参数传递没有改变，是因为新的String通过赋值指向了新的对象，所以对传入的String没有影响  
 
-## 修改类  
+### 修改类  
 
 StringBuffer  
 	  
@@ -102,7 +102,7 @@ StringBulid
 	是StringBuffer基本一样  
 	线程不安全的  
 
-## 两种实例化方式  
+### 两种实例化方式  
 
 直接赋值  
 new构造方法  
@@ -122,7 +122,7 @@ public native String intern();
 
 容易找出空间浪费，不建议使用	  
 
-## 常用函数
+### 常用函数
 
 | 函数                                                         | 作用                                   |                          |
 | ------------------------------------------------------------ | -------------------------------------- | ------------------------ |
@@ -130,9 +130,9 @@ public native String intern();
 | public static String **join(CharSequence delimiter,         Iterable<? extends CharSequence> elements)** | 给字符数组添加分隔符，并返回一个字符串 | String.join(" ",strList) |
 |                                                              |                                        |                          |
 
-## 常见使用
+### 常见使用
 
-### 字符串逆置
+#### 字符串逆置
 
 ```java
 String reversedStr = new StringBuffer(strs).reverse().toString()
@@ -140,7 +140,7 @@ String reversedStr = new StringBuffer(strs).reverse().toString()
 
 
 
-# 枚举enum 
+## 枚举enum 
 枚举中定义的对象都是当前枚举的类型。
 ```java
 enum  Season{
@@ -186,18 +186,18 @@ enum  Season{
 
 
 
-# 常用类  
+## 常用类  
 
-## 数字类  
+### 数字类  
 
-## 大数类  
+### 大数类  
 
-### 大整数类BigInteger  
+#### 大整数类BigInteger  
 
 String构造方法  
 	public BigInteger(String val)  
 
-### 大浮点数BigDecimal  
+#### 大浮点数BigDecimal  
 
 构造方法  
 	String构造方法  
@@ -212,20 +212,20 @@ BigDecimal.ROUND_HALF_UP)
 	setScale(newScale, RoundingMode.HALF_UP)  
 		小数位后保留  
 
-## Math类  
+### Math类  
 
  Math类里面提供的方法都是static方法，Math类里面都没有普通方法  
 四舍五入round  
 	public static long round(double a)  
 	如果负数进行四舍五入时，大于-0.5才为-1  
 
-# 集合
+## 集合
 
-## HashMap
+### HashMap
 
 Java中的HashMap是一种常用的数据结构，一般用来做数据字典或者Hash查找的容器。
 
-### 在一个表达式中完成初始化并赋初值的操作
+#### 在一个表达式中完成初始化并赋初值的操作
 
 
 一般我们初始化并赋初值是这样做的：
@@ -250,7 +250,7 @@ HashMap<String, Object> map = new HashMap<>() {    {        put("name", "yanggb"
 
 最后，这个使用**双括号进行初始化的语法同样适用于ArrayList和Set等集合。**
 
-# JDBC  
+## JDBC  
 
 1、加载数据库驱动  
 	E:\app\test\product\11.2.0\dbhome_1\jdbc\lib\ojdbc6.jar  
@@ -277,7 +277,7 @@ java之中所有的数据库操作类和接口在java.sql
 JDBC在实现数据库驱动连接对象使用工厂设计设计模式，而DriverManager就是工厂类  
 	所以客服端调用连接时，隐藏子类的具体连接实现  
 
-# 正则表达式  
+## 正则表达式  
 
 Pattern类  
 	获得此类对象必须通过Compile()方法，编译正则表达式  
@@ -289,7 +289,7 @@ Matcher m = p.matcher(fileName);
 
 
 
-## Matcher类  
+### Matcher类  
 
 Pattern类获得  
 
@@ -305,7 +305,7 @@ package java.util.regex;
 
 
 
-## 字符串的正则运用  
+### 字符串的正则运用  
 
 ```java
 matches()：正则验证  
@@ -315,11 +315,11 @@ split(String regex) ：全部拆分
 split(String regex, int limit)：部分拆分  
 ```
 
-## 正则标记  
+### 正则标记  
 
 都在Pattern类定义  
 
-### 单个字符（匹配数量1）  
+#### 单个字符（匹配数量1）  
 
 ```java
 字符：由一个字符组成  
@@ -328,7 +328,7 @@ split(String regex, int limit)：部分拆分
 '\n' 换行符  
 ```
 
-### 字符集（数量1）  
+#### 字符集（数量1）  
 
 **[],字符集**
 
@@ -347,7 +347,7 @@ split(String regex, int limit)：部分拆分
 
 - 也可以组合使用，如`[A-Z_]`表示大写字母+`_`
 
-### 简化字符表达式（数量1）  
+#### 简化字符表达式（数量1）  
 
 - `.` :任意一位字符  
 
@@ -377,7 +377,7 @@ split(String regex, int limit)：部分拆分
   	^:正则开始  
   	$:正则结束  
 
-### 数量表达式  
+#### 数量表达式  
 
 正则`{n}`：表示正则正好出现n次  
 正则`{n,}`：表示正则出现n次及以上  
@@ -387,7 +387,7 @@ split(String regex, int limit)：部分拆分
 正则`+`：`=={1,}` 表示正则可以出现1次或1次以上 ，>=1  
 
 
-### 逻辑表达式  
+#### 逻辑表达式  
 
 	正则1正则2：判断第一个完成以后再判断第二个正则 ,如AB 
 	正则1|正则2：两个正则的或  
@@ -397,7 +397,7 @@ split(String regex, int limit)：部分拆分
 
 
 
-# 注解，Annotation  
+## 注解，Annotation  
 
 3个最常用的基础注解  
 	声明覆写操作@Override  
@@ -407,7 +407,7 @@ split(String regex, int limit)：部分拆分
 
 更多详见：[24 注解,Annotations](./../OnJava8/24Annotations.md)
 
-## 多线程  
+### 多线程  
 
 实现  
 	Thread实现  
@@ -428,7 +428,7 @@ split(String regex, int limit)：部分拆分
 等待wait(Object类）  
 	notify唤醒  
 
-## 对象克隆  
+### 对象克隆  
 
 如果没有实现Cloneable的接口会上抛一个异常  
 Cloneable接口  
@@ -437,11 +437,11 @@ Cloneable接口
 需要覆写Object类的clone方法  
 	protected native Object clone() throws CloneNotSupportedException;  
 
-# 反射  
+## 反射  
 
 “反”通过对象找到类的出处  
 java.lang.Class反射的源头  
-## 三种实例化方式  
+### 三种实例化方式  
 第一种：调用Object类中的getClass()  
 	需要对象实例化  
 第二种：类.class属性  
@@ -463,7 +463,7 @@ try {
     e.printStackTrace();
 ```
 
-## 获取属性
+### 获取属性
 
 ```java
 // 获取属性  
@@ -472,7 +472,7 @@ Field[] field02 = clazz.getDeclaredFields(); // 返回所有的属性
 Field field03 = clazz.getDeclaredField("id"); // 获取属性为id的字段  
 ```
 
-### Field方法:
+#### Field方法:
 
 ```java
 String name = field.getName();
@@ -492,7 +492,7 @@ for(Field field: fields){
 
 
 
-## 获取方法
+### 获取方法
 
 ```java
 // 获取普通方法  
@@ -552,9 +552,9 @@ for(Field field: fields){
 
 
 
-# 函数式编程（Lambda）、流式编程
+## 函数式编程（Lambda）、流式编程
 
-## 函数式接口
+### 函数式接口
 
 `java.util.function` 包旨在创建一组完整的目标接口，使得我们一般情况下不需再定义自己的接口。这主要是因为基本类型会产生一小部分接口。 如果你了解命名模式，顾名思义就能知道特定接口的作用。
 
@@ -591,7 +591,7 @@ for(Field field: fields){
 
 例如，为什么没有 `IntComparator`，`LongComparator` 和 `DoubleComparator` 呢？有 `BooleanSupplier` 却没有其他表示 **Boolean** 的接口；有通用的 `BiConsumer` 却没有用于 **int**，**long** 和 **double** 的 `BiConsumers` 变体（我对他们放弃的原因表示同情）。这些选择是疏忽还是有人认为其他组合的使用情况出现得很少（他们是如何得出这个结论的）？
 
-## 流常用处理方法
+### 流常用处理方法
 
 匹配，遍历中遇到function返回true中断
 
@@ -623,7 +623,7 @@ Stream.iterate(0, i -> i + 1).limit(list.size()).forEach(i -> {
 });
 ```
 
-## 流元素排序
+### 流元素排序
 
 sorted()的默认比较器
 
@@ -638,11 +638,11 @@ sorted(Comparator.reverseOrder())
 
 
 
-# 共享设计模式  
+## 共享设计模式  
 
 	在JVM的底层实际上会存在有一个对象池（不一定只保存String），当String通过直接赋值创建一个String类对象时，会将此匿名对象如此保存，而后若果有新的String通过直接复制并且赋值内容和之前入池的相同，则不会开辟新的堆内存，而是使用之前对象池的引用。  
 
-# 4种代码块  
+## 4种代码块  
 
 1、普通代码块  
 	代码块写在了方法里面  
@@ -661,11 +661,11 @@ sorted(Comparator.reverseOrder())
 
 
 
-# io流
+## io流
 
 
 
-# transient
+## transient
 
 java语言的关键字，[变量](https://baike.baidu.com/item/变量/3956968)[修饰符](https://baike.baidu.com/item/修饰符/4088564)，如果用transient声明一个[实例变量](https://baike.baidu.com/item/实例变量/3386159)，当对象存储时，它的值不需要维持。换句话来说就是，用transient关键字标记的成员变量不参与序列化过程。
 

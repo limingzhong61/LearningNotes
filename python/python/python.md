@@ -2,7 +2,7 @@
 title: python
 date: 2019-11-22 21:14:50
 categories: python 
-tags: python 
+ 
 ---
 [TOC]
 

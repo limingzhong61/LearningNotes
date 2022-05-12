@@ -3,7 +3,7 @@ title: jquery
 p: js-note/jquery/jquery
 date: 2019-10-12 10:25:41
 categories: js
-tags: [js,前端]
+
 ---
 
 [TOC]
@@ -534,18 +534,18 @@ var obj = {0:"lnj", 1:"33", 2:"male", length: 3}
 | ----------------------------- | ------------ | -------------------------------------- | -------- | ------------------------------------------------------------ |
 | #id                           | id选择器     | 根据给定的id匹配一个元素               | 单个元素 | $("#box");选取id为box元素                                    |
 | .class                        | 类选择器     | 根据给定的类名匹配元素                 | 集合元素 | $(".box");选取所有类名为box元素                              |
-| element                       | 元素选择器   | 根据给定的元素名称匹配元素             | 集合元素 | $("p");选取所有<p>元素                                       |
+| element                       | 元素选择器   | 根据给定的元素名称匹配元素             | 集合元素 | $("p");选取所有`<p>`元素                                     |
 | *                             | 通配符选择器 | 匹配所有元素                           | 集合元素 | $("*");选取所有元素                                          |
-| selector1,selector2,selectorN | 并集选择器   | 将所有选择器匹配到的元素合并后一起返回 | 集合元素 | $("div,p,.box");选取所有<div>元素,所有<p>元素和所有类名为box元素 |
+| selector1,selector2,selectorN | 并集选择器   | 将所有选择器匹配到的元素合并后一起返回 | 集合元素 | $("div,p,.box");选取所有`<div>`元素,所有`<p>`元素和所有类名为box元素 |
 
 ## 层次选择器
 
-| 选择器                   | 名称           | 描述                                                         | 返回     | 示例                                                   |
-| ------------------------ | -------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------ |
-| $("ancestor descendant") | 后代选择器     | 选取ancestor元素的所有descendant后代标签(不光是儿子,包括孙子/重孙子等) | 集合元素 | $("div span");选取<div>元素里所有的<span>元素          |
-| $("parent > child")      | 子元素选择器   | 找到选取parent 元素中所有直接子元素child(只有儿子,不包括孙子/重孙子等) | 集合元素 | $("div>span");选取<div>元素下元素名称是<span>的子元素  |
-| $("prev + next")         | 相邻兄弟选择器 | 选取prev元素后面紧跟的那个next元素                           | 集合元素 | $(".one+div");选取类名为one的下一个同级的<div>元素     |
-| $("prev ~ siblings")     | 通用兄弟选择器 | 选取prev元素后面的所有next元素                               | 集合元素 | $("#two~div");选取id名为two元素后面所有同级的<div>元素 |
+| 选择器                   | 名称           | 描述                                                         | 返回     | 示例                                                      |
+| ------------------------ | -------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- |
+| $("ancestor descendant") | 后代选择器     | 选取ancestor元素的所有descendant后代标签(不光是儿子,包括孙子/重孙子等) | 集合元素 | $("div span");选取`<div>`元素里所有的`<span>`元素         |
+| $("parent > child")      | 子元素选择器   | 找到选取parent 元素中所有直接子元素child(只有儿子,不包括孙子/重孙子等) | 集合元素 | $("div>span");选取`<div>`元素下元素名称是`<span>`的子元素 |
+| $("prev + next")         | 相邻兄弟选择器 | 选取prev元素后面紧跟的那个next元素                           | 集合元素 | $(".one+div");选取类名为one的下一个同级的`<div>`元素      |
+| $("prev ~ siblings")     | 通用兄弟选择器 | 选取prev元素后面的所有next元素                               | 集合元素 | $("#two~div");选取id名为two元素后面所有同级的`<div>`元素  |
 
 ### 序选择器
 
@@ -594,7 +594,7 @@ var obj = {0:"lnj", 1:"33", 2:"male", length: 3}
 <div class="one"></div>
 <div class="two">zs</div><!--包含内容不会被找到-->
 <div class="three"><!--包含子元素不会被找到-->
-    <span>lnj</span>
+    `<span>`lnj</span>
 </div>
 <span class="five"></span><!--不是指定元素不会被找到-->
 </body>
@@ -625,7 +625,7 @@ var obj = {0:"lnj", 1:"33", 2:"male", length: 3}
 <div class="one"></div>
 <div class="two">zs</div><!--有文本内容会被找到-->
 <div class="three"><!--有子元素会被找到-->
-    <span>lnj</span>
+    `<span>`lnj</span>
 </div>
 <span class="five"></span>
 </body>
@@ -657,7 +657,7 @@ var obj = {0:"lnj", 1:"33", 2:"male", length: 3}
 <div class="two">zs</div>
 <div class="three">lnj</div>
 <div class="four"><!--子元素中包含该文本也会被找到-->
-    <span>lnj</span>
+    `<span>`lnj</span>
 </div>
 <span class="five"></span>
 </body>
@@ -687,14 +687,14 @@ var obj = {0:"lnj", 1:"33", 2:"male", length: 3}
 </head>
 <body>
 <div class="one"> <!--后代中包含span元素会被找到-->
-    <span>jjj</span>
+    `<span>`jjj</span>
 </div>
 <div class="two"><!--后代中不包含span元素不会被找到-->
     <p>zs</p>
 </div>
 <div class="three"><!--后代中包含span元素会被找到-->
     <p>
-        <span>lnj</span>
+        `<span>`lnj</span>
     </p>
 </div>
 </body>
@@ -885,7 +885,7 @@ image.png
 <button>添加</button>
 <button>删除</button>
 <button>切换</button>
-<div></div>
+`<div>`</div>
 </body>
 </html>
 ```
@@ -946,7 +946,7 @@ image.png
             $btns.eq(0).click(function () {
                 // 1.添加html, 相当于innerHTML
 //                $div.html("<p>我是p标签</p>");
-//                $div.html("<p><span>我是span标签</span></p>");
+//                $div.html("<p>`<span>`我是span标签</span></p>");
                 $div.html("我是文本");
             });
             $btns.eq(1).click(function () {
@@ -961,7 +961,7 @@ image.png
 <button>获取html</button>
 <button>添加文本</button>
 <button>获取文本</button>
-<div></div>
+`<div>`</div>
 </body>
 </html>
 ```

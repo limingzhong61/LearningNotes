@@ -75,17 +75,17 @@ SentinelDashboard默认不支持nacos的持久化，需要修改源码。
 
 解压课前资料中的sentinel源码包：
 
-![image-20210618201340086](assets/image-20210618201340086.png)
+![image-20210618201340086](./sentinel规则持久化/image-20210618201340086.png)
 
 然后并用IDEA打开这个项目，结构如下：
 
-![image-20210618201412878](assets/image-20210618201412878.png)
+![image-20210618201412878](./sentinel规则持久化/image-20210618201412878.png)
 
 ### 2. 修改nacos依赖
 
 在sentinel-dashboard源码的pom文件中，nacos的依赖默认的scope是test，只能在测试时使用，这里要去除：
 
-![image-20210618201607831](assets/image-20210618201607831.png)
+![image-20210618201607831](./sentinel规则持久化/image-20210618201607831.png)
 
 将sentinel-datasource-nacos依赖的scope去掉：
 
@@ -102,7 +102,7 @@ SentinelDashboard默认不支持nacos的持久化，需要修改源码。
 
 在sentinel-dashboard的test包下，已经编写了对nacos的支持，我们需要将其拷贝到main下。
 
-![image-20210618201726280](assets/image-20210618201726280.png)
+![image-20210618201726280](./sentinel规则持久化/image-20210618201726280.png)
 
 
 
@@ -110,11 +110,11 @@ SentinelDashboard默认不支持nacos的持久化，需要修改源码。
 
 然后，还需要修改测试代码中的NacosConfig类：
 
-![image-20210618201912078](assets/image-20210618201912078.png)
+![image-20210618201912078](./sentinel规则持久化/image-20210618201912078.png)
 
 修改其中的nacos地址，让其读取application.properties中的配置：
 
-![image-20210618202047575](assets/image-20210618202047575.png)
+![image-20210618202047575](./sentinel规则持久化/image-20210618202047575.png)
 
 在sentinel-dashboard的application.properties中添加nacos地址配置：
 
@@ -128,11 +128,11 @@ nacos.addr=localhost:8848
 
 另外，还需要修改com.alibaba.csp.sentinel.dashboard.controller.v2包下的FlowControllerV2类：
 
-![image-20210618202322301](assets/image-20210618202322301.png)
+![image-20210618202322301](./sentinel规则持久化/image-20210618202322301.png)
 
 让我们添加的Nacos数据源生效：
 
-![image-20210618202334536](assets/image-20210618202334536.png)
+![image-20210618202334536](./sentinel规则持久化/image-20210618202334536.png)
 
 
 
@@ -142,19 +142,19 @@ nacos.addr=localhost:8848
 
 修改src/main/webapp/resources/app/scripts/directives/sidebar/目录下的sidebar.html文件：
 
-![image-20210618202433356](assets/image-20210618202433356.png)
+![image-20210618202433356](./sentinel规则持久化/image-20210618202433356.png)
 
 
 
 将其中的这部分注释打开：
 
-![image-20210618202449881](assets/image-20210618202449881.png)
+![image-20210618202449881](./sentinel规则持久化/image-20210618202449881.png)
 
 
 
 修改其中的文本：
 
-![image-20210618202501928](assets/image-20210618202501928.png)
+![image-20210618202501928](./sentinel规则持久化/image-20210618202501928.png)
 
 
 
@@ -162,7 +162,7 @@ nacos.addr=localhost:8848
 
 运行IDEA中的maven插件，编译和打包修改好的Sentinel-Dashboard：
 
-![image-20210618202701492](assets/image-20210618202701492.png)
+![image-20210618202701492](./sentinel规则持久化/image-20210618202701492.png)
 
 **在资料中有配置好了的，sentinel-dashboard.jar**，直接使用亦可
 
@@ -184,8 +184,8 @@ java -jar -Dnacos.addr=localhost:8848 sentinel-dashboard.jar
 
 进入http://localhost:8080/发现有-NACOS就成功了
 
-![image-20210914194510204](assets/image-20210914194510204.png)
+![image-20210914194510204](./sentinel规则持久化/image-20210914194510204.png)
 
 nacos页面中也有配置管理
 
-![image-20210914194616961](assets/image-20210914194616961.png)
+![image-20210914194616961](./sentinel规则持久化/image-20210914194616961.png)

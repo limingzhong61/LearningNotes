@@ -692,7 +692,7 @@ font-size:20px;
 
 Selects elements that don't have any other elements inside of them.  
 
-**div:empty** selects all empty **<div>** elements.  
+**div:empty** selects all empty **`<div>`** elements.  
 
 **:nth-of-type(A)**  
 
@@ -1378,7 +1378,7 @@ table{
 | collapse | 如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。 |
 | inherit  | 规定应该从父元素继承 border-collapse 属性的值。              |
 
-### <td> 标签的 colspan. rowspan 属性  
+### `<td>` 标签的 colspan. rowspan 属性  
 
 | 值       | 描述                          |
 | :------- | :---------------------------- |

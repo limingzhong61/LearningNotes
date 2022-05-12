@@ -5,8 +5,6 @@ title: RabbitMQ部署指南
 date: 2021-10-25 10:40:06
 
 categories: RabbitMQ
-
-tags: RabbitMQ
 ---
 
 # RabbitMQ部署指南
@@ -37,7 +35,7 @@ docker pull rabbitmq:3-management
 
 在课前资料已经提供了镜像包：
 
-![image-20210423191210349](assets/image-20210423191210349.png) 
+![image-20210423191210349](RabbitMQ部署指南/image-20210423191210349.png) 
 
 上传到虚拟机中后，使用命令加载镜像即可：
 

@@ -6,8 +6,6 @@ date: 2021-10-25 10:40:06
 
 categories: RabbitMQ
 
-tags: RabbitMQ
-
 ---
 
 # RabbitMQ

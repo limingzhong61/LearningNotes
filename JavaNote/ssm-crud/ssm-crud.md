@@ -272,5 +272,3 @@ public Msg saveEmp(Employee employee,HttpServletRequest request){
 }
     }
 ```
-
-![](E:\pictures\Language\ssm\ssm整合\ssm总结.png)

@@ -1,3 +1,9 @@
+---
+title: 20,类型信息
+date: 2019-10-12 10:40:06
+categories: java
+---
+
 <!-- Type Information -->
 
 # 20,类型信息

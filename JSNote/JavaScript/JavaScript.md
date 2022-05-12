@@ -1,5 +1,8 @@
 ---
-
+title: JavaScript  
+p: java-note/javaSE/javaSE  
+date: 2019-10-12 10:32:06  
+categories: java  
 ---
 **[github笔记下载地址](https://github.com/codeOflI/codeOflI.github.io/blob/dev/source/_posts/js-note/javaScript/javaScript.md)**
 [TOC]

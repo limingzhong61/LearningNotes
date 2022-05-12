@@ -1,10 +1,10 @@
 ---
-title: spring
+title: Spring
 date: 2019-10-19 15:23:24
 categories: java
 ---
 
-2002 Rod Johnon <Expoer One-on-one j2eedevelopment and Design>
+2002 Rod Johnon `<Expoer One-on-one j2eedevelopment and Design>`
 Spring  2003  ,IOC  Aop
 Spring data,spring boot,spring cloud,spring framework ,spring social 
 
@@ -136,7 +136,7 @@ conext.getBean(需要获取的bean的id值)
 
 #### 2.构造器注入：通过构造方法赋值
 
-需要注意：如果  <constructor-arg>的顺序 与构造方法参数的顺序不一致，则需要通过type或者index或name指定。
+需要注意：如果  `<constructor-arg>`的顺序 与构造方法参数的顺序不一致，则需要通过type或者index或name指定。
 
 ```xml
  <constructor-arg value="ls" type="String" index="0" name="name"></constructor-arg>
@@ -173,18 +173,18 @@ conext.getBean(需要获取的bean的id值)
 **无论是String还是Int/short/long，在赋值时都是 value="值" ，当参数重载时默认为String优先**
 因此建议 此种情况 需要配合 name\type进行区分
 
-
+ 
 
 示例：
 	注入各种集合数据类型: List  Set map properties
 
-set、list、数组   各自都有自己的标签<set> <list> <array>，但是也可以混着用
+set、list、数组   各自都有自己的标签`<set> <list> <array>`，但是也可以混着用
 
-###**value与<value>注入方式的区别：**
+###**value与`<value>`注入方式的区别：**
 
-|                                         | 使用子元素<value>注入                                        | 而使用value属性注入                     |
+|                                         | 使用子元素`<value>`注入                                      | 而使用value属性注入                     |
 | --------------------------------------- | :----------------------------------------------------------- | --------------------------------------- |
-| 参数值位置                              | 写在首尾标签（<value></value>）的中间(不加双引号)            | 写在value的属性值中（必须加双引号）     |
+| 参数值位置                              | 写在首尾标签（`<value></value>`）的中间(不加双引号)          | 写在value的属性值中（必须加双引号）     |
 | type属性                                | 有（可选）   可以通过type属性指定数据类型                    | 无                                      |
 | 参数值包含特殊字符（<， &）时的处理方法 | 两种处理方法。  **一、使用<![CDATA[]]>标记**  二、使用XML预定义的实体引用 | 一种处理方法。即使用XML预定义的实体引用 |
 
@@ -204,7 +204,7 @@ set、list、数组   各自都有自己的标签<set> <list> <array>，但是�
 
 ```xml
 <property name="name" >  
-				<null/>       -->注意 没有<value>
+				<null/>       -->注意 没有`<value>`
 		</property>
 ```
 
@@ -214,7 +214,7 @@ set、list、数组   各自都有自己的标签<set> <list> <array>，但是�
 
 ```xml
 <property name="name" >  
-				<value></value>  
+				`<value>`</value>  
 		</property>
 ```
 
@@ -226,16 +226,16 @@ set、list、数组   各自都有自己的标签<set> <list> <array>，但是�
 ​	约定优于配置
 
 自动装配：
-<bean ... class="org.lanqiao.entity.Course"  autowire="byName|byType|constructor|no" >  byName本质是byId
+`<bean ... class="org.lanqiao.entity.Course"  autowire="byName|byType|constructor|no" >`  byName本质是byId
 byName:  自动寻找：其他bean的id值=该Course类的属性名
 byType:  其他bean的类型(class)  是否与 该Course类的ref属性类型一致  （注意，此种方式 必须满足：当前Ioc容器中 只能有一个Bean满足条件  ）
 constructor： 其他bean的类型(class)  是否与 该Course类的构造方法参数 的类型一致；此种方式的本质就是byType
 
 
 可以在头文件中 一次性将该ioc容器的所有bean  统一设置成自动装配：
-<beans xmlns="http://www.springframework.org/schema/beans"
+`<beans xmlns="http://www.springframework.org/schema/beans"
 ...
-default-autowire="byName">
+default-autowire="byName">`
 
 自动装配虽然可以减少代码量，但是会降低程序的可读性，使用时需要谨慎。
 
@@ -627,7 +627,7 @@ Web项目：
 		公共 数据库:applicationDB.xml
 
 ii.功能结构
-	学生相关配置 applicationContextStudent.xml   <bean id=""  class="X...Student">
+	学生相关配置 applicationContextStudent.xml   `<bean id=""  class="X...Student">`
 	班级相关配置 applicationContextClass.xml 
 
 合并：如何将多个配置文件 加载
@@ -677,7 +677,7 @@ ii.功能结构
 
 Web项目：
 
-![1561880276559](E:\pictures\Language\spring\springIoc容器和servlet容器.png)
+
 
 # 2.Spring整合MyBatis
 
@@ -714,7 +714,7 @@ commons-dbcp.jar	ojdbc.jar	mybatis.jar	log4j.jar	commons-pool.jar
 class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="locations">
 			<array>
-				<value>classpath:db.properties</value>
+				`<value>`classpath:db.properties</value>
 			</array>
 		</property>
 	</bean>

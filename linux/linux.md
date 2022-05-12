@@ -2,7 +2,6 @@
 title: linux
 date: 2019-11-12 14:20:26
 categories: note
-tags: linux
 ---
 [TOC]
 # linux入门
@@ -37,7 +36,7 @@ tags: linux
 
 2)配置网络，可以上网。点击上面右侧的；两个计算机图片，选择启用eth0,即可成功连接到网络，就可以上网。
 
-![1565532090697](Linux/centos联网)
+![1565532090697](Linux/centos联网-1652182443089.png)
 
 ### vmtools的安装和使用
 
@@ -464,7 +463,7 @@ su– 切换用户名
 
 1)创建一个用户zf,，指定密码，然后切换到zf.
 
-![1565785356718](Linux/su-切换用户)
+![1565785356718](Linux/su-切换用户.png)
 
 细节说明
 
@@ -511,7 +510,7 @@ useradd -g 用户组 用户名
 
 增加一个用户zwj,直接将他指定到wudang步骤看演示：
 
-![1565786129905](Linux/useradd -g)
+![1565786129905](Linux/useradd -g.png)
 
 8.9修改用户的组
 
@@ -915,7 +914,7 @@ more 要查看的文件
 [root@hapdoop1 ~]## more /etc/profile
 ```
 
-![1565839967183](C:\Users\11623\AppData\Roaming\Typora\typora-user-images\1565839967183.png)
+
 
 12less指令
 

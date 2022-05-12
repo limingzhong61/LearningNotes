@@ -6,7 +6,6 @@ date: 2021-10-24 10:40:06
 
 categories: Elasticsearch
 
-tags: Elasticsearch
 
 ---
 
@@ -16,13 +15,13 @@ tags: Elasticsearch
 
 
 
-# 1.初识elasticsearch
+## 1.初识elasticsearch
 
-## 1.1.了解ES
+### 1.1.了解ES
 
 
-
-### 1.1.1.elasticsearch的作用
+## 
+#### 1.1.1.elasticsearch的作用
 
 elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大功能，可以帮助我们从海量数据中快速找到需要的内容
 
@@ -30,45 +29,45 @@ elasticsearch是一款非常强大的开源搜索引擎，具备非常多强大�
 
 - 在GitHub搜索代码
 
-  ![image-20210720193623245](Elasticsearch/image-20210720193623245.png)
+  ![image-20210720193623245](./Elasticsearch/image-20210720193623245.png)
 
 - 在电商网站搜索商品
 
-  ![image-20210720193633483](Elasticsearch/image-20210720193633483.png)
+  ![image-20210720193633483](./Elasticsearch/image-20210720193633483.png)
 
 - 在百度搜索答案
 
-  ![image-20210720193641907](Elasticsearch/image-20210720193641907.png)
+  ![image-20210720193641907](./Elasticsearch/image-20210720193641907.png)
 
 - 在打车软件搜索附近的车
 
-  ![image-20210720193648044](Elasticsearch/image-20210720193648044.png)
+  ![image-20210720193648044](./Elasticsearch/image-20210720193648044.png)
 
 
 
 
 
-### 1.1.2.ELK技术栈
+#### 1.1.2.ELK技术栈
 
 elasticsearch结合kibana、Logstash、Beats，也就是elastic stack（ELK）。被广泛应用在日志数据分析、实时监控等领域：
 
-![image-20210720194008781](Elasticsearch/image-20210720194008781.png)
+![image-20210720194008781](./Elasticsearch/image-20210720194008781.png)
 
 
 
 而**elasticsearch是elastic stack的核心**，负责存储、搜索、分析数据。
 
-![image-20210720194230265](Elasticsearch/image-20210720194230265.png)
+![image-20210720194230265](./Elasticsearch/image-20210720194230265.png)
 
 
 
-### 1.1.3.elasticsearch和lucene
+#### 1.1.3.elasticsearch和lucene
 
 elasticsearch底层是基于**lucene**来实现的。
 
 **Lucene**是一个Java语言的搜索引擎类库，是Apache公司的顶级项目，由DougCutting于1999年研发。官网地址：https://lucene.apache.org/ 。
 
-![image-20210720194547780](Elasticsearch/image-20210720194547780.png)
+![image-20210720194547780](./Elasticsearch/image-20210720194547780.png)
 
 
 
@@ -79,23 +78,23 @@ elasticsearch底层是基于**lucene**来实现的。
 - 2004年Shay Banon基于Lucene开发了Compass
 - 2010年Shay Banon 重写了Compass，取名为Elasticsearch。
 
-![image-20210720195001221](Elasticsearch/image-20210720195001221.png)
+![image-20210720195001221](./Elasticsearch/image-20210720195001221.png)
 
 
 
-### 1.1.4.为什么不是其他搜索技术？
+#### 1.1.4.为什么不是其他搜索技术？
 
 目前比较知名的搜索引擎技术排名：
 
-![image-20210720195142535](Elasticsearch/image-20210720195142535.png)
+![image-20210720195142535](./Elasticsearch/image-20210720195142535.png)
 
 虽然在早期，Apache Solr是最主要的搜索引擎技术，但随着发展elasticsearch已经渐渐超越了Solr，独占鳌头：
 
-![image-20210720195306484](Elasticsearch/image-20210720195306484.png)
+![image-20210720195306484](./Elasticsearch/image-20210720195306484.png)
 
 
 
-### 1.1.5.总结
+#### 1.1.5.总结
 
 什么是elasticsearch？
 
@@ -115,15 +114,15 @@ elasticsearch底层是基于**lucene**来实现的。
 
 
 
-## 1.2.倒排索引
+### 1.2.倒排索引
 
 倒排索引的概念是基于MySQL这样的正向索引而言的。
 
-### 1.2.1.正向索引
+#### 1.2.1.正向索引
 
 那么什么是正向索引呢？例如给下表（tb_goods）中的id创建索引：
 
-![image-20210720195531539](Elasticsearch/image-20210720195531539.png)
+![image-20210720195531539](./Elasticsearch/image-20210720195531539.png)
 
 如果是根据id查询，那么直接走索引，查询速度非常快。
 
@@ -147,7 +146,7 @@ elasticsearch底层是基于**lucene**来实现的。
 
 
 
-### 1.2.2.倒排索引
+#### 1.2.2.倒排索引
 
 倒排索引中有两个非常重要的概念：
 
@@ -164,7 +163,7 @@ elasticsearch底层是基于**lucene**来实现的。
 
 如图：
 
-![image-20210720200457207](Elasticsearch/image-20210720200457207.png)
+![image-20210720200457207](./Elasticsearch/image-20210720200457207.png)
 
 
 
@@ -182,7 +181,7 @@ elasticsearch底层是基于**lucene**来实现的。
 
 如图：
 
-![image-20210720201115192](Elasticsearch/image-20210720201115192.png)
+![image-20210720201115192](./Elasticsearch/image-20210720201115192.png)
 
 
 
@@ -190,7 +189,7 @@ elasticsearch底层是基于**lucene**来实现的。
 
 ![image-20210902160701197](分布式搜索引擎01/image-20210902160701197.png)
 
-### 1.2.3.正向和倒排
+#### 1.2.3.正向和倒排
 
 那么为什么一个叫做正向索引，一个叫做倒排索引呢？
 
@@ -224,17 +223,17 @@ elasticsearch底层是基于**lucene**来实现的。
 
 
 
-## 1.3.es的一些概念
+### 1.3.es的一些概念
 
 elasticsearch中有很多独有的概念，与mysql中略有差别，但也有相似之处。
 
 
 
-### 1.3.1.文档和字段
+#### 1.3.1.文档和字段
 
 elasticsearch是面向**文档（Document）**存储的，可以是**数据库中的一条商品数据**，一个订单信息。文档数据会被序列化为json格式后存储在elasticsearch中：
 
-![image-20210720202707797](Elasticsearch/image-20210720202707797.png)
+![image-20210720202707797](./Elasticsearch/image-20210720202707797.png)
 
 
 
@@ -242,7 +241,7 @@ elasticsearch是面向**文档（Document）**存储的，可以是**数据库�
 
 
 
-### 1.3.2.索引和映射
+#### 1.3.2.索引和映射
 
 **索引（Index）**，就是**相同类型的文档的集合**。
 
@@ -252,7 +251,7 @@ elasticsearch是面向**文档（Document）**存储的，可以是**数据库�
 - 所有商品的文档，可以组织在一起，称为商品的索引；
 - 所有订单的文档，可以组织在一起，称为订单的索引；
 
-![image-20210720203022172](Elasticsearch/image-20210720203022172.png)
+![image-20210720203022172](./Elasticsearch/image-20210720203022172.png)
 
 
 
@@ -262,7 +261,7 @@ elasticsearch是面向**文档（Document）**存储的，可以是**数据库�
 
 
 
-### 1.3.3.mysql与elasticsearch
+#### 1.3.3.mysql与elasticsearch
 
 我们统一的把mysql与elasticsearch的概念做一下对比：
 
@@ -290,17 +289,17 @@ elasticsearch是面向**文档（Document）**存储的，可以是**数据库�
 - 对**查询性能要求较高的搜索需求**，使用elasticsearch实现
 - 两者再基于某种方式，实现数据的同步，保证一致性
 
-![image-20210720203534945](Elasticsearch/image-20210720203534945.png)
+![image-20210720203534945](./Elasticsearch/image-20210720203534945.png)
 
 ![image-20210902161840028](分布式搜索引擎01/image-20210902161840028.png)
 
 
 
-## 1.4.安装es、kibana
+### 1.4.安装es、kibana
 
 
 
-### 1.4.1.安装
+#### 1.4.1.安装
 
 参考课前资料：
 
@@ -310,7 +309,7 @@ elasticsearch是面向**文档（Document）**存储的，可以是**数据库�
 
 
 
-### 1.4.2.分词器
+#### 1.4.2.分词器
 
 es在创建倒排索引时需要对文档分词；在搜索时，需要对用户输入内容分词。但**默认的分词规则对中文处理并不友好。**
 我们在kibana的DevTools中测试：
@@ -341,7 +340,7 @@ ik分词器包含两种模式：
 
 
 
-### 1.4.3.总结
+#### 1.4.3.总结
 
 分词器的作用是什么？
 
@@ -362,7 +361,7 @@ IK分词器如何拓展词条？如何停用词条？
 
 
 
-# 2.索引库操作
+## 2.索引库操作
 
 索引库就类似数据库表，mapping映射就类似表的结构。
 
@@ -370,11 +369,11 @@ IK分词器如何拓展词条？如何停用词条？
 
 
 
-## 2.1.mapping映射属性
+### 2.1.mapping映射属性
 
 官方文档 
 
-https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+https://www.elastic.co/guide/en/./Elasticsearch/reference/current/index.html
 
 mapping是对索引库中文档的约束，常见的mapping属性包括：
 
@@ -425,15 +424,15 @@ mapping是对索引库中文档的约束，常见的mapping属性包括：
 
 
 
-## 2.2.索引库的CRUD
+### 2.2.索引库的CRUD
 
 这里我们统一使用Kibana编写DSL的方式来演示。
 
 
 
-### 2.2.1.创建索引库和映射
+#### 2.2.1.创建索引库和映射
 
-#### 基本语法：
+##### 基本语法：
 
 - 请求方式：PUT
 - 请求路径：/索引库名，可以自定义
@@ -469,7 +468,7 @@ PUT /索引库名称
 
 
 
-#### 示例：
+##### 示例：
 
 ```sh
 PUT /heima
@@ -512,7 +511,7 @@ PUT /heima
 
 
 
-### 2.2.2.查询索引库
+#### 2.2.2.查询索引库
 
 **基本语法**：
 
@@ -530,11 +529,11 @@ GET /索引库名
 
 **示例**：
 
-![image-20210720211019329](Elasticsearch/image-20210720211019329.png)
+![image-20210720211019329](./Elasticsearch/image-20210720211019329.png)
 
 
 
-### 2.2.3.修改索引库
+#### 2.2.3.修改索引库
 
 倒排索引结构虽然不复杂，但是一旦数据结构改变（比如改变了分词器），就需要重新创建倒排索引，这简直是灾难。因此**索引库一旦创建，无法修改mapping**。
 
@@ -559,10 +558,10 @@ PUT /索引库名/_mapping
 
 **示例**：
 
-![image-20210720212357390](Elasticsearch/image-20210720212357390.png)
+![image-20210720212357390](./Elasticsearch/image-20210720212357390.png)
 
 ```sh
-# 修改索引库，添加新字段
+## 修改索引库，添加新字段
 PUT /heima/_mapping
 {
   "properties":{
@@ -577,7 +576,7 @@ PUT /heima/_mapping
 
 
 
-### 2.2.4.删除索引库
+#### 2.2.4.删除索引库
 
 **语法：**
 
@@ -595,13 +594,13 @@ DELETE /索引库名
 
 在kibana中测试：
 
-![image-20210720212123420](Elasticsearch/image-20210720212123420.png)
+![image-20210720212123420](./Elasticsearch/image-20210720212123420.png)
 
 
 
 
 
-### 2.2.5.总结
+#### 2.2.5.总结
 
 索引库操作有哪些？
 
@@ -612,9 +611,9 @@ DELETE /索引库名
 
 
 
-# 3.文档操作
+## 3.文档操作
 
-## 3.1.新增文档
+### 3.1.新增文档
 
 **语法：**
 
@@ -634,7 +633,7 @@ POST /索引库名/_doc/文档id
 **示例：**
 
 ```json
-# 插入文档
+## 插入文档
 POST /heima/_doc/1
 {
     "info": "黑马程序员Java讲师",
@@ -648,11 +647,11 @@ POST /heima/_doc/1
 
 **响应：**
 
-![image-20210720212933362](Elasticsearch/image-20210720212933362.png)
+![image-20210720212933362](./Elasticsearch/image-20210720212933362.png)
 
 
 
-## 3.2.查询文档
+### 3.2.查询文档
 
 根据rest风格，新增是post，查询应该是get，不过查询一般都需要条件，这里我们把文档id带上。
 
@@ -665,17 +664,17 @@ GET /{索引库名称}/_doc/{id}
 **通过kibana查看数据：**
 
 ```js
-# 查询文档
+## 查询文档
 GET /heima/_doc/1
 ```
 
 **查看结果：**
 
-![image-20210720213345003](Elasticsearch/image-20210720213345003.png)
+![image-20210720213345003](./Elasticsearch/image-20210720213345003.png)
 
 
 
-## 3.3.删除文档
+### 3.3.删除文档
 
 删除使用DELETE请求，同样，需要根据id进行删除：
 
@@ -688,17 +687,17 @@ DELETE /{索引库名}/_doc/id值
 **示例：**
 
 ```json
-# 根据id删除数据
+## 根据id删除数据
 DELETE /heima/_doc/1
 ```
 
 **结果：**
 
-![image-20210720213634918](Elasticsearch/image-20210720213634918.png)
+![image-20210720213634918](./Elasticsearch/image-20210720213634918.png)
 
 
 
-## 3.4.修改文档
+### 3.4.修改文档
 
 修改有两种方式：
 
@@ -707,7 +706,7 @@ DELETE /heima/_doc/1
 
 
 
-### 3.4.1.全量修改
+#### 3.4.1.全量修改
 
 全量修改是覆盖原来的文档，其本质是：
 
@@ -735,7 +734,7 @@ PUT /{索引库名}/_doc/文档id
 **示例：**
 
 ```json
-# 全量修改文档
+## 全量修改文档
 PUT /heima/_doc/1
 {
     "info": "黑马程序员高级Java讲师",
@@ -749,7 +748,7 @@ PUT /heima/_doc/1
 
 
 
-### 3.4.2.增量修改
+#### 3.4.2.增量修改
 
 增量修改是只修改指定id匹配的文档中的部分字段。
 
@@ -769,7 +768,7 @@ POST /{索引库名}/_update/文档id
 **示例：**
 
 ```json
-# 局部修改文档
+## 局部修改文档
 POST /heima/_update/1
 {
   "doc": {
@@ -780,7 +779,7 @@ POST /heima/_update/1
 
 
 
-## 3.5.总结
+### 3.5.总结
 
 文档操作有哪些？
 
@@ -793,18 +792,18 @@ POST /heima/_update/1
 
 
 
-# 4.RestClient操作索引库
+## 4.RestClient操作索引库
 
 **什么是RestClient**
 
-ES官方提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是组装DSL语句，通过http请求发送给ES。官方文档地址：https://www.elastic.co/guide/en/elasticsearch/client/index.html
+ES官方提供了各种不同语言的客户端，用来操作ES。这些客户端的本质就是组装DSL语句，通过http请求发送给ES。官方文档地址：https://www.elastic.co/guide/en/./Elasticsearch/client/index.html
 
 其中的Java Rest Client又包括两种：
 
 - Java Low Level Rest Client
 - Java High Level Rest Client
 
-![image-20210720214555863](Elasticsearch/image-20210720214555863.png)
+![image-20210720214555863](./Elasticsearch/image-20210720214555863.png)
 
 我们学习的是Java HighLevel Rest Client客户端API
 
@@ -812,9 +811,9 @@ ES官方提供了各种不同语言的客户端，用来操作ES。这些客户�
 
 
 
-## 4.0.导入Demo工程
+### 4.0.导入Demo工程
 
-### 4.0.1.导入数据
+#### 4.0.1.导入数据
 
 首先导入课前资料提供的数据库数据：
 
@@ -842,7 +841,7 @@ CREATE TABLE `tb_hotel` (
 
 
 
-### 4.0.2.导入项目
+#### 4.0.2.导入项目
 
 然后导入课前资料提供的项目:
 
@@ -852,11 +851,11 @@ hotel-demo文件夹
 
 项目结构如图：
 
-![image-20210720220647541](Elasticsearch/image-20210720220647541.png)
+![image-20210720220647541](./Elasticsearch/image-20210720220647541.png)
 
 
 
-### 4.0.3.mapping映射分析
+#### 4.0.3.mapping映射分析
 
 创建索引库，最关键的是mapping映射，而mapping映射要考虑的信息包括：
 
@@ -878,7 +877,7 @@ hotel-demo文件夹
 来看下酒店数据的索引库结构:
 
 ```json
-# 酒店的mapping
+## 酒店的mapping
 PUT /hotel
 {
   "mappings": {
@@ -942,15 +941,15 @@ PUT /hotel
 
 地理坐标说明：
 
-![image-20210720222110126](Elasticsearch/image-20210720222110126.png)
+![image-20210720222110126](./Elasticsearch/image-20210720222110126.png)
 
 copy_to说明：
 
-![image-20210720222221516](Elasticsearch/image-20210720222221516.png)
+![image-20210720222221516](./Elasticsearch/image-20210720222221516.png)
 
 
 
-### 4.0.4.初始化JavaRestClient
+#### 4.0.4.初始化JavaRestClient
 
 在elasticsearch提供的API中，与elasticsearch一切交互都封装在一个名为RestHighLevelClient的类中，必须先完成这个对象的初始化，建立与elasticsearch的连接。
 
@@ -1027,13 +1026,13 @@ public class HotelIndexTest {
 
 
 
-## 4.1.创建索引库
+### 4.1.创建索引库
 
-### 4.1.1.代码解读
+#### 4.1.1.代码解读
 
 创建索引库的API如下：
 
-![image-20210720223049408](Elasticsearch/image-20210720223049408.png)
+![image-20210720223049408](./Elasticsearch/image-20210720223049408.png)
 
 代码分为三步：
 
@@ -1043,7 +1042,7 @@ public class HotelIndexTest {
 
 
 
-### 4.1.2.完整示例
+#### 4.1.2.完整示例
 
 在hotel-demo的cn.itcast.hotel.constants包下，创建一个类，定义mapping映射的JSON字符串常量：
 
@@ -1127,7 +1126,7 @@ GET /hotel
 
 
 
-## 4.2.删除索引库
+### 4.2.删除索引库
 
 删除索引库的DSL语句非常简单：
 
@@ -1161,7 +1160,7 @@ void testDeleteHotelIndex() throws IOException {
 
 
 
-## 4.3.判断索引库是否存在
+### 4.3.判断索引库是否存在
 
 判断索引库是否存在，本质就是查询，对应的DSL是：
 
@@ -1191,7 +1190,7 @@ void testExistsHotelIndex() throws IOException {
 
 
 
-## 4.4.总结
+### 4.4.总结
 
 JavaRestClient操作elasticsearch的流程基本类似。核心是client.indices()方法来获取索引库的操作对象。
 
@@ -1206,7 +1205,7 @@ JavaRestClient操作elasticsearch的流程基本类似。核心是client.indices
 
 
 
-# 5.RestClient操作文档
+## 5.RestClient操作文档
 
 为了与索引库操作分离，我们再次参加一个测试类，做两件事情：
 
@@ -1253,11 +1252,11 @@ public class HotelDocumentTest {
 
 
 
-## 5.1.新增文档
+### 5.1.新增文档
 
 我们要将数据库的酒店数据查询出来，写入elasticsearch中。
 
-### 5.1.1.索引库实体类
+#### 5.1.1.索引库实体类
 
 数据库查询后的结果是一个Hotel类型的对象。结构如下：
 
@@ -1327,7 +1326,7 @@ public class HotelDoc {
 
 
 
-### 5.1.2.语法说明
+#### 5.1.2.语法说明
 
 新增文档的DSL语句如下：
 
@@ -1341,7 +1340,7 @@ POST /{索引库名}/_doc/1
 
 对应的java代码如图：
 
-![image-20210720230027240](Elasticsearch/image-20210720230027240.png)
+![image-20210720230027240](./Elasticsearch/image-20210720230027240.png)
 
 
 
@@ -1355,7 +1354,7 @@ POST /{索引库名}/_doc/1
 
 
 
-### 5.1.3.完整代码
+#### 5.1.3.完整代码
 
 我们导入酒店数据，基本流程一致，但是需要考虑几点变化：
 
@@ -1397,9 +1396,9 @@ void testAddDocument() throws IOException {
 
 
 
-## 5.2.查询文档
+### 5.2.查询文档
 
-### 5.2.1.语法说明
+#### 5.2.1.语法说明
 
 查询的DSL语句如下：
 
@@ -1414,7 +1413,7 @@ GET /hotel/_doc/{id}
 
 不过查询的目的是得到结果，解析为HotelDoc，因此难点是结果的解析。完整代码如下：
 
-![image-20210720230811674](Elasticsearch/image-20210720230811674.png)
+![image-20210720230811674](./Elasticsearch/image-20210720230811674.png)
 
 可以看到，结果是一个JSON，其中文档放在一个`_source`属性中，因此解析就是拿到`_source`，反序列化为Java对象即可。
 
@@ -1428,7 +1427,7 @@ GET /hotel/_doc/{id}
 
 
 
-### 5.2.2.完整代码
+#### 5.2.2.完整代码
 
 在hotel-demo的HotelDocumentTest测试类中，编写单元测试：
 
@@ -1451,7 +1450,7 @@ void testGetDocumentById() throws IOException {
 
 
 
-## 5.3.删除文档
+### 5.3.删除文档
 
 删除的DSL为是这样的：
 
@@ -1481,9 +1480,9 @@ void testDeleteDocument() throws IOException {
 
 
 
-## 5.4.修改文档
+### 5.4.修改文档
 
-### 5.4.1.语法说明
+#### 5.4.1.语法说明
 
 修改我们讲过两种方式：
 
@@ -1501,7 +1500,7 @@ void testDeleteDocument() throws IOException {
 
 代码示例如图：
 
-![image-20210720231040875](Elasticsearch/image-20210720231040875.png)
+![image-20210720231040875](./Elasticsearch/image-20210720231040875.png)
 
 与之前类似，也是三步走：
 
@@ -1513,7 +1512,7 @@ void testDeleteDocument() throws IOException {
 
 
 
-### 5.4.2.完整代码
+#### 5.4.2.完整代码
 
 在hotel-demo的HotelDocumentTest测试类中，编写单元测试：
 
@@ -1536,7 +1535,7 @@ void testUpdateDocument() throws IOException {
 
 
 
-## 5.5.批量导入文档
+### 5.5.批量导入文档
 
 案例需求：利用BulkRequest批量将数据库数据导入到索引库中。
 
@@ -1550,13 +1549,13 @@ void testUpdateDocument() throws IOException {
 
 
 
-### 5.5.1.语法说明
+#### 5.5.1.语法说明
 
 批量处理BulkRequest，其本质就是将多个普通的CRUD请求组合在一起发送。
 
 其中提供了一个add方法，用来添加其他请求：
 
-![image-20210720232105943](Elasticsearch/image-20210720232105943.png)
+![image-20210720232105943](./Elasticsearch/image-20210720232105943.png)
 
 可以看到，能添加的请求包括：
 
@@ -1566,7 +1565,7 @@ void testUpdateDocument() throws IOException {
 
 因此Bulk中添加了多个IndexRequest，就是批量新增功能了。示例：
 
-![image-20210720232431383](Elasticsearch/image-20210720232431383.png)
+![image-20210720232431383](./Elasticsearch/image-20210720232431383.png)
 
 
 
@@ -1580,7 +1579,7 @@ void testUpdateDocument() throws IOException {
 
 我们在导入酒店数据时，将上述代码改造成for循环处理即可。
 
-### 5.5.2.完整代码
+#### 5.5.2.完整代码
 
 在hotel-demo的HotelDocumentTest测试类中，编写单元测试：
 
@@ -1610,7 +1609,7 @@ http://192.168.153.128:5601/app/dev_tools#/console中GET /hotel/_search可查看
 
 
 
-## 5.6.小结
+### 5.6.小结
 
 文档操作的基本步骤：
 
@@ -1620,7 +1619,7 @@ http://192.168.153.128:5601/app/dev_tools#/console中GET /hotel/_search可查看
 - 发送请求。调用RestHighLevelClient#.xxx()方法，xxx是index、get、update、delete、bulk
 - 解析结果（Get时需要）
 
-# 分布式搜索引擎02
+## 分布式搜索引擎02
 
 在昨天的学习中，我们已经导入了大量数据到elasticsearch中，实现了elasticsearch的数据存储功能。但elasticsearch最擅长的还是搜索和数据分析。
 
@@ -1628,13 +1627,13 @@ http://192.168.153.128:5601/app/dev_tools#/console中GET /hotel/_search可查看
 
 
 
-# 1.DSL查询文档
+## 1.DSL查询文档
 
 elasticsearch的查询依然是基于JSON风格的DSL来实现的。
 
-## 1.1.DSL查询分类
+### 1.1.DSL查询分类
 
-Elasticsearch提供了基于JSON的DSL（[Domain Specific Language](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html)）来定义查询。常见的查询类型包括：
+Elasticsearch提供了基于JSON的DSL（[Domain Specific Language](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/query-dsl.html)）来定义查询。常见的查询类型包括：
 
 - **查询所有**：查询出所有数据，一般测试用。例如：match_all
 
@@ -1687,11 +1686,11 @@ GET /indexName/_search
 
 ![image-20210904173404121](分布式搜索引擎01/image-20210904173404121.png)
 
-## 1.2.全文检索查询
+### 1.2.全文检索查询
 
 
 
-### 1.2.1.使用场景
+#### 1.2.1.使用场景
 
 全文检索查询的基本流程如下：
 
@@ -1714,7 +1713,7 @@ GET /indexName/_search
 
 
 
-### 1.2.2.基本语法
+#### 1.2.2.基本语法
 
 常见的全文检索查询包括：
 
@@ -1750,12 +1749,12 @@ GET /indexName/_search
 
 
 
-### 1.2.3.示例
+#### 1.2.3.示例
 
 match查询示例：
 
 ```sh
-# match查询
+## match查询
 GET /hotel/_search
 {
   "query": {
@@ -1775,7 +1774,7 @@ GET /hotel/_search
 multi_match查询示例：
 
 ```sh
-# mutil_match查询
+## mutil_match查询
 GET /hotel/_search
 {
   "query": {
@@ -1801,7 +1800,7 @@ GET /hotel/_search
 
 
 
-### 1.2.4.总结
+#### 1.2.4.总结
 
 match和multi_match的区别是什么？
 
@@ -1810,7 +1809,7 @@ match和multi_match的区别是什么？
 
 
 
-## 1.3.精准查询
+### 1.3.精准查询
 
 精确查询一般是查找keyword、数值、日期、boolean等类型字段。所以**不会**对搜索条件分词。常见的有：
 
@@ -1819,7 +1818,7 @@ match和multi_match的区别是什么？
 
 
 
-### 1.3.1.term查询
+#### 1.3.1.term查询
 
 因为精确查询的字段搜是不分词的字段，因此查询的条件也必须是**不分词**的词条。查询时，用户输入的内容跟自动值完全匹配时才认为符合条件。如果用户输入的内容过多，反而搜索不到数据。
 
@@ -1848,7 +1847,7 @@ GET /indexName/_search
 当我搜索的是精确词条时，能正确查询出结果：
 
 ```sh
-# term查询
+## term查询
 GET /hotel/_search
 {
   "query": {
@@ -1873,7 +1872,7 @@ GET /hotel/_search
 
 
 
-### 1.3.2.range查询
+#### 1.3.2.range查询
 
 范围查询，一般应用在对数值类型做范围过滤的时候。比如做价格范围过滤。
 
@@ -1901,7 +1900,7 @@ GET /indexName/_search
 示例：
 
 ```sh
-# range查询
+## range查询
 GET /hotel/_search
 {
   "query": {
@@ -1923,7 +1922,7 @@ GET /hotel/_search
 
 
 
-### 1.3.3.总结
+#### 1.3.3.总结
 
 精确查询常见的有哪些？
 
@@ -1932,9 +1931,9 @@ GET /hotel/_search
 
 
 
-## 1.4.地理坐标查询
+### 1.4.地理坐标查询
 
-所谓的地理坐标查询，其实就是根据经纬度查询，官方文档：https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html
+所谓的地理坐标查询，其实就是根据经纬度查询，官方文档：https://www.elastic.co/guide/en/./Elasticsearch/reference/current/geo-queries.html
 
 常见的使用场景包括：
 
@@ -1954,7 +1953,7 @@ GET /hotel/_search
 
 
 
-### 1.4.1.矩形范围查询
+#### 1.4.1.矩形范围查询
 
 矩形范围查询，也就是geo_bounding_box查询，查询坐标落在某个矩形范围的所有文档：
 
@@ -1989,7 +1988,7 @@ GET /indexName/_search
 
 用的少
 
-### 1.4.2.附近查询
+#### 1.4.2.附近查询
 
 附近查询，也叫做距离查询（geo_distance）：查询到指定中心点小于某个距离值的所有文档。
 
@@ -2021,7 +2020,7 @@ GET /indexName/_search
 我们先搜索陆家嘴附近15km的酒店：
 
 ```sh
-# distance查询
+## distance查询
 GET /hotel/_search
 {
   "query": {
@@ -2047,7 +2046,7 @@ GET /hotel/_search
 
 
 
-## 1.5.复合查询
+### 1.5.复合查询
 
 复合（compound）查询：复合查询可以将其它简单查询组合起来，实现更复杂的搜索逻辑。常见的有两种：
 
@@ -2056,7 +2055,7 @@ GET /hotel/_search
 
 
 
-### 1.5.1.相关性算分
+#### 1.5.1.相关性算分
 
 当我们利用match查询时，文档结果会根据与搜索词条的关联度打分（_score），返回结果时按照分值降序排列。
 
@@ -2114,7 +2113,7 @@ TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越�
 
 
 
-### 1.5.2.算分函数查询
+#### 1.5.2.算分函数查询
 
 根据相关度打分是比较合理的需求，但**合理的不一定是产品经理需要**的。
 
@@ -2128,7 +2127,7 @@ TF-IDF算法有一各缺陷，就是词条频率越高，文档得分也会越�
 
 
 
-#### 1）语法说明
+##### 1）语法说明
 
 ![image-20210721191544750](分布式搜索引擎01/image-20210721191544750.png)
 
@@ -2167,7 +2166,7 @@ function score的运行流程如下：
 
 
 
-#### 2）示例
+##### 2）示例
 
 需求：给“如家”这个品牌的酒店排名靠前一些
 
@@ -2228,7 +2227,7 @@ GET /hotel/_search
 添加了算分函数后，如家得分就提升了：
 
 ```sh
-# function_score查询
+## function_score查询
 GET /hotel/_search
 {
   "query": {
@@ -2260,7 +2259,7 @@ GET /hotel/_search
 
 
 
-#### 3）小结
+##### 3）小结
 
 function score query定义的三要素是什么？
 
@@ -2270,7 +2269,7 @@ function score query定义的三要素是什么？
 
 
 
-### 1.5.3.布尔查询
+#### 1.5.3.布尔查询
 
 布尔查询是一个或多个查询子句的组合，每一个子句就是一个**子查询**。子查询的组合方式有：
 
@@ -2296,7 +2295,7 @@ function score query定义的三要素是什么？
 
 
 
-#### 1）语法示例：
+##### 1）语法示例：
 
 ```json
 GET /hotel/_search
@@ -2323,7 +2322,7 @@ GET /hotel/_search
 
 
 
-#### 2）示例
+##### 2）示例
 
 需求：搜索名字包含“如家”，价格不高于400，在坐标31.21,121.5周围10km范围内的酒店。
 
@@ -2378,7 +2377,7 @@ GET /hotel/_search
 
 
 
-#### 3）小结
+##### 3）小结
 
 bool查询有几种逻辑关系？
 
@@ -2389,15 +2388,15 @@ bool查询有几种逻辑关系？
 
 
 
-# 2.搜索结果处理
+## 2.搜索结果处理
 
 搜索的结果可以按照用户指定的方式去处理或展示。
 
-## 2.1.排序
+### 2.1.排序
 
-elasticsearch默认是根据相关度算分（_score）来排序，但是也支持自定义方式对搜索[结果排序](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html)。可以排序字段类型有：keyword类型、数值类型、地理坐标类型、日期类型等。
+elasticsearch默认是根据相关度算分（_score）来排序，但是也支持自定义方式对搜索[结果排序](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/sort-search-results.html)。可以排序字段类型有：keyword类型、数值类型、地理坐标类型、日期类型等。
 
-### 2.1.1.普通字段排序
+#### 2.1.1.普通字段排序
 
 keyword、数值、日期类型排序的语法基本一致。
 
@@ -2426,7 +2425,7 @@ GET /indexName/_search
 需求描述：酒店数据按照用户评价（score)降序排序，评价相同的按照价格(price)升序排序
 
 ```sh
-# sort排序
+## sort排序
 GET /hotel/_search
 {
   "query": {
@@ -2444,7 +2443,7 @@ GET /hotel/_search
 
 
 
-### 2.1.2.地理坐标排序
+#### 2.1.2.地理坐标排序
 
 地理坐标排序略有不同。
 
@@ -2483,7 +2482,7 @@ GET /indexName/_search
 提示：获取你的位置的经纬度的方式：https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat/
 
 ```sh
-# 找到121,31周围的酒店，距离升序排序
+## 找到121,31周围的酒店，距离升序排序
 GET /hotel/_search
 {
   "query": {"match_all": {}},
@@ -2512,7 +2511,7 @@ GET /hotel/_search
 
 
 
-## 2.2.分页
+### 2.2.分页
 
 elasticsearch 默认情况下只**返回top10的数据**。而如果要查询更多数据就需要修改分页参数了。elasticsearch中通过修改from、size参数来控制要返回的分页结果：
 
@@ -2521,12 +2520,12 @@ elasticsearch 默认情况下只**返回top10的数据**。而如果要查询更
 
 类似于mysql中的`limit ?, ?`
 
-### 2.2.1.基本的分页
+#### 2.2.1.基本的分页
 
 分页的基本语法如下：
 
 ```json
-# 分页查询
+## 分页查询
 GET /hotel/_search
 {
   "query": {
@@ -2544,7 +2543,7 @@ GET /hotel/_search
 
 
 
-### 2.2.2.深度分页问题
+#### 2.2.2.深度分页问题
 
 现在，我要查询990~1000的数据，查询逻辑要这么写：
 
@@ -2590,14 +2589,14 @@ GET /hotel/_search
 
 
 
-针对深度分页，ES提供了两种解决方案，[官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html)：
+针对深度分页，ES提供了两种解决方案，[官方文档](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/paginate-search-results.html)：
 
 - search after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。官方推荐使用的方式。
 - scroll：原理将排序后的文档id形成快照，保存在内存。官方已经不推荐使用。
 
 
 
-### 2.2.3.小结
+#### 2.2.3.小结
 
 分页查询的常见实现方案以及优缺点：
 
@@ -2619,9 +2618,9 @@ GET /hotel/_search
 
 
 
-## 2.3.高亮
+### 2.3.高亮
 
-### 2.3.1.高亮原理
+#### 2.3.1.高亮原理
 
 什么是高亮显示呢？
 
@@ -2636,7 +2635,7 @@ GET /hotel/_search
 
 
 
-### 2.3.2.实现高亮
+#### 2.3.2.实现高亮
 
 **高亮的语法**：
 
@@ -2691,7 +2690,7 @@ GET /hotel/_search
 **示例**：
 
 ```sh
-# 高亮查询，默认情况下，ES搜索字段必须与高亮字段一致
+## 高亮查询，默认情况下，ES搜索字段必须与高亮字段一致
 GET /hotel/_search
 {
  "query": {
@@ -2719,7 +2718,7 @@ GET /hotel/_search
 
 
 
-## 2.4.总结
+### 2.4.总结
 
 查询的DSL是一个大的JSON对象，包含下列属性：
 
@@ -2740,7 +2739,7 @@ GET /hotel/_search
 
 
 
-# 3.RestClient查询文档
+## 3.RestClient查询文档
 
 文档的查询同样适用昨天学习的 RestHighLevelClient对象，基本步骤包括：
 
@@ -2751,11 +2750,11 @@ GET /hotel/_search
 
 
 
-## 3.1.快速入门
+### 3.1.快速入门
 
 我们以match_all查询为例
 
-### 3.1.1.发起查询请求
+#### 3.1.1.发起查询请求
 
 ![image-20210721203950559](分布式搜索引擎01/image-20210721203950559.png)
 
@@ -2779,7 +2778,7 @@ GET /hotel/_search
 
 
 
-### 3.1.2.解析响应
+#### 3.1.2.解析响应
 
 响应结果的解析：
 
@@ -2804,7 +2803,7 @@ elasticsearch返回的结果是一个JSON字符串，结构包含：
 
 
 
-### 3.1.3.完整代码
+#### 3.1.3.完整代码
 
 完整代码如下：
 
@@ -2844,7 +2843,7 @@ private void handleResponse(SearchResponse response) {
 
 
 
-### 3.1.4.小结
+#### 3.1.4.小结
 
 查询的基本步骤是：
 
@@ -2864,7 +2863,7 @@ private void handleResponse(SearchResponse response) {
 
 
 
-## 3.2.match查询
+### 3.2.match查询
 
 全文检索的match和multi_match查询与match_all的API基本一致。差别是查询条件，也就是query的部分。
 
@@ -2902,7 +2901,7 @@ void testMatch() throws IOException {
 
 
 
-## 3.3.精确查询
+### 3.3.精确查询
 
 精确查询主要是两者：
 
@@ -2919,7 +2918,7 @@ void testMatch() throws IOException {
 
 
 
-## 3.4.布尔查询
+### 3.4.布尔查询
 
 布尔查询是用must、must_not、filter等方式组合其它查询，代码示例如下：
 
@@ -2957,7 +2956,7 @@ void testBool() throws IOException {
 
 
 
-## 3.5.排序、分页
+### 3.5.排序、分页
 
 搜索结果的排序和分页是与query同级的参数，因此同样是使用request.source()来设置。
 
@@ -2994,14 +2993,14 @@ void testPageAndSort() throws IOException {
 
 
 
-## 3.6.高亮
+### 3.6.高亮
 
 高亮的代码与之前代码差异较大，有两点：
 
 - 查询的DSL：其中除了查询条件，还需要添加高亮条件，同样是与query同级。
 - 结果解析：结果除了要解析_source文档数据，还要解析高亮结果
 
-### 3.6.1.高亮请求构建
+#### 3.6.1.高亮请求构建
 
 高亮请求的构建API如下：
 
@@ -3031,7 +3030,7 @@ void testHighlight() throws IOException {
 
 
 
-### 3.6.2.高亮结果解析
+#### 3.6.2.高亮结果解析
 
 高亮的结果与查询的文档结果默认是分离的，并不在一起。
 
@@ -3087,7 +3086,7 @@ private void handleResponse(SearchResponse response) {
 
 
 
-# 4.黑马旅游案例
+## 4.黑马旅游案例
 
 下面，我们通过黑马旅游的案例来实战演练下之前学习的知识。
 
@@ -3108,11 +3107,11 @@ private void handleResponse(SearchResponse response) {
 
 
 
-## 4.1.酒店搜索和分页
+### 4.1.酒店搜索和分页
 
 案例需求：实现黑马旅游的酒店搜索功能，完成关键字搜索和分页
 
-### 4.1.1.需求分析
+#### 4.1.1.需求分析
 
 在项目的首页，有一个大大的搜索框，还有分页按钮：
 
@@ -3151,7 +3150,7 @@ private void handleResponse(SearchResponse response) {
 
 
 
-### 4.1.2.定义实体类
+#### 4.1.2.定义实体类
 
 实体类有两个，一个是前端的请求参数实体，一个是服务端应该返回的响应结果实体。
 
@@ -3219,7 +3218,7 @@ public class PageResult {
 
 
 
-### 4.1.3.定义controller
+#### 4.1.3.定义controller
 
 定义一个HotelController，声明查询接口，满足下列要求：
 
@@ -3251,7 +3250,7 @@ public class HotelController {
 
 
 
-### 4.1.4.实现搜索业务
+#### 4.1.4.实现搜索业务
 
 我们在controller调用了IHotelService，并没有实现该方法，因此下面我们就在IHotelService中定义方法，并且去实现业务逻辑。
 
@@ -3348,11 +3347,11 @@ public class HotelService extends ServiceImpl<HotelMapper, Hotel> implements IHo
 
 
 
-## 4.2.酒店结果过滤
+### 4.2.酒店结果过滤
 
 需求：添加品牌、城市、星级、价格等过滤功能
 
-### 4.2.1.需求分析
+#### 4.2.1.需求分析
 
 在页面搜索框下面，会有一些过滤项：
 
@@ -3376,7 +3375,7 @@ public class HotelService extends ServiceImpl<HotelMapper, Hotel> implements IHo
 
 
 
-### 4.2.2.修改实体类
+#### 4.2.2.修改实体类
 
 修改在`cn.itcast.hotel.pojo`包下的实体类RequestParams：
 
@@ -3398,7 +3397,7 @@ public class RequestParams {
 
 
 
-### 4.2.3.修改搜索业务
+#### 4.2.3.修改搜索业务
 
 在HotelService的search方法中，只有一个地方需要修改：requet.source().query( ... )其中的查询条件。
 
@@ -3464,11 +3463,11 @@ private void buildBasicQuery(RequestParams params, SearchRequest request) {
 
 
 
-## 4.3.我周边的酒店
+### 4.3.我周边的酒店
 
 需求：我附近的酒店
 
-### 4.3.1.需求分析
+#### 4.3.1.需求分析
 
 在酒店列表页的右侧，有一个小地图，点击地图的定位按钮，地图会找到你所在的位置：
 
@@ -3487,7 +3486,7 @@ private void buildBasicQuery(RequestParams params, SearchRequest request) {
 
 
 
-### 4.3.2.修改实体类
+#### 4.3.2.修改实体类
 
 修改在`cn.itcast.hotel.pojo`包下的实体类RequestParams：
 
@@ -3515,7 +3514,7 @@ public class RequestParams {
 
 
 
-### 4.3.3.距离排序API
+#### 4.3.3.距离排序API
 
 我们以前学习过排序功能，包括两种：
 
@@ -3553,7 +3552,7 @@ GET /indexName/_search
 
 
 
-### 4.3.4.添加距离排序
+#### 4.3.4.添加距离排序
 
 在`cn.itcast.hotel.service.impl`的`HotelService`的`search`方法中，添加一个排序功能：
 
@@ -3600,7 +3599,7 @@ public PageResult search(RequestParams params) {
 
 
 
-### 4.3.5.排序距离显示
+#### 4.3.5.排序距离显示
 
 重启服务后，测试我的酒店功能：
 
@@ -3715,11 +3714,11 @@ public class HotelDoc {
 
 
 
-## 4.4.酒店竞价排名
+### 4.4.酒店竞价排名
 
 需求：让指定的酒店在搜索结果中排名置顶
 
-### 4.4.1.需求分析
+#### 4.4.1.需求分析
 
 要让指定酒店在搜索结果中排名置顶，效果如图：
 
@@ -3766,7 +3765,7 @@ public class HotelDoc {
 
 
 
-### 4.4.2.修改HotelDoc实体
+#### 4.4.2.修改HotelDoc实体
 
 给`cn.itcast.hotel.pojo`包下的HotelDoc类添加isAD字段：
 
@@ -3793,7 +3792,7 @@ public class HotelDoc {
 
 
 
-### 4.4.3.添加广告标记
+#### 4.4.3.添加广告标记
 
 接下来，我们挑几个酒店，添加isAD字段，设置为true：
 
@@ -3826,7 +3825,7 @@ POST /hotel/_update/2056105938
 
 
 
-### 4.4.4.添加算分函数查询
+#### 4.4.4.添加算分函数查询
 
 接下来我们就要修改查询条件了。之前是用的boolean 查询，现在要改成function_socre查询。
 
@@ -3901,17 +3900,17 @@ private void buildBasicQuery(RequestParams params, SearchRequest request) {
 }
 ```
 
-# 分布式搜索引擎03
+## 分布式搜索引擎03
 
 
 
-# 0.学习目标
+## 0.学习目标
 
 
 
-# 1.数据聚合
+## 1.数据聚合
 
-**[聚合（](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)[aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)[）](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)**可以让我们极其方便的实现对数据的统计、分析、运算。例如：
+**[聚合（](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/search-aggregations.html)[aggregations](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/search-aggregations.html)[）](https://www.elastic.co/guide/en/./Elasticsearch/reference/current/search-aggregations.html)**可以让我们极其方便的实现对数据的统计、分析、运算。例如：
 
 - 什么品牌的手机最受欢迎？
 - 这些手机的平均价格、最高价格、最低价格？
@@ -3919,7 +3918,7 @@ private void buildBasicQuery(RequestParams params, SearchRequest request) {
 
 实现这些统计功能的比数据库的sql要方便的多，而且查询速度非常快，可以实现近实时搜索效果。
 
-## 1.1.聚合的种类
+### 1.1.聚合的种类
 
 聚合常见的有三类：
 
@@ -3942,11 +3941,11 @@ private void buildBasicQuery(RequestParams params, SearchRequest request) {
 
 
 
-## 1.2.DSL实现聚合
+### 1.2.DSL实现聚合
 
 现在，我们要统计所有数据中的酒店品牌有几种，其实就是按照品牌对数据分组。此时可以根据酒店品牌的名称做聚合，也就是Bucket聚合。
 
-### 1.2.1.Bucket聚合语法
+#### 1.2.1.Bucket聚合语法
 
 语法如下：
 
@@ -3968,7 +3967,7 @@ GET /hotel/_search
 结果如图：
 
 ```json
-# 聚合功能
+## 聚合功能
 GET /hotel/_search
 {
   "size": 0, 
@@ -3985,18 +3984,18 @@ GET /hotel/_search
 
 
 
-![image-20210723171948228](分布式搜索引擎/image-20210723171948228.png)
+![image-20210723171948228](././Elasticsearch/image-20210723171948228.png)
 
 
 
-### 1.2.2.聚合结果排序
+#### 1.2.2.聚合结果排序
 
 默认情况下，Bucket聚合会统计Bucket内的文档数量，记为_count，**并且按照_count降序排序。**
 
 我们可以指定order属性，自定义聚合的排序方式：
 
 ```json
-# 聚合功能,自定义排序规则
+## 聚合功能,自定义排序规则
 GET /hotel/_search
 {
   "size": 0, 
@@ -4016,14 +4015,14 @@ GET /hotel/_search
 
 
 
-### 1.2.3.限定聚合范围
+#### 1.2.3.限定聚合范围
 
 默认情况下，Bucket聚合是对索引库的所有文档做聚合，但真实场景下，用户会输入搜索条件，因此聚合必须是对搜索结果聚合。那么聚合必须添加限定条件。
 
 我们可以限定要聚合的文档范围，只要添加query条件即可：
 
 ```json
-# 聚合功能,限定聚合范围
+## 聚合功能,限定聚合范围
 GET /hotel/_search
 {
   "query": {
@@ -4049,11 +4048,11 @@ GET /hotel/_search
 
 这次，聚合得到的品牌明显变少了：
 
-![image-20210723172404836](分布式搜索引擎/image-20210723172404836.png)
+![image-20210723172404836](././Elasticsearch/image-20210723172404836.png)
 
 
 
-### 1.2.4.Metric聚合语法
+#### 1.2.4.Metric聚合语法
 
 上节课，我们对酒店按照品牌分组，形成了一个个桶。现在我们需要对桶内的酒店做运算，获取每个品牌的用户评分的min、max、avg等值。
 
@@ -4092,7 +4091,7 @@ GET /hotel/_search
 另外，我们还可以给聚合结果做个排序，例如按照每个桶的酒店平均分做排序：
 
 ```json
-# 嵌套聚合metric
+## 嵌套聚合metric
 GET /hotel/_search
 {
   "size": 0, 
@@ -4119,13 +4118,13 @@ GET /hotel/_search
 
 
 
-![image-20210723172917636](分布式搜索引擎/image-20210723172917636.png)
+![image-20210723172917636](././Elasticsearch/image-20210723172917636.png)
 
 
 
 
 
-### 1.2.5.小结
+#### 1.2.5.小结
 
 aggs代表聚合，与query同级，此时query的作用是？
 
@@ -4145,21 +4144,21 @@ aggs代表聚合，与query同级，此时query的作用是？
 
 
 
-## 1.3.RestAPI实现聚合
+### 1.3.RestAPI实现聚合
 
-### 1.3.1.API语法
+#### 1.3.1.API语法
 
 聚合条件与query条件同级别，因此需要使用request.source()来指定聚合条件。
 
 聚合条件的语法：
 
-![image-20210723173057733](分布式搜索引擎/image-20210723173057733.png)
+![image-20210723173057733](././Elasticsearch/image-20210723173057733.png)
 
 
 
 聚合的结果也与查询结果不同，API也比较特殊。不过同样是JSON逐层解析：
 
-![image-20210723173215728](分布式搜索引擎/image-20210723173215728.png)
+![image-20210723173215728](././Elasticsearch/image-20210723173215728.png)
 
 ```java
 @Test
@@ -4192,11 +4191,11 @@ aggs代表聚合，与query同级，此时query的作用是？
 
 
 
-### 1.3.2.业务需求
+#### 1.3.2.业务需求
 
 需求：搜索页面的品牌、城市等信息不应该是在页面写死，而是通过聚合索引库中的酒店数据得来的：
 
-![image-20210723192605566](分布式搜索引擎/image-20210723192605566.png)
+![image-20210723192605566](././Elasticsearch/image-20210723192605566.png)
 
 
 
@@ -4222,7 +4221,7 @@ aggs代表聚合，与query同级，此时query的作用是？
 
 查看浏览器可以发现，前端其实已经发出了这样的一个请求：
 
-![image-20210723193730799](分布式搜索引擎/image-20210723193730799.png)
+![image-20210723193730799](././Elasticsearch/image-20210723193730799.png)
 
 请求**参数与搜索文档的参数完全一致**。
 
@@ -4230,7 +4229,7 @@ aggs代表聚合，与query同级，此时query的作用是？
 
 返回值类型就是页面要展示的最终结果：
 
-![image-20210723203915982](分布式搜索引擎/image-20210723203915982.png)
+![image-20210723203915982](././Elasticsearch/image-20210723203915982.png)
 
 结果是一个Map结构：
 
@@ -4239,7 +4238,7 @@ aggs代表聚合，与query同级，此时query的作用是？
 
 
 
-### 1.3.3.业务实现
+#### 1.3.3.业务实现
 
 在`cn.itcast.hotel.web`包的`HotelController`中添加一个方法，遵循下面的要求：
 
@@ -4345,11 +4344,11 @@ private List<String> getAggByName(Aggregations aggregations, String aggName) {
 
 
 
-# 2.自动补全
+## 2.自动补全
 
 当用户在搜索框输入字符时，我们应该提示出与该字符有关的搜索项，如图：
 
-![image-20210723204936367](分布式搜索引擎/image-20210723204936367.png)
+![image-20210723204936367](././Elasticsearch/image-20210723204936367.png)
 
 这种根据用户输入的字母，提示完整词条的功能，就是自动补全了。
 
@@ -4359,13 +4358,13 @@ private List<String> getAggByName(Aggregations aggregations, String aggName) {
 
 
 
-## 2.1.拼音分词器
+### 2.1.拼音分词器
 
 
 
 要实现根据字母做补全，就必须对文档按照拼音分词。在GitHub上恰好有elasticsearch的拼音分词插件。地址：https://github.com/medcl/elasticsearch-analysis-pinyin
 
-![image-20210723205932746](分布式搜索引擎/image-20210723205932746.png)
+![image-20210723205932746](././Elasticsearch/image-20210723205932746.png)
 
 
 
@@ -4373,7 +4372,7 @@ private List<String> getAggByName(Aggregations aggregations, String aggName) {
 
 课前资料中也提供了拼音分词器的安装包：
 
-![image-20210723205722303](分布式搜索引擎/image-20210723205722303.png) 
+![image-20210723205722303](././Elasticsearch/image-20210723205722303.png) 
 
 
 
@@ -4409,13 +4408,13 @@ POST /_analyze
 
 结果：
 
-![image-20210723210126506](分布式搜索引擎/image-20210723210126506.png) 
+![image-20210723210126506](././Elasticsearch/image-20210723210126506.png) 
 
 
 
 
 
-## 2.2.自定义分词器
+### 2.2.自定义分词器
 
 默认的拼音分词器会将每个汉字单独分为拼音，而我们希望的是**每个词条形成一组拼音**，需要对拼音分词器做个性化定制，形成自定义分词器。
 
@@ -4431,7 +4430,7 @@ elasticsearch中分词器（analyzer）的组成包含三部分：
 
 文档分词时会依次由这三部分来处理文档：
 
-   ![image-20210723210427878](分布式搜索引擎/image-20210723210427878.png)
+   ![image-20210723210427878](././Elasticsearch/image-20210723210427878.png)
 
 声明自定义分词器的语法如下：
 
@@ -4509,7 +4508,7 @@ PUT /test
 
 测试：
 
-![image-20210723211829150](分布式搜索引擎/image-20210723211829150.png)
+![image-20210723211829150](././Elasticsearch/image-20210723211829150.png)
 
 
 
@@ -4543,9 +4542,9 @@ PUT /test
 
 
 
-## 2.3.自动补全查询
+### 2.3.自动补全查询
 
-elasticsearch提供了[Completion Suggester](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/search-suggesters.html)查询来实现自动补全功能。这个查询会匹配以用户输入内容开头的词条并返回。为了提高补全查询的效率，对于文档中字段的类型有一些约束：
+elasticsearch提供了[Completion Suggester](https://www.elastic.co/guide/en/./Elasticsearch/reference/7.6/search-suggesters.html)查询来实现自动补全功能。这个查询会匹配以用户输入内容开头的词条并返回。为了提高补全查询的效率，对于文档中字段的类型有一些约束：
 
 - 参与补全查询的字段必须是completion类型。
 
@@ -4554,7 +4553,7 @@ elasticsearch提供了[Completion Suggester](https://www.elastic.co/guide/en/ela
 比如，一个这样的索引库：
 
 ```json
-# 创建索引库
+## 创建索引库
 PUT test2
 {
   "mappings": {
@@ -4570,7 +4569,7 @@ PUT test2
 然后插入下面的数据：
 
 ```json
-# 示例数据
+## 示例数据
 POST test2/_doc
 {
   "title": ["Sony", "WH-1000XM3"]
@@ -4606,7 +4605,7 @@ GET /test/_search
 }
 
 
-# 自动补全查询
+## 自动补全查询
 GET /test2/_search
 {
   "suggest": {
@@ -4624,7 +4623,7 @@ GET /test2/_search
 
 
 
-## 2.4.实现酒店搜索框自动补全
+### 2.4.实现酒店搜索框自动补全
 
 现在，我们的hotel索引库还没有设置拼音分词器，需要修改索引库中的配置。但是我们知道索引库是无法修改的，只能删除然后重新创建。
 
@@ -4646,10 +4645,10 @@ GET /test2/_search
 
 
 
-### 2.4.1.修改酒店映射结构
+#### 2.4.1.修改酒店映射结构
 
 ```sh
-# 查看酒店数据结构
+## 查看酒店数据结构
 GET /hotel/_mapping
 ```
 
@@ -4658,7 +4657,7 @@ GET /hotel/_mapping
 代码如下：
 
 ```json
-# 酒店数据索引库
+## 酒店数据索引库
 PUT /hotel
 {
   "settings": {
@@ -4744,7 +4743,7 @@ PUT /hotel
 
 
 
-### 2.4.2.修改HotelDoc实体
+#### 2.4.2.修改HotelDoc实体
 
 HotelDoc中要添加一个字段，用来做自动补全，内容可以是酒店品牌、城市、商圈等信息。按照自动补全字段的要求，最好是这些字段的数组。
 
@@ -4810,7 +4809,7 @@ public class HotelDoc {
 
 
 
-### 2.4.3.重新导入
+#### 2.4.3.重新导入
 
 cn.itcast.hotel.HotelDocumentTest#testBulkRequest方法
 
@@ -4827,7 +4826,7 @@ GET /hotel/_search
 
 
 
-![image-20210723213546183](分布式搜索引擎/image-20210723213546183.png)
+![image-20210723213546183](././Elasticsearch/image-20210723213546183.png)
 
 测试自动补全
 
@@ -4851,11 +4850,11 @@ GET /hotel/_search
 
 
 
-### 2.4.4.自动补全查询的JavaAPI
+#### 2.4.4.自动补全查询的JavaAPI
 
 之前我们学习了自动补全查询的DSL，而没有学习对应的JavaAPI，这里给出一个示例：
 
-![image-20210723213759922](分布式搜索引擎/image-20210723213759922.png)
+![image-20210723213759922](././Elasticsearch/image-20210723213759922.png)
 
 
 
@@ -4863,7 +4862,7 @@ GET /hotel/_search
 
 而自动补全的结果也比较特殊，解析的代码如下：
 
-![image-20210723213917524](分布式搜索引擎/image-20210723213917524.png)
+![image-20210723213917524](././Elasticsearch/image-20210723213917524.png)
 
 ```java
 @Test
@@ -4899,11 +4898,11 @@ void testSuggest() throws IOException {
 
 
 
-### 2.4.5.实现搜索框自动补全
+#### 2.4.5.实现搜索框自动补全
 
 查看前端页面，可以发现当我们在输入框键入时，前端会发起ajax请求：
 
-![image-20210723214021062](分布式搜索引擎/image-20210723214021062.png)
+![image-20210723214021062](././Elasticsearch/image-20210723214021062.png)
 
 返回值是补全词条的集合，类型为`List<String>`
 
@@ -4969,19 +4968,19 @@ public List<String> getSuggestions(String prefix) {
 
 
 
-# 3.数据同步
+## 3.数据同步
 
 elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生改变时，elasticsearch也必须跟着改变，这个就是elasticsearch与mysql之间的**数据同步**。
 
 
 
-![image-20210723214758392](分布式搜索引擎/image-20210723214758392.png)
+![image-20210723214758392](././Elasticsearch/image-20210723214758392.png)
 
 
 
 
 
-## 3.1.思路分析
+### 3.1.思路分析
 
 常见的数据同步方案有三种：
 
@@ -4991,11 +4990,11 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-### 3.1.1.同步调用
+#### 3.1.1.同步调用
 
 方案一：同步调用
 
-![image-20210723214931869](分布式搜索引擎/image-20210723214931869.png)
+![image-20210723214931869](././Elasticsearch/image-20210723214931869.png)
 
 基本步骤如下：
 
@@ -5004,11 +5003,11 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-### 3.1.2.异步通知
+#### 3.1.2.异步通知
 
 方案二：异步通知
 
-![image-20210723215140735](分布式搜索引擎/image-20210723215140735.png)
+![image-20210723215140735](././Elasticsearch/image-20210723215140735.png)
 
 
 
@@ -5021,11 +5020,11 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-### 3.1.3.监听binlog
+#### 3.1.3.监听binlog
 
 方案三：监听binlog
 
-![image-20210723215518541](分布式搜索引擎/image-20210723215518541.png)
+![image-20210723215518541](././Elasticsearch/image-20210723215518541.png)
 
 流程如下：
 
@@ -5035,7 +5034,7 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-### 3.1.4.选择
+#### 3.1.4.选择
 
 方式一：同步调用
 
@@ -5054,11 +5053,11 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-## 3.2.基于mq实现数据同步
+### 3.2.基于mq实现数据同步
 
 
 
-### 3.2.1.思路
+#### 3.2.1.思路
 
 利用课前资料提供的hotel-admin项目作为酒店管理的微服务。当酒店数据发生增、删、改时，要求对elasticsearch中数据也要完成相同操作。
 
@@ -5082,33 +5081,33 @@ elasticsearch中的酒店数据来自于mysql数据库，因此mysql数据发生
 
 
 
-### 3.2.2.导入demo
+#### 3.2.2.导入demo
 
 导入课前资料提供的hotel-admin项目：
 
-![image-20210723220237930](分布式搜索引擎/image-20210723220237930.png)
+![image-20210723220237930](././Elasticsearch/image-20210723220237930.png)
 
 运行后，访问 http://localhost:8099
 
-![image-20210723220354464](分布式搜索引擎/image-20210723220354464.png)
+![image-20210723220354464](././Elasticsearch/image-20210723220354464.png)
 
 
 
 其中包含了酒店的CRUD功能：
 
-![image-20210723220511090](分布式搜索引擎/image-20210723220511090.png)
+![image-20210723220511090](././Elasticsearch/image-20210723220511090.png)
 
 
 
-### 3.2.3.声明交换机、队列
+#### 3.2.3.声明交换机、队列
 
 MQ结构如图：
 
-![image-20210723215850307](分布式搜索引擎/image-20210723215850307.png)
+![image-20210723215850307](././Elasticsearch/image-20210723215850307.png)
 
 
 
-#### 1）引入依赖
+##### 1）引入依赖
 
 在hotel-admin、hotel-demo中引入rabbitmq的依赖：
 
@@ -5136,7 +5135,7 @@ mq应用端口是5672
 
 管理页面端口是15672
 
-#### 2）声明队列交换机名称
+##### 2）声明队列交换机名称
 
 在hotel-admin和hotel-demo中的`cn.itcast.hotel.constatnts`包下新建一个类`MqConstants`：
 
@@ -5169,7 +5168,7 @@ package cn.itcast.hotel.constatnts;
 
 
 
-#### 3）声明队列交换机
+##### 3）声明队列交换机
 
 在hotel-demo中，定义配置类，声明队列、交换机：
 
@@ -5215,11 +5214,11 @@ public class MqConfig {
 
 
 
-### 3.2.4.发送MQ消息
+#### 3.2.4.发送MQ消息
 
 在hotel-admin中的增、删、改业务中分别发送MQ消息：
 
-![image-20210723221843816](分布式搜索引擎/image-20210723221843816.png)
+![image-20210723221843816](././Elasticsearch/image-20210723221843816.png)
 
 ```java
 @RestController
@@ -5279,7 +5278,7 @@ public class HotelController {
 
 
 
-### 3.2.5.接收MQ消息
+#### 3.2.5.接收MQ消息
 
 hotel-demo接收到MQ消息要做的事情包括：
 
@@ -5378,7 +5377,7 @@ public class HotelListener {
 
 
 
-# 4.es集群
+## 4.es集群
 
 单机的elasticsearch做数据存储，必然面临两个问题：海量数据存储问题、单点故障问题。
 
@@ -5395,7 +5394,7 @@ public class HotelListener {
 
   解决问题：数据量太大，单点存储量有限的问题。
 
-  ![image-20200104124440086](分布式搜索引擎/image-20200104124440086-5602723.png)
+  ![image-20200104124440086](././Elasticsearch/image-20200104124440086-5602723.png)
 
   > 此处，我们把数据分成3片：shard0、shard1、shard2
 
@@ -5414,7 +5413,7 @@ public class HotelListener {
 
 这样可以大大减少所需要的服务节点数量，如图，我们以3分片，每个分片备份一份为例：
 
-![image-20200104124551912](分布式搜索引擎/image-20200104124551912.png)
+![image-20200104124551912](././Elasticsearch/image-20200104124551912.png)
 
 现在，每个分片都有1个备份，存储在3个节点：
 
@@ -5426,29 +5425,29 @@ public class HotelListener {
 
 
 
-## 4.1.搭建ES集群
+### 4.1.搭建ES集群
 
 参考课前资料的文档：
 
-![image-20210723222732427](分布式搜索引擎/image-20210723222732427.png) 
+![image-20210723222732427](././Elasticsearch/image-20210723222732427.png) 
 
 其中的第四章节：
 
-![image-20210723222812619](分布式搜索引擎/image-20210723222812619.png) 
+![image-20210723222812619](././Elasticsearch/image-20210723222812619.png) 
 
 
 
 
 
-## 4.2.集群脑裂问题
+### 4.2.集群脑裂问题
 
 
 
-### 4.2.1.集群职责划分
+#### 4.2.1.集群职责划分
 
 elasticsearch中集群节点有不同的职责划分：
 
-![image-20210723223008967](分布式搜索引擎/image-20210723223008967.png)
+![image-20210723223008967](././Elasticsearch/image-20210723223008967.png)
 
 
 
@@ -5466,27 +5465,27 @@ elasticsearch中集群节点有不同的职责划分：
 
 一个典型的es集群职责划分如图：
 
-![image-20210723223629142](分布式搜索引擎/image-20210723223629142.png)
+![image-20210723223629142](././Elasticsearch/image-20210723223629142.png)
 
 
 
-### 4.2.2.脑裂问题
+#### 4.2.2.脑裂问题
 
 脑裂是因为集群中的节点失联导致的。
 
 例如一个集群中，主节点与其它节点失联：
 
-![image-20210723223804995](分布式搜索引擎/image-20210723223804995.png)
+![image-20210723223804995](././Elasticsearch/image-20210723223804995.png)
 
 此时，node2和node3认为node1宕机，就会重新选主：
 
-![image-20210723223845754](分布式搜索引擎/image-20210723223845754.png)
+![image-20210723223845754](././Elasticsearch/image-20210723223845754.png)
 
 当node3当选后，集群继续对外提供服务，node2和node3自成集群，node1自成集群，两个集群数据不同步，出现数据差异。
 
 当网络恢复后，因为集群中有两个master节点，集群状态的不一致，出现脑裂的情况：
 
-![image-20210723224000555](分布式搜索引擎/image-20210723224000555.png)
+![image-20210723224000555](././Elasticsearch/image-20210723224000555.png)
 
 
 
@@ -5498,7 +5497,7 @@ elasticsearch中集群节点有不同的职责划分：
 
 
 
-### 4.2.3.小结
+#### 4.2.3.小结
 
 master eligible节点的作用是什么？
 
@@ -5519,27 +5518,27 @@ coordinator节点的作用是什么？
 
 
 
-## 4.3.集群分布式存储
+### 4.3.集群分布式存储
 
 当新增文档时，应该保存到不同分片，保证数据均衡，那么coordinating node如何确定数据该存储到哪个分片呢？
 
 
 
-### 4.3.1.分片存储测试
+#### 4.3.1.分片存储测试
 
 使用insomnia
 
 插入三条数据：
 
-![image-20210723225006058](分布式搜索引擎/image-20210723225006058.png)
+![image-20210723225006058](././Elasticsearch/image-20210723225006058.png)
 
 
 
-![image-20210723225034637](分布式搜索引擎/image-20210723225034637.png)
+![image-20210723225034637](././Elasticsearch/image-20210723225034637.png)
 
 
 
-![image-20210723225112029](分布式搜索引擎/image-20210723225112029.png)
+![image-20210723225112029](././Elasticsearch/image-20210723225112029.png)
 
 
 
@@ -5547,21 +5546,21 @@ coordinator节点的作用是什么？
 
 **加上explain字段**
 
-![image-20210723225227928](分布式搜索引擎/image-20210723225227928.png)
+![image-20210723225227928](././Elasticsearch/image-20210723225227928.png)
 
 结果：
 
-![image-20210723225342120](分布式搜索引擎/image-20210723225342120.png)
+![image-20210723225342120](././Elasticsearch/image-20210723225342120.png)
 
 
 
-### 4.3.2.分片存储原理
+#### 4.3.2.分片存储原理
 
 
 
 elasticsearch会通过**hash算法来计算文档应该存储到哪个分片**：
 
-![image-20210723224354904](分布式搜索引擎/image-20210723224354904.png)
+![image-20210723224354904](././Elasticsearch/image-20210723224354904.png)
 
 
 
@@ -5576,7 +5575,7 @@ elasticsearch会通过**hash算法来计算文档应该存储到哪个分片**�
 
 新增文档的流程如下：
 
-![image-20210723225436084](分布式搜索引擎/image-20210723225436084.png)
+![image-20210723225436084](././Elasticsearch/image-20210723225436084.png)
 
 
 
@@ -5591,7 +5590,7 @@ elasticsearch会通过**hash算法来计算文档应该存储到哪个分片**�
 
 
 
-## 4.4.集群分布式查询
+### 4.4.集群分布式查询
 
 elasticsearch的查询分成两个阶段：
 
@@ -5601,17 +5600,17 @@ elasticsearch的查询分成两个阶段：
 
 
 
-![image-20210723225809848](分布式搜索引擎/image-20210723225809848.png)
+![image-20210723225809848](././Elasticsearch/image-20210723225809848.png)
 
 
 
 
 
-![image-20210913173614093](分布式搜索引擎/image-20210913173614093.png)
+![image-20210913173614093](././Elasticsearch/image-20210913173614093.png)
 
 
 
-## 4.5.集群故障转移
+### 4.5.集群故障转移
 
 集群的master节点会监控集群中的节点状态，如果发现有节点宕机，会立即将宕机节点的分片数据迁移到其它节点，确保数据安全，这个叫做故障转移。
 
@@ -5619,7 +5618,7 @@ elasticsearch的查询分成两个阶段：
 
 1）例如一个集群结构如图：
 
-![image-20210723225945963](分布式搜索引擎/image-20210723225945963.png)
+![image-20210723225945963](././Elasticsearch/image-20210723225945963.png)
 
 现在，node1是主节点，其它两个节点是从节点。
 
@@ -5627,24 +5626,24 @@ elasticsearch的查询分成两个阶段：
 
 2）突然，node1发生了故障：
 
-![image-20210723230020574](分布式搜索引擎/image-20210723230020574.png)
+![image-20210723230020574](././Elasticsearch/image-20210723230020574.png)
 
 
 
 宕机后的第一件事，需要重新选主，例如选中了node2：
 
-![image-20210723230055974](分布式搜索引擎/image-20210723230055974.png)
+![image-20210723230055974](././Elasticsearch/image-20210723230055974.png)
 
 
 
 node2成为主节点后，会检测集群监控状态，发现：shard-1、shard-0没有副本节点。因此需要将node1上的数据迁移到node2、node3：
 
-![image-20210723230216642](分布式搜索引擎/image-20210723230216642.png)
+![image-20210723230216642](././Elasticsearch/image-20210723230216642.png)
 
 模拟故障
 
 ```
-[root@localhost ~]# docker-compose stop es01
+[root@localhost ~]## docker-compose stop es01
 ```
 
 
@@ -5652,10 +5651,10 @@ node2成为主节点后，会检测集群监控状态，发现：shard-1、shard
 重新启动
 
 ```
-[root@localhost ~]# docker-compose restart es01
+[root@localhost ~]## docker-compose restart es01
 ```
 
 会恢复
 
-![image-20210913174330660](分布式搜索引擎/image-20210913174330660.png)
+![image-20210913174330660](././Elasticsearch/image-20210913174330660.png)
 
