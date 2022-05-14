@@ -680,7 +680,7 @@ MySQL安装之后，需要对服务器进行配置。具体的配置步骤如下
 
 ------
 
-#### 3. 1 服务的启动与停止
+#### 1 服务的启动与停止
 
 MySQL安装完毕之后，需要启动服务器进程，不然客户端无法连接数据库。
 
@@ -716,7 +716,7 @@ net　stop　MySQL服务名
 - start和stop后面的服务名应与之前配置时指定的服务名一致。
 - 如果当你输入命令后，提示“拒绝服务”，请以`系统管理员身份`打开命令提示符界面重新尝试。
 
-#### 3. 2 自带客户端的登录与退出
+#### 2 自带客户端的登录与退出
 
 当MySQL服务启动完成后，便可以通过客户端来登录MySQL数据库。注意：确认服务是开启的。
 
@@ -758,7 +758,7 @@ net　stop　MySQL服务名
   Enter password:****
   ```
 
-  3．客户端和服务器在同一台机器上，所以输入localhost或者IP地址127.0.0.1。同时，因为是连接本机： -hlocalhost就可以省略，如果端口号没有修改：-P3306也可以省略
+  3．客户端和服务器在同一台机器上，所以输入localhost或者IP地址127.0.0.1。同时，因为是连接本机： **-h localhost就可以省略**，如果**端口号没有修改：-P3306也可以省略**
 
   简写成：
 
@@ -795,16 +795,42 @@ quit
 
 ------
 
+#### 设置远程访问MySQL
+
+```mysql
+grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
+flush privileges;
+```
+
+需要先关闭防火墙
+
+```
+service iptables stop 
+```
+
+如果设置了还不能成功访问，**可以逐个重启mysql容器，docker，和linux**
+
 ### 4. MySQL演示使用
 
 ------
 
-#### 4. 1 MySQL的使用演示
+#### 1-MySQL的使用演示
 
 ##### 1 .查看所有的数据库
 
-```
+```mysql
 show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sql_test           |
+| sys                |
+| test               |
+| yoj                |
++--------------------+
 ```
 
 - “information_schema”是 MySQL 系统自带的数据库，主要保存 MySQL 数据库服务器的系统信息，比如数据库的名称、数据表的名称、字段名称、存取权限、数据文件 所在的文件夹和系统使用的文件夹，等等。
@@ -818,7 +844,7 @@ show databases;
 
 ##### 2 、创建自己的数据库
 
-```
+```mysql
 create database 数据库名;
 
 #创建atguigudb数据库，该名称不能与已经存在的数据库重名。
@@ -928,7 +954,7 @@ show create database atguigudb\G
 
 ##### 10 、删除表格
 
-```
+```mysql
 drop table 表名称;
 
 #删除学生表
@@ -937,18 +963,18 @@ drop table student;
 
 ##### 11 、删除数据库
 
-```
+```mysql
 drop database 数据库名;
 
 #删除atguigudb数据库
 drop database atguigudb;
 ```
 
-#### 4. 2 MySQL的编码设置
+#### 2-MySQL的编码设置
 
 **MySQL 8. 0 中**
 
-在MySQL 8.0版本之前，默认字符集为latin1，utf8字符集指向的是utf8mb3。网站开发人员在数据库设计的时候往往会将编码修改为utf8字符集。如果遗忘修改默认的编码，就会出现乱码的问题。从MySQL 8.0开始，数据库的默认编码改为`utf8mb4`，从而避免了上述的乱码问题。
+在MySQL 8.0版本之前，默认字符集为latin1，utf8字符集指向的是utf8mb3。网站开发人员在数据库设计的时候往往会将编码修改为utf8字符集。如果遗忘修改默认的编码，就会出现乱码的问题。从**MySQL 8.0开始，数据库的默认编码改为`utf8mb4`**，从而避免了上述的乱码问题。
 
 ------
 
@@ -1088,7 +1114,7 @@ ERROR 1366 (HY000): Incorrect string value: '\xD5\xC5\xC8\xFD' for column 'sname
 
 如果是在修改my.ini之前建的库和表，那么库和表的编码还是原来的Latin1，要么删了重建，要么使用alter语句修改编码。
 
-```
+```mysql
 mysql> create database 0728 db charset Latin1;
 Query OK, 1 row affected (0.00 sec)
 mysql> use 0728db;

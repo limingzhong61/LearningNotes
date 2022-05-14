@@ -2409,7 +2409,7 @@ clearTimeout(timer);
 
 # JSON  
 
- **JavaScript Object Notation**， JS对象表示法
+ **JavaScript Object Notation**， JS对象表示法，JS 对象简谱
 
 ## JSON 格式
 

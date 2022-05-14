@@ -259,11 +259,9 @@ DockerHub：
 
 ## 1.4.安装Docker
 
-企业部署一般都是采用Linux操作系统，而其中又数CentOS发行版占比最多，因此我们在CentOS下安装Docker。参考课前资料中的文档：
+企业部署一般都是采用Linux操作系统，而其中又数CentOS发行版占比最多，因此我们在CentOS下安装Docker。
 
-![image-20210731155002425](Docker实用篇/image-20210731155002425.png)
-
-
+[Centos7安装Docker.md](./Centos7安装Docker/Centos7安装Docker.md)
 
 
 
@@ -275,20 +273,12 @@ Docker应用需要用到各种端口，逐一去修改防火墙设置。非常�
 
 启动docker前，一定要关闭防火墙后！！
 
-启动docker前，一定要关闭防火墙后！！
-
-启动docker前，一定要关闭防火墙后！！
-
-
-
 ```sh
 # 关闭
 systemctl stop firewalld
 # 禁止开机启动防火墙
 systemctl disable firewalld
 ```
-
-
 
 通过命令启动docker：
 
@@ -359,7 +349,7 @@ docker images --help
 | 检索 | docker  search 关键字  eg：docker  search redis | 我们经常去docker  hub上检索镜像的详细信息，如镜像的TAG。 |
 | 拉取 | docker pull 镜像名:tag                          | :tag是可选的，tag表示标签，多为软件的版本，默认是latest  |
 | 列表 | docker images                                   | 查看所有本地镜像                                         |
-| 删除 | docker rm image-id                              | 删除指定的本地镜像                                       |
+| 删除 | docker rmi image-id                             | 删除指定的本地镜像                                       |
 
 https://hub.docker.com/
 
@@ -734,15 +724,13 @@ docker run命令的常见参数有哪些？
 
 **数据卷（volume）**是一个虚拟目录，指向**宿主机文件系统中的某个目录**。
 
+> 有点类似于windows中的快捷方式
+
 ![image-20210731173541846](Docker实用篇/image-20210731173541846.png)
 
 一旦完成数据卷挂载，对**容器的一切操作**都会作用在数据卷对应的宿主机目录了。
 
 这样，我们操作宿主机的/var/lib/docker/volumes/html目录，就等于操作容器内的/usr/share/nginx/html目录了
-
-
-
-
 
 ### 2.3.2.数据集操作命令
 

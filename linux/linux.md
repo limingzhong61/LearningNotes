@@ -206,7 +206,7 @@ Xshell可以在Windows界面下用来访问远端不同系统下的服务器，�
 5.4.2XFtp5软件的安装这个看老师的演示即可.
 5.4.3Xftp5的配置和使用
 
-# linux基本
+# linux基础
 
 ## vi和vim编辑器
 
@@ -287,6 +287,10 @@ G:命令将光标移动到文档末尾
 ### vim和vi的快捷键键盘一览图
 
 ![1565771568531](Linux/vim和vi的快捷键键盘一览图.png)
+
+### 复制
+
+粘贴前**需要进入编辑模式（i），然后再粘贴**
 
 ## 开机、重启和用户登录注销
 
@@ -2226,6 +2230,14 @@ num  target     prot opt source               destination
 Chain OUTPUT (policy ACCEPT)
 num  target     prot opt source               destination
 ```
+
+centos7后关闭防火墙
+
+```shell
+# systemctl stop firewalld
+```
+
+
 
 ```shell
 [root@hapdoop1 ~]## service iptables stop

@@ -68,10 +68,6 @@ sed -i 's/download.docker.com/mirrors.aliyun.com\/docker-ce/g' /etc/yum.repos.d/
 yum makecache fast
 ```
 
-
-
-
-
 然后输入命令：
 
 ```shell
@@ -92,16 +88,12 @@ Docker应用需要用到各种端口，逐一去修改防火墙设置。非常�
 
 启动docker前，一定要关闭防火墙后！！
 
-
-
 ```sh
 # 关闭
 systemctl stop firewalld
 # 禁止开机启动防火墙
 systemctl disable firewalld
 ```
-
-
 
 通过命令启动docker：
 
@@ -128,17 +120,11 @@ docker -v
 Docker version 20.10.8, build 3967b7d
 ```
 
-
-
 ## 1.4.配置镜像加速
 
 docker官方镜像仓库网速较差，我们需要设置国内镜像服务：
 
 参考阿里云的镜像加速文档：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
-
-
-
-
 
 # 2.CentOS7安装DockerCompose
 

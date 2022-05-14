@@ -42,7 +42,7 @@ docker容器(Container)：镜像启动后的实例称为一个容器；容器是
 
 4）、对容器的启动停止就是对软件的启动停止；
 
-## 3、安装Docker
+## 3.安装Docker
 
 #### 1）、安装linux虚拟机
 
@@ -72,23 +72,28 @@ ip addr
 
 ​	8）、使用客户端连接linux；
 
-#### 2）、在linux虚拟机上安装docker
+#### 2在linux虚拟机上安装docker
 
 步骤：(安装不成功可以到菜鸟教程安装)
 
 1、检查内核版本，必须是3.10及以上
+
+```
 uname -r
+```
+
 2、安装docker
+
+```
 yum install docker
+```
 
 ```shell
 sudo apt install docker.io
 ```
 
-
-
 3、输入y确认安装
-4、启动docker
+		4、启动docker
 
 ```shell
 [root@localhost ~]# systemctl start docker
@@ -97,10 +102,26 @@ Docker version 1.12.6, build 3e8e77d/1.12.6
 ```
 
 5、开机启动docker
-[root@localhost ~]# systemctl enable docker
+
+```shell
+[root@10 docker]# systemctl enable docker
 Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
-6、停止docker
-systemctl stop docker
+```
+
+6配置镜像加速
+
+```shell
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://chqac97z.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+
 
 ## 4、Docker常用命令&操作
 
@@ -179,7 +200,24 @@ docker cp 第一个参数指定本地文件或者文件夹，第二个参数指�
 sudo docker cp /home/ubuntu/yoj.sql mysql:/home
 ```
 
-# Docker-Mysql
+# Docker-MySQL
+
+### 设置远程访问MySQL
+
+```mysql
+grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
+flush privileges;
+```
+
+需要先关闭防火墙
+
+```
+service iptables stop 
+```
+
+如果设置了还不能成功访问，**可以逐个重启mysql容器，docker，和linux**
+
+
 
 ## 安装MySQL示例
 
