@@ -182,6 +182,15 @@ https://docs.docker.com/engine/reference/commandline/docker/
 
 # 使用
 
+设置启动docker就启动相应服务
+
+```
+[root@hadoop-104 ~]# docker update mysql --restart=always
+mysql
+```
+
+
+
 ## 进入容器Bash
 
 ```shell
@@ -199,6 +208,8 @@ docker cp 第一个参数指定本地文件或者文件夹，第二个参数指�
 ```shell
 sudo docker cp /home/ubuntu/yoj.sql mysql:/home
 ```
+
+
 
 # Docker-MySQL
 
