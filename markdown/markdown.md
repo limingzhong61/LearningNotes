@@ -923,10 +923,14 @@ https://www.jianshu.com/p/c4d28c3f69ac)
 
 - Markdown PDF
 
-### pdf转markdown
+### markdown转pdf
 
 VSCode安装Markdown PDF插件，右键Export即可
 
 ![image-20211121143435557](Markdown/image-20211121143435557.png)
 
+### pdf转markdown
+
 pdf转markdown地址:https://pdf2md.morethan.io/
+
+上述网址，只能转换相应文本为markdown，不能处理图片。而且对应一些代码块也不能正确处理。

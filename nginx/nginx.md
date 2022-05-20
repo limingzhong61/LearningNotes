@@ -745,21 +745,18 @@ http {
 
 
 
-![](media/image28.png)
-
-> ![](media/image30.png)
+<!-- ![](nginx/image28.png)
+ ![](nginx/image30.png) -->
 >
 > **Nginx 配置高可用的集群**
-
-![](media/image32.png)
-
-> ![](media/image33.png)2、配置高可用的准备工作
+<!-- ![](nginx/image32.png) ![](nginx/image33.png) -->
+> 2、配置高可用的准备工作
 >
 > （1）需要两台服务器 192.168.17.129 和 192.168.17.131
 
-2.  **在两台服务器安装 nginx**
+1.  **在两台服务器安装 nginx**
 
-3.  **在两台服务器安装 keepalived**
+2.  **在两台服务器安装 keepalived**
 
 > 3、在两台服务器安装 keepalived
 
@@ -805,13 +802,13 @@ http {
 >
 > advert\_int 1
 >
-> ![](media/image34.png)
+<!-- > ![](nginx/image34.png)
 >
-> ![](media/image35.png)
+> ![](nginx/image35.png) -->
 >
 > **Nginx 的原理**
 
-![](media/image38.png)
+<!-- ![](nginx/image38.png) -->
 
 > 2、worker 如何进行工作的
 >
@@ -973,11 +970,15 @@ gzip虽然好用，但是一下类型的资源不建议启用。
 
 # windows
 
+## 下载
+
+官网下载： 下载地址：[Nginx For Windows DownLoad](http://nginx.org/en/download.html)
+
 https://blog.csdn.net/u010648555/article/details/79418779
 
 为了方便本地的开发和验证，于是Windows上安装Nginx
 
-注意不要直接双击nginx.exe，这样会导致修改配置后重启、停止nginx无效，需要手动关闭任务管理器内的所有nginx进程。[参考博文1]
+**注意不要直接双击nginx.exe，这样会导致修改配置后重启、停止nginx无效**，需要手动关闭任务管理器内的所有nginx进程。[参考博文1]
 在nginx.exe目录，打开命令行工具，用命令 启动
 
 1.进入解压的目标,我的 E:\nginx-1.13.9

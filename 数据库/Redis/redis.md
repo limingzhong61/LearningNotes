@@ -1,3 +1,12 @@
+---
+
+title: Redis
+date: 2021-11-2 10:40:06
+
+categories: Redis
+
+---
+
  Redis 是一个开源（BSD许可）的，**内存中的数据结构存储系统**，它可以用作数据库、**缓存**和消息中间件。
 
 ## Java中使用Redis

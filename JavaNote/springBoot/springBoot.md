@@ -3,7 +3,7 @@ title: springBoot
 date: 2019-11-17 15:27:48
 categories: java 
 ---
- 
+
 
 ## 一、Spring Boot 入门
 
@@ -3725,14 +3725,14 @@ public ConfigurableApplicationContext run(String... args) {
 
 ```xml
 <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
 ```
 
 
@@ -3742,9 +3742,11 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.15.22:3306/jdbc
     url: jdbc:mysql://localhost:3306/yoj?serverTimezone=UTC
     driver-class-name: com.mysql.jdbc.Driver
+    
+    
+    
     com.mysql.cj.jdbc.Drive
     
     Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.

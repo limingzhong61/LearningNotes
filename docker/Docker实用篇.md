@@ -3,7 +3,7 @@ title: Docker实用篇
 date: 2021-10-26 10:40:06
 categories: Docker
 ---
-
+ 
 # Docker实用篇
 
 # 1.初识Docker
@@ -1172,11 +1172,7 @@ docker run的命令中通过 **-v 参数挂载文件或目录到容器中**：
   docker build -t javaweb:2.0 .
   ```
 
-  
-
 - ⑤ 使用docker run创建容器并运行
-
-![image-20210831155149784](Docker实用篇/image-20210831155149784.png)
 
 ## 3.4.小结
 

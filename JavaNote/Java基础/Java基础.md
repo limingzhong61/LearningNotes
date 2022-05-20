@@ -1,28 +1,9 @@
 ---
-title: javaSE  
+title: java基础  
 p: java-note/javaSE/javaSE  
 date: 2019-10-12 10:32:06  
 categories: java  
 ---
-
-[[toc]]
-## 1  
-
-### 2
-
-
-#### 3
-
-
-##### 4
-
-
-###### 5
-
-
-
-####### 6
-
 
 ## 自己相关笔记
 

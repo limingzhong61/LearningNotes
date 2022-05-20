@@ -1237,7 +1237,7 @@ Nacos一方面可以将配置集中管理，另一方可以在配置变更时，
 </dependency>
 ```
 
-2）添加bootstrap.yaml
+2）添加**bootstrap.yaml**
 
 然后，在user-service中添加一个bootstrap.yaml文件，内容如下：
 
@@ -1254,7 +1254,7 @@ spring:
         file-extension: yaml # 文件后缀名
 ```
 
-这里会根据spring.cloud.nacos.server-addr获取nacos地址，再根据
+这里会根据**spring.cloud.nacos.server-addr获取nacos地址**，再根据
 
 `${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}`作为**文件id**，来读取配置。
 
@@ -1308,9 +1308,14 @@ public class UserController {
 
 ![image-20210714170449612](SpringCloud/image-20210714170449612-1630225333419.png)
 
+### 总结-配置交给Nacos管理
 
+将配置交给Nacos管理的步骤
 
-![image-20210829110453194](SpringCloud/image-20210829110453194-1630225333422.png)
+- ①在Nacos中添加配置文件
+- ②在微服务中引入nacos的config依赖
+- ③在**微服务中添加bootstrap.yml**,配置nacos地址 、当前环境、服务名称、文件后缀名。这些决定了程序
+  启动时去nacos读取哪个文件
 
 ## 1.2.配置热更新
 
