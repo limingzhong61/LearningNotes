@@ -14,14 +14,14 @@
 
 本仓库同步托管在Github和Gitee中
 
-- Gitee仓库：https://gitee.com/codeOflI/LearningNotes
-- Github仓库：https://github.com/codeOflI/LearningNotes
+- Gitee仓库：<https://gitee.com/codeOflI/LearningNotes>
+- Github仓库：<https://github.com/codeOflI/LearningNotes>
 
 ## 在线阅读
 
 为了更方便查看，本仓库做成了一个在线的博客
 
-- 在线博客：https://codeofli.github.io/
+- 在线博客：<https://codeofli.github.io/>
 
 > 博客使用hexo搭建
 
@@ -34,4 +34,3 @@
 > 来源Bilibili尚硅谷李立超老师学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
 
 [JavaScript笔记地址](https://gitee.com/codeOflI/LearningNotes/blob/master/js-note/JavaScript/JavaScript.md#)
-
