@@ -1,3 +1,6 @@
+---
+title: codeOflI的学习笔记  
+---
 # 📙codeOflI的学习笔记
 
 ## 项目介绍
@@ -21,9 +24,13 @@
 
 为了更方便查看，本仓库做成了一个在线的博客
 
-- 在线博客：<https://codeofli.github.io/>
+- 在线博客：<https://www.yestojudge.cn/>
 
-> 博客使用hexo搭建
+  > 使用vuepress
+
+- ~~在线博客：<https://codeofli.github.io/>~~
+
+  > 使用hexo搭建
 
 ## 赞赏
 
