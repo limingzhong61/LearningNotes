@@ -122,3 +122,19 @@ http://www.ruanyifeng.com/blog/2020/04/git-cherry-pick.html
 
 原文链接：https://blog.csdn.net/daguanjia11/article/details/73810577
 
+## git 文件及文件加大小写不识别的解决方案
+
+项目更改了文件名提交到git 仓库结果文件并没有得到跟踪的情况，在你独立开发的时候这个问题是可以被忽略的，但是如果你是，要部署到服务器的时候问题立马就暴露出来了
+例子：修改某文件的某个字母 大小写后 git上传到仓库时，并没有跟踪的情况
+
+
+1.git查看是否忽略了大小写
+true:忽略了大小写 fasle:未忽略大小写
+```
+git config --get core.ignorecase 
+```
+得到的结果是false 说明我本地已经配置了 区分大小写了，如果 窗口提示为true执行下列代码
+```
+git config core.ignorecase false 
+```
+原文链接：https://blog.csdn.net/WaiteZQ/article/details/124339556
