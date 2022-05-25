@@ -40,7 +40,7 @@ title: codeOflI的学习笔记
 
 > 来源Bilibili尚硅谷李立超老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
 
-[JavaScript笔记地址](https://gitee.com/codeOflI/LearningNotes/blob/master/js-note/JavaScript/JavaScript.md#)
+[JavaScript笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JSNote/JavaScript/JavaScript.md)
 
 
 ## Java
