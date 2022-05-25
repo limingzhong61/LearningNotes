@@ -1,6 +1,5 @@
 ---
 title: mybatis
-p: java-note/mybatis/mybatis
 date: 2019-10-12 10:40:06
 categories: java
 ---
@@ -1835,3 +1834,6 @@ public void testPageHelper() throws IOException {
 因为这里有 ">" "<=" 特殊字符所以要使用 `<![CDATA[ ]]>` 来注释，但是有`<if>`标签，所以把`<if>`等放外面
 CSDN博主「技匠三石弟弟」链接：https://blog.csdn.net/xiaoleilei666/article/details/109695510
 
+## 相关链接
+
+[b站视频链接](https://www.bilibili.com/video/BV1VP4y1c7j7?spm_id_from=333.337.search-card.all.click)

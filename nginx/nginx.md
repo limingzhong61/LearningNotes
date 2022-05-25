@@ -5,7 +5,7 @@ date: 2019-11-25 22:22:09
 ---
 [TOC]
 
-# nginx
+## nginx
 
 http://nginx.org/en/docs/http/ngx_http_proxy_module.html#example
 
@@ -41,13 +41,13 @@ http://nginx.org/en/docs/http/ngx_http_proxy_module.html#example
 
 **（2）**   **nginx** **配置双主模式**
 
-# **Nginx 的简介**
+## **Nginx 的简介**
 
-### 什么是 **nginx**
+#### 什么是 **nginx**
 
 Nginx 是高性能的 HTTP 和反向代理的服务器，处理高并发能力是十分强大的，能经受高负载的考验,有报告表明能支持高达 50,000 个并发连接数。
 
-### 2、正向代理
+#### 2、正向代理
 
 Nginx
 不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。
@@ -59,7 +59,7 @@ Internet 想象成一个巨大的资源库，则局域网中的客户端要访
 
  ![image-20200101220529125](nginx/image-20200101220529125.png)
 
-### 3、反向代理
+#### 3、反向代理
 
 **暴露的是代理服务器地址，隐藏了真实服务器** **IP** **地址。**
 
@@ -74,7 +74,7 @@ Internet 想象成一个巨大的资源库，则局域网中的客户端要访
 
  
 
-### 4、负载均衡
+#### 4、负载均衡
 
 增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到**多个服务器上**，将负载分发到不同的服务器，也就是我们所说的**负载均衡**
 
@@ -82,14 +82,14 @@ Internet 想象成一个巨大的资源库，则局域网中的客户端要访
 
 
 
-### 5、动静分离
+#### 5、动静分离
 
 为了加快网站的解析速度，可以把动态页面和静态页面由不同的服务器来解析，加快解析速
 度。降低原来单个服务器的压力。
 
 ![1577888962756](nginx/1577888962756.png)
 
-# Nginx 的安装
+## Nginx 的安装
 
 [Nginx 安装配置|菜鸟教程](https://www.runoob.com/linux/nginx-install-setup.html)
 
@@ -97,7 +97,7 @@ Internet 想象成一个巨大的资源库，则局域网中的客户端要访
 
 https://nginx.org/en/download.html
 
-## 1.安装 pcre
+### 1.安装 pcre
 
 一般放在 `/usr/src`中
 
@@ -234,7 +234,7 @@ firewall cmd add port=80/tcp permanent
 
 firewall cmd reload
 
-# Nginx 的常用的命令
+## Nginx 的常用的命令
 
 ```shell
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
@@ -262,23 +262,23 @@ cd  /usr/local/nginx/sbin
 | nginx -s reload | 重新加载配置文件，平滑启动nginx |
 | nginx -s stop   | 停止nginx的命令                 |
 
-#  Nginx 的配置文件
+##  Nginx 的配置文件
 
-## nginx 配置文件位置
+### nginx 配置文件位置
 
 用apt-get或者yum安装都是/etc,与源码安装的`/usr/local/nginx/conf/nginx.conf`不一样
 
-## 配置文件中的内容 
+### 配置文件中的内容 
 
 包含三部分内容 
 
-### 1.全局块：
+#### 1.全局块：
 
 从配置文件开始到 events 块之间的内容，**主要会设置一些影响nginx 服务器整体运行的配置指令**，主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。
 
 比如worker_processes  1;处理并发数的配置
 
-### 2.events 块
+#### 2.events 块
 
 events 块涉及的指令**主要影响 Nginx 服务器与用户的网络连接**，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word process 可以同时支持的最大连接数等。
 
@@ -286,7 +286,7 @@ events 块涉及的指令**主要影响 Nginx 服务器与用户的网络连接*
 
 这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。
 
-## 3.http 块
+### 3.http 块
 
 还包含两部分：
 http 全局块
@@ -296,11 +296,11 @@ server 块
 
 需要注意的是：http 块也可以包括 http全局块、server 块。
 
-### http 全局块
+#### http 全局块
 
 http全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。
 
-### server 块
+#### server 块
 
 这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。 每个 http 块可以包括多个 server 块，而每个 server 块就相当于一个虚拟主机。 而每个 server 块也分为全局 server 块，以及可以同时包含多个 location 块。 
 
@@ -308,7 +308,7 @@ http全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定
 
 2、location 块 一个 server 块可以配置多个 location 块。 这块的主要作用是基于 Nginx 服务器接收到的请求字符串（例如 server_name/uri-string），对虚拟主机名称（也可以是IP别名）之外的字符串（例如 前面的 /uri-string）进行匹配，对特定的请求进行处理。地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。
 
-## 具体事例
+### 具体事例
 
 ```
 server {   
@@ -321,9 +321,9 @@ server {
 
 **root 指令放在 server 上下文中**。当响应请求的 location 区块中，没有自己的 root 指令，上述的 root 指令才会被使用。
 
-# 反向代理
+## 反向代理
 
-## nginx 配置实例 反向代理1
+### nginx 配置实例 反向代理1
 
 **代理端口  ip:80 -> localhost:8080**
 
@@ -381,7 +381,7 @@ server {
 
 
 
-## Nginx 配置实例-反向代理实例 2
+### Nginx 配置实例-反向代理实例 2
 
 实现效果：
 
@@ -421,7 +421,7 @@ nginx 监听端口为 80
 }
 ```
 
-## location 指令说明
+### location 指令说明
 
 该指令用于匹配 URL。
 
@@ -439,7 +439,7 @@ nginx 监听端口为 80
 
 
 
-# Nginx 配置实例-负载均衡
+## Nginx 配置实例-负载均衡
 
 1 、实现效果
 
@@ -477,7 +477,7 @@ upstream myserver{
 	}
 ```
 
-# 负载均衡
+## 负载均衡
 
 随着互联网信息的爆炸性增长，负载均衡（
 load balance ）已经不再是一个很陌生的话题
@@ -526,7 +526,7 @@ upstream server_pool{
 }
 ```
 
-# Nginx 配置实例-动静分离
+## Nginx 配置实例-动静分离
 
 1 、什么是动静分离
 
@@ -558,7 +558,7 @@ location /image/ {
 }
 ```
 
-# Nginx 配置高可用的集群
+## Nginx 配置高可用的集群
 <!-- skip -->
 
 https://www.bilibili.com/video/av68136734?p=14
@@ -569,11 +569,11 @@ https://www.bilibili.com/video/av68136734?p=14
 
 
 
-# my
+## my
 
 [ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)
 
-# Nginx出现403 forbidden
+## Nginx出现403 forbidden
 
 https://blog.csdn.net/qq_35843543/article/details/81561240/
 
@@ -585,7 +585,7 @@ https://blog.csdn.net/qq_35843543/article/details/81561240/
 
 
 
-## cros
+### cros
 
 https://blog.csdn.net/envon123/article/details/83270277
 
@@ -607,7 +607,7 @@ https://blog.csdn.net/envon123/article/details/83270277
 
 
 
-## vue
+### vue
 
 修改配置文件主要做两件事：
 
@@ -634,25 +634,25 @@ location / {
 }
 ```
 
-## 部署前后端分离项目
+### 部署前后端分离项目
 
 https://segmentfault.com/a/1190000014972747
 
 在前后端分离端项目里，前端的代码会被打包成为纯静态文件。使用 Nginx的目的就是让静态文件运行起服务，由于后端的接口也是分离的，直接请求可能会产生跨域问题，此时就需要Nginx转发代理后端接口。
 
-### **Nginx配置如下**
+#### **Nginx配置如下**
 
 ```
-# For more information on configuration, see:
-#   * Official English Documentation: http://nginx.org/en/docs/
-#   * Official Russian Documentation: http://nginx.org/ru/docs/
+## For more information on configuration, see:
+##   * Official English Documentation: http://nginx.org/en/docs/
+##   * Official Russian Documentation: http://nginx.org/ru/docs/
 
 user nginx;
 worker_processes auto; #启动进程
 error_log /var/log/nginx/error.log; #全局错误日志
 pid /run/nginx.pid; #PID文件
 
-# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+## Load dynamic modules. See /usr/share/nginx/README.dynamic.
 include /usr/share/nginx/modules/*.conf;
 
 events {
@@ -684,8 +684,8 @@ http {
             proxy_http_version 1.1;  
             proxy_set_header Upgrade $http_upgrade;  
             proxy_set_header Connection "Upgrade"; 
-            proxy_set_header  Host              $http_host;   # required for docker client's sake
-            proxy_set_header  X-Real-IP         $remote_addr; # pass on real client's IP
+            proxy_set_header  Host              $http_host;   ## required for docker client's sake
+            proxy_set_header  X-Real-IP         $remote_addr; ## pass on real client's IP
             proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
             proxy_set_header  X-Forwarded-Proto $scheme;
         }
@@ -698,8 +698,8 @@ http {
             proxy_http_version 1.1;  
             proxy_set_header Upgrade $http_upgrade;  
             proxy_set_header Connection "Upgrade"; 
-            proxy_set_header  Host              $http_host;   # required for docker client's sake
-            proxy_set_header  X-Real-IP         $remote_addr; # pass on real client's IP
+            proxy_set_header  Host              $http_host;   ## required for docker client's sake
+            proxy_set_header  X-Real-IP         $remote_addr; ## pass on real client's IP
             proxy_set_header  X-Forwarded-For   $proxy_add_x_forwarded_for;
             proxy_set_header  X-Forwarded-Proto $scheme;
         }
@@ -794,11 +794,11 @@ http {
 >
 > vrrp\_instance VI\_1 {
 >
-> state BACKUP \# 备份服务器上将 MASTER 改为 BACKUP interface ens33 //网卡
+> state BACKUP \## 备份服务器上将 MASTER 改为 BACKUP interface ens33 //网卡
 >
-> virtual\_router\_id 51 \# 主、备机的 virtual\_router\_id 必须相同
+> virtual\_router\_id 51 \## 主、备机的 virtual\_router\_id 必须相同
 >
-> priority 90 \# 主、备机取不同的优先级，主机值较大，备份机值较小
+> priority 90 \## 主、备机取不同的优先级，主机值较大，备份机值较小
 >
 > advert\_int 1
 >
@@ -820,7 +820,7 @@ http {
 
 > 4、设置多少个 woker 合适
 
-## 安装ssl证书
+### 安装ssl证书
 
 [腾讯云安装教程](https://cloud.tencent.com/document/product/400/4143)
 
@@ -831,7 +831,7 @@ server {
         listen       443 ssl;
         server_name  www.yestojudge.cn;
 	#启用 SSL 功能
-	#  ssl on; deprecated
+	##  ssl on; deprecated
 	#证书文件名称
 	ssl_certificate 1_www.yestojudge.cn_bundle.crt; 
 	#私钥文件名称
@@ -860,34 +860,34 @@ server {
 
         #error_page  404              /404.html;
 
-        # redirect server error pages to the static page /50x.html
+        ## redirect server error pages to the static page /50x.html
         #
         error_page   500 502 503 504  /50x.html;
         location = /50x.html {
             root   html;
         }
 
-        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        ## proxy the PHP scripts to Apache listening on 127.0.0.1:80
         #
         #location ~ \.php$ {
-        #    proxy_pass   http://127.0.0.1;
+        ##    proxy_pass   http://127.0.0.1;
         #}
 
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        ## pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
         #
         #location ~ \.php$ {
-        #    root           html;
-        #    fastcgi_pass   127.0.0.1:9000;
-        #    fastcgi_index  index.php;
-        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-        #    include        fastcgi_params;
+        ##    root           html;
+        ##    fastcgi_pass   127.0.0.1:9000;
+        ##    fastcgi_index  index.php;
+        ##    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        ##    include        fastcgi_params;
         #}
 
-        # deny access to .htaccess files, if Apache's document root
-        # concurs with nginx's one
+        ## deny access to .htaccess files, if Apache's document root
+        ## concurs with nginx's one
         #
         #location ~ /\.ht {
-        #    deny  all;
+        ##    deny  all;
         #}
     }
     server {
@@ -899,16 +899,16 @@ server {
     }
 ```
 
-# 开启gzip
+## 开启gzip
 
 https://blog.csdn.net/huangbaokang/article/details/79931429
 
-### 加入gzip配置
+#### 加入gzip配置
 
 在nginx.conf文件的http模块中加入gzip的配置
 
 ```json
-[root@localhost html]# cat ../conf/nginx.conf
+[root@localhost html]## cat ../conf/nginx.conf
 
 user root;
 worker_processes  4;
@@ -968,9 +968,9 @@ gzip虽然好用，但是一下类型的资源不建议启用。
 
 显著减少,vue只是支持gzip,开启需要服务器进行
 
-# windows
+## windows
 
-## 下载
+### 下载
 
 官网下载： 下载地址：[Nginx For Windows DownLoad](http://nginx.org/en/download.html)
 

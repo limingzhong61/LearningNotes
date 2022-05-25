@@ -4,6 +4,70 @@ date: 2020-10-13 22:19:09
 ---
 [TOC]
 
+# *Axios*
+
+## 案例
+
+## 案例
+
+执行 `GET` 请求
+
+```js
+// 为给定 ID 的 user 创建请求
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+// 上面的请求也可以这样做
+axios.get('/user', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+执行 `POST` 请求
+
+```
+axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+```
+
+执行多个并发请求
+
+```
+function getUserAccount() {
+  return axios.get('/user/12345');
+}
+
+function getUserPermissions() {
+  return axios.get('/user/12345/permissions');
+}
+
+axios.all([getUserAccount(), getUserPermissions()])
+  .then(axios.spread(function (acct, perms) {
+    // 两个请求现在都执行完成
+  }));
+```
+
 ## axios的全局配置
 
 ![1570541353621](imgs\1570541353621.png)
@@ -79,7 +143,7 @@ getVerifyImage() {
 }
 ```
 
-# axios跨域
+## axios跨域
 
 需要在默认实例添加
 
@@ -98,4 +162,6 @@ const instance = axios.create({
 
 https://segmentfault.com/a/1190000011811117
 
-# axios上传文件
+## axios上传文件
+
+[axios官网](http://www.axios-js.com/)

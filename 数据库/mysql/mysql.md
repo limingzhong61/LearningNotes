@@ -2390,6 +2390,8 @@ ORDER BY department_id, salary DESC;
 
 前提条件：这些一起查询的表之间是有关系的（一对一、一对多），它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。比如：员工表和部门表，这两个表依靠“部门编号”进行关联。
 
+![图片](MySQL/640.png)
+
 ------
 
 ### 1. 一个案例引发的多表连接
@@ -5689,4 +5691,5 @@ SELECT * FROM books ORDER BY CHAR_LENGTH(REPLACE(name,' ','')) DESC LIMIT 0 ,1;
 
 
 
-## 参考链接
+## 相关链接
+Bilibili尚硅谷宋红康老师老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.999.0.0)

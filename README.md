@@ -38,6 +38,33 @@ title: codeOflI的学习笔记
 
 ## JS
 
-> 来源Bilibili尚硅谷李立超老师学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
+> 来源Bilibili尚硅谷李立超老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
 
 [JavaScript笔记地址](https://gitee.com/codeOflI/LearningNotes/blob/master/js-note/JavaScript/JavaScript.md#)
+
+
+## Java
+### MyBatis
+> 来源Bilibili尚硅谷学习视频：[点我传送](https://www.bilibili.com/video/BV1VP4y1c7j7?spm_id_from=333.337.search-card.all.click)
+
+[MyBatis笔记地址](https://github.com/codeOflI/LearningNotes/tree/master/JavaNote/MyBatis)
+### SpringMVC
+> 来源Bilibili尚硅谷宋红康老师的学习视频： [点我传送](https://www.bilibili.com/video/BV1Ry4y1574R)
+[SpringMVC笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/SpringMVC/SpringMVC.md)
+
+### SpringCloud
+> 来源Bilibili黑马程序员的学习视频： [点我传送](https://www.bilibili.com/video/BV1LQ4y127n4?spm_id_from=333.999.0.0)
+[SpringCloud笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/SpringCloud/SpringCloud.md)
+### JVM
+> 来源Bilibili尚硅谷学习视频： [点我传送](https://www.bilibili.com/video/BV1PJ411n7xZ?spm_id_from=333.999.0.0)
+[JVM笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/JVM/JVM%E4%B8%8A%E7%AF%87-%E5%86%85%E5%AD%98%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87/JVM.md)
+
+
+## MySQL
+
+> 来源Bilibili尚硅谷宋红康老师老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.999.0.0)
+
+[MySQL笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/MySQL.md)
+<!-- ### SpringBoot
+> 来源Bilibili尚硅谷学习视频： [点我传送](https://www.bilibili.com/video/BV1Ry4y1574R)
+[MyBatis笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/SpringBoot/SpringBoot.md) -->
