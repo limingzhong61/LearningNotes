@@ -473,6 +473,62 @@ or:
 # -*- coding: utf-8 -*-
 ```
 
+## 生成器
+
+yield 《=》生成器  
+
+### yield关键字  
+
+yield就是 return 返回一个值，并且记住这个返回的位置，下次迭代就从这个位置后开始。
+
+
+
+**包含yield语句的函数是一个生成器**  
+
+**生成器每次产生一个值（ yield语句），函数被冻结，被唤醒后再产生一个值  
+生成器是一个==不断产生值的函数==**,是一种特殊的迭代器，不走回头路，支持next()   
+
+**生成器相比一次列出所有内容的优势：**  
+1)更节省存储空间  
+2)响应更迅速  
+3)使用更灵活   
+
+实例：  
+
+```python  
+def gen(n):
+    for i in range(n):
+        yield i ** 2
+
+for i in gen(5):
+    print(i, " ", end="")
+# 0  1  4  9  16  0
+g = gen(5)
+print(next(g))
+print(next(g))
+print(next(g))
+# 1
+# 4
+```
+
+**生成器==每调用一次==在yield位置产生一个值，直到函数执行结束**   
+
+### 生成器表达式
+
+![image-20220527100812177](python/image-20220527100812177.png)
+
+**列表生成式一次返回所有值**  
+
+```python  
+def square(n):  
+    return [i **2 for i in range(n)]  
+  
+for i in square(5):  
+    print(i, " ", end="")  
+```
+
+
+
 
 
 # 基本数据类型及其操作
@@ -2292,6 +2348,55 @@ D:\>pip list
 
 - 列出当前系统已经安装的第三方库 
 
+
+
+## 更换pip源到国内镜像
+
+pip国内的一些镜像
+
+```
+阿里云 https://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+豆瓣(douban) http://pypi.douban.com/simple/
+清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+```
+
+修改源方法：
+
+临时使用：
+可以在使用pip的时候在后面加上-i参数，指定pip源
+eg: 
+
+```
+pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+永久修改：
+linux:
+修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+windows:
+直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
+
+windows:
+直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
+
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+
+- https://blog.csdn.net/chenghuikai/article/details/55258957
+
 ## 第三方库的集成安装方法 Anaconda
 
 集成安装：结合特定Python开发工具的批量安装 
@@ -2553,8 +2658,6 @@ print(t2.n)
 t2.printing_age()
 ```
 
-
-
 # 使用
 
 # pycharm导入python项目
@@ -2681,46 +2784,6 @@ class Person:
 
 **如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__**
 **在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问**
-
-## yield关键字  
-
-yield 《=》生成器  
-
-**包含yield语句的函数是一个生成器**  
-
-**生成器每次产生一个值（ yield语句），函数被冻结，被唤醒后再产生一个值  
-生成器是一个不断产生值的函数**   
-
-  
-
-**生成器相比一次列出所有内容的优势：**  
-1)更节省存储空间  
-2)响应更迅速  
-3)使用更灵活   
-
-实例：  
-
-```python  
-def gen(n):  
-    for i in range(n):  
-        yield i ** 2  
-  
-for i in gen(5):  
-    print(i, " ", end="")  
-  
-```
-
-生成器每调用一次在yield位置产生一个值，直到函数执行结束   
-
-**一次返回所有值**  
-
-```python  
-def square(n):  
-    return [i **2 for i in range(n)]  
-  
-for i in square(5):  
-    print(i, " ", end="")  
-```
 
 ## 函数传递问题
 

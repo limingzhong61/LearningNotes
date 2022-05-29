@@ -3777,11 +3777,13 @@ Java 8 允许我们以简便的语法为接口赋值函数。
 
 `java.util.function` 包旨在创建一组完整的目标接口，使得我们一般情况下不需再定义自己的接口。这主要是因为基本类型会产生一小部分接口。 如果你了解命名模式，顾名思义就能知道特定接口的作用。
 
- 以下是基本命名准则：
+### 基本命名准则
+
+ 以下是**基本命名准则**：
 
 1. 如果**只处理对象而非基本类型**，名称则为 `Function`，`Consumer`，`Predicate` 等。参数类型通过泛型添加。
 2. 如果接收的参数是基本类型，则由名称的第一部分表示，如 `LongConsumer`，`DoubleFunction`，`IntPredicate` 等，但基本 `Supplier` 类型例外。
-3. 如果返回值为基本类型，则用 `To` 表示，如 `ToLongFunction <T>` 和 `IntToLongFunction`。
+3. 如果**返回值为基本类型，则用 `To` 表示**，如 `ToLongFunction <T>` 和 `IntToLongFunction`。
 4. 如果返回值类型与参数类型一致，则是一个运算符：单个参数使用 `UnaryOperator`，两个参数使用 `BinaryOperator`。
 5. 如果接收两个参数且返回值为布尔值，则是一个谓词（Predicate）。
 6. 如果接收的两个参数类型不同，则名称中有一个 `Bi`。
