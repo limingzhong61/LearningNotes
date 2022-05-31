@@ -2658,6 +2658,17 @@ print(t2.n)
 t2.printing_age()
 ```
 
+# 附加
+
+## 断言
+
+```python
+#     Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常
+assert k > 1
+```
+
+
+
 # 使用
 
 # pycharm导入python项目

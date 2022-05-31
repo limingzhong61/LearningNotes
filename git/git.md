@@ -304,6 +304,10 @@ git fetch [remote-name]
 git push origin master
 ```
 
+常用参数
+
+- `-f, --force `:  force updates,**请谨慎使用，会强制将远程仓库内容更新为本地。**
+
 ### 查看某个远程仓库
 
 使用 `git remote show [remote-name]` 命令
