@@ -6,22 +6,6 @@ categories: java
 ---
 
 [[toc]]
-## 1  
-
-### 2
-
-
-#### 3
-
-
-##### 4
-
-
-###### 5
-
-
-
-####### 6
 
 
 ## 自己相关笔记
@@ -317,6 +301,12 @@ System.out.println(s4 == s5);  // true
 
 - [StackOverflow : What is String interning?  (opens new window)](https://stackoverflow.com/questions/10578984/what-is-string-interning)
 - [深入解析 String#intern  (opens new window)](https://tech.meituan.com/in_depth_understanding_string_intern.html)
+
+
+
+
+
+
 
 ## 字符串String  
 
@@ -640,7 +630,9 @@ split(String regex, int limit)：部分拆分
 
 	正则1正则2：判断第一个完成以后再判断第二个正则 ,如AB 
 	正则1|正则2：两个正则的或  
-（正则）：**将多个正则作为一组**，可以为这一组单独设置次数注解  
+#### 分组
+
+`(正则)`：**将多个正则作为一组**，可以为这一组单独设置次数注解  
 
 
 

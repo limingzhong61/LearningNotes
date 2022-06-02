@@ -2625,207 +2625,173 @@ class Base(object):
 
 `_`单下划线开头：弱“内部使用”标识，如：`from M import *`，将不导入所有以下划线开头的对象，包括包、模块、成员
 
-# python 类
-
-## python动态添加属性(对象属性，类属性)
+# 类与对象
 
 ```python
-class cltdy:    #定义类，并起一个名字
-    n = 1000    #类属性，类内的变量
-    def __init__(self,name,age,profession='IT民工'):    #构造函数，类接收外部传入参数全靠构造函数
-        self.name = name
-        self.age = age
-        self.profession = profession
-    def printing_name(self):    #类的方法
-        print('我的名字是：%s'%self.name)
-    def printing_age(self):
-        print("我的年龄：%s"%self.age)
-    def printing_pfsn(self):
-        print("我的职业：%s"%self.profession)
-
-test = cltdy('sober',25,'DevOps')    #类的实例化，将参数传入类中，传入参数可以多但不可以少于类构造函数的参数(self参数除外，self是将实例化的变量名传入类)
-print("这是类实例化后的内存地址：%s"%test)
-test.printing_name()    #调用实例化后类中的方法
-test.name = 'moon'    #可以修改构造函数中参数的值
-test.printing_name()
-test.printing_pfsn()
-print(test.n)
-test.n = 2000    #修改类属性，只针对test实例化生效
-print(test.n,'\n====================')
-
-t2 = cltdy('jack',22,'student')    #实例化类对象，命名t2
-print(t2.n)
-t2.printing_age()
+#类名用大驼峰
+class Student:
+	pass
+#创建对象
+实例名=类名（参数）
 ```
-
-# 附加
-
-## 断言
 
 ```python
-#     Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常
-assert k > 1
+#创建类
+class Student:
+	native_pace='吉林'#直接写在类里面的变量，称为类属性
+  
+  #初始化方法
+  def __init__(self,nema,age):
+    self.name=name
+    self.age=age
+  
+  #实例方法，在类里面为方法，类之外为函数
+  def eat(self):
+  	print('....')
+    
+  #静态方法
+  @staticmethod
+  def method():
+    print('........')
+    
+  #类方法
+  @classmethod
+  def cm(cla):
+    print('......')
+    
+#创建对象
+stu1=Student('张三'，20)
 ```
 
+类属性：类中方法外的变量称为类属性，被该类的所有对象所共享
 
+类方法：使用@classmethod修饰的方法，使用类名直接访问方法
 
-# 使用
+静态方法：使用@staticmethod修饰的方法，使用类名直接访问方法，无参数
 
-# pycharm导入python项目
-
-选择New environment 或者 Existing environment都可以，路径选择本地配置的python.exe路径即可；
-
-New Environment:
-New Environment部分是选择新建项目所依赖的python库，第一个选项会在项目中简历一个venv（virtualenv）目录，这里存放一个虚拟的python环境。这里所有的类库依赖都可以直接脱离系统安装的python独立运行。 
-
-Existing Interpreter:
-Existing Interpreter关联已经存在的python解释器，如果不想在项目中出现venv这个虚拟解释器就可以选择本地安装的python环境。 
-**通常选择Existing Interpreter即可**
-
-## python定义类似常量
-
-const.py
+## 动态绑定属性和方法
 
 ```python
-class PROBLEM:
-    MEMORY_LIMIT = "memory_limit"
-    TIME_LIMIT = "time_limit"
-    DESCRIPTION = 'description'
-    SAMPLE_INPUT = "sample_input"
-    SAMPLE_OUTPUT = "sample_output"
-    FORMAT_INPUT = "format_input"
-    FORMAT_OUTPUT = "format_output"
-    HINT = "hint"
-    STATE = "state"
+class Student:
+	def __init__(self,nema,age):
+    self.name=name
+    self.age=age
+	def eat(self):
+    print(self.name+'在吃饭')
+
+stu1=Student('张三',20)
+stu2=Student('李四',30)
+stu2.gender='女'#动态绑定性别属性
+print(stu1.name,stu1.age)#张三，20
+print(stu1.name,stu1.age,stu1.gender)#报错,stu1没有gender这个属性
+print(stu2.name,stu2.age,stu2.gender)#李四，30，女
+
+def show()
+	print('我是一个函数')
+stu1.show=show#动态绑定方法
+stu1.show
 ```
 
-使用：
+# 对象的内容
+
+## 封装
+
+提高程序的安全性
+	将数据（属性）和行为（方法）包装到类对象中。在方法内部对属性进行操作，在类对象的外部调用方法，这样，无需关心方法内部的具体实现细节，从而隔离了复杂度；
+	在Python中没有专门的修饰符用于属性的私有，如果该属性不希望在类对象外部被访问，属性名前加上两个“_”
+
+## 继承
+
+提高代码的复用性
+
+如果一个类没有继承任何类，则默认继承object
+
+### python支持多继承
+
+定义子类时，必须在其构造函数中调用父类的构造函数
 
 ```python
-from const import *
-print(PROBLEM.DESCRIPTION)
+class 子类类名(父类1，父类2...):
+	pass
+#调用父类构造方法
+super().父类构造方法名(参数列表)
 ```
 
-## `__init__.py`文件
+方法重写：重写父类的方法
 
-init.py 文件的作用是将文件夹变为一个[Python](https://edu.csdn.net/course/detail/26755)模块,Python 中的每个模块的包中，都有__init__.py 文件.
+Object类：
+1、object类是所有类的父类，因此所有类都有object类的属性和方法
+2、内置函数dir0可以查看指定对象所有属性
+3、Object有一个`str__()`方法，用于返回一个对于“对象的描述”，对应于内置函数strO经常用于print()方法，帮我们查看对象的信息，所以我们经常会对_str()进行重写
 
-######### 批量引入
+## 多态
 
-init.py 文件的作用是将文件夹变为一个Python模块,Python 中的每个模块的包中，都有__init__.py 文件。
+提高程序的可扩展性和可维护性
+具有多种形态，即便不知道一个变量所引用的对象到底是什么类型， 仍然可以通过这个变量调用方法，在运行过程中根据变量所引用对象的类型，动态决定调用哪个对象中的方法
 
-通常__init__.py 文件为空，但是我们还可以为它增加其他的功能。我们在导入一个包时，实际上是导入了它的__init__.py文件。这样我们可以在__init__.py文件中批量导入我们所需要的模块，而不再需要一个一个的导入。
+静态语言和动态语言关于多态的区别
+静态语言实现多态的三个必要条件：
+1、继承
+2、方法重写
+3、父类引用指向子类对象
 
-### package
+	动态语言的多态崇尚“鸭子类型”当看到一只鸟走起来像鸭子、游泳起来像鸭子收起来也像鸭子，那么这只鸟就可以被称为鸭子。在鸭子类型中，不需要关心 对象是什么类型，到底是不是鸭子，只关心对象的行为。
 
-### __init__.py
+## 特殊方法和特殊属性
 
-import re
-import urllib
-import sys
-import os
-
-### a.py
-
-import package
-print(package.re, package.urllib, package.sys, package.os)
-init.py中还有一个重要的变量，all, 它用来将模块全部导入
-
-### __init__.py
-
-__all__ = ['os', 'sys', 're', 'urllib']
-
-### a.py
-
-from package import *
-可以被import语句导入的对象是以下类型：
-模块文件（.py文件）
-C或C++扩展（已编译为共享库或DLL文件）
-包（包含多个模块）
-内建模块（使用C编写并已链接到Python解释器中）
-当导入模块时，解释器按照sys.path列表中的目录顺序来查找导入文件。
-
-import sys
-
-> > > print(sys.path)
-
-### Linux:
-
-['', '/usr/local/lib/python3.4',
-'/usr/local/lib/python3.4/plat-sunos5',
-'/usr/local/lib/python3.4/lib-tk',
-'/usr/local/lib/python3.4/lib-dynload',
-'/usr/local/lib/python3.4/site-packages']
-其中list第一个元素空字符串代表当前目录。
-
-关于.pyc 文件 与 .pyo 文件
-py文件的汇编,只有在import语句执行时进行，当.py文件第一次被导入时，它会被汇编为字节代码，并将字节码写入同名的.pyc文件中。后来每次导入操作都会直接执行.pyc 文件（当.py文件的修改时间发生改变，这样会生成新的.pyc文件），在解释器使用-O选项时，将使用同名的.pyo文件，这个文件去掉了断言（assert）、断行号以及其他调试信息，体积更小，运行更快。（使用-OO选项，生成的.pyo文件会忽略文档信息）
-
-导入模块
-
-模块通常为单独的.py文件，可以用import直接引用，可以作为模块的文件类型有.py、.pyo、.pyc、.pyd、.so、.dll
-
-## **对象调用类中的变量和方法**
-
-　　__init__方法是一个特殊的方法,只要类名+() 产生一个对象,自动执行类中的__init__方法,并把类的地址传给方法里的第一个参数,约定把第一个参数定为'self', 再给对象封装相应的属性.
-
-(1) __dict__ 查询对象中的所有的内容
-
-(2)  万能的点： **.**
+![image-20220525160305579](python/image-20220525160305579-1654138202739.png)
 
 ```python
-class Person:
-    mind = '有思想'
-    belif = '有信仰'
-    animal = '高级动物'
-    def __init__(self, name,age,hobby):
-        self.name = name
-        self.age = age
-        self.hobby = hobby
-        print(name,age,hobby)
-    def work(self):
-        print('会工作')
-        return self
-    def money(self):
-        print('会消费')
-        print(self)
+class A:
+  pass
+class B:
+  pass
+class C(A,B):
+  def __init__(self,name):
+  	self.name=name
+#创建C类的对象
+x=C('Jack')
+print(x.__dict__)#查看实例对象的属性的字典
+
+#特殊方法先自定义，再调用
+class Student:
+   def __init__(self,name):
+   		self.name=name
+   def __add__(self,other):#实现两个对象的加法运算
+    	return self.name+other.name
 ```
 
-## 私有方法
+# 类的浅拷贝与深拷贝
 
-**如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__**
-**在Python中，实例的变量名如果以__开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问**
+1、变量的赋值操作
+	只是形成两个变量，实际上还是指向同一个对象
+2、浅拷贝
+	**Python拷贝一般都是浅拷贝**，拷贝时，对象包含的子对象内容不拷贝 因此，源对象与拷贝对象会引用同一个子对象
 
-## 函数传递问题
+```
+使用copy.copy,它可以进行对象的浅拷贝(shallow copy)
+```
 
-python不允许程序员选择采用传值还是传引用。python参数传递采用的肯定是**“传对象引用”**的方式。这种方式相当于传值和传引用的一种综合。
+3、深拷贝
+	使用copy模块的deepcopy函数，递归拷贝对象中包含的子对象，源对象和拷贝对象所有的子对象也不相同
 
-- 如果函数收到的是一个不可变对象（数字、字符或元组）的引用，就不能直接修改原始对象--相当于通过**‘值传递’**来传递对象。
+```
+使用copy.deepcopy，它可以进行深拷贝，不仅拷贝了对象，同时也拷贝了对象中的元素，获得了全新的对象，与被拷贝对象完全独立，但这需要牺牲一定的时间和空间。
+```
 
-- 如果函数收到的是一个可变对象（字典、列表）的引用，就能修改对象的原始值--相当于**‘传引用’**来传递对象。
+```python
+computer=copy.deepcopy(computer)
+```
 
-# Python里面如何拷贝一个对象
-
-1.浅拷贝 ：
-
-    使用copy.copy,它可以进行对象的浅拷贝(shallow copy),它复制了对象,但对于对象中的元素,依然使用引用（换句话说修改拷贝对象元素，则被拷贝对象元素也被修改）
-
-2.深拷贝 ：
-
-    使用copy.deepcopy，它可以进行深拷贝，不仅拷贝了对象，同时也拷贝了对象中的元素，获得了全新的对象，与被拷贝对象完全独立，但这需要牺牲一定的时间和空间。
-
-
-
-3.特殊拷贝：
+4.特殊拷贝：
 
     如要复制列表L,使用list(L),要复制一个字典d,使用dict(d),要复制一个集合s,使用set(s)。
 
    总结一下的话：如果你要复制某个对象object, 它属于python内建的类型type,那么你可以使用type(object)来 获得一个拷贝。
 
+举例：
 
-
-4 举例：
-
+```python
 import copy
 
 list = [1, 2, 3, 4, ['a', 'b']]  #原始对象
@@ -2848,8 +2814,125 @@ print 'c = ', c
 
 print 'd = ', d
 
-输出结果：
+#输出结果：
 list =  [1, 2, 3, 4, ['a', 'b', 'c'], 5]
 b =  [1, 2, 3, 4, ['a', 'b', 'c'], 5]
 c =  [1, 2, 3, 4, ['a', 'b', 'c']]
 d =  [1, 2, 3, 4, ['a', 'b']]
+```
+
+
+
+# 模块
+
+在python中一个扩展名为.py的文件就是一个模块
+一个模块中可以有函数（多个），类，语句
+
+## 自定义模块
+
+新建一个.py文件，名称尽量不要与python自带的模块相同
+
+![image-20220526140529366](python/image-20220526140529366-1654138202739.png)
+
+## 以主程序形式运行
+
+在每个模块的定义中都包括一个记录模块名称的变量__name__程序可以检查该变量，以确定他们在哪个模块中执行。如果一个模块不是被导入到其它程序中执行，那么它可能在解释器的顶级模块中执行。顶级模块的__name__量的值为__main__
+
+![image-20220526141606398](python/image-20220526141606398-1654138202739.png)
+
+即被引用的模块中可以用以上语句包裹行为，使得该行为不在引用者模块中被调用
+
+## python中的包
+
+Python中的包
+	包是一个分层次的目录结构，它将一组功能相近的模块组织在一个目录 下
+作用：
+	代码规范
+	避免模块名称冲突
+包与目录的区别
+	包含_init .py文件的目录称为包
+	目录里通常不包含_init_py文件
+
+包的导入
+import 包名.模块名
+
+## python当中的常用的内置模块
+
+![image-20220526142511309](python/image-20220526142511309-1654138202739.png)
+
+# 编码格式
+
+## 常见的字符编码格式
+
+Python的解释器使用的是Unicode(内存）
+.py文件在磁盘上使用UTF-8存储（外存）
+
+![image-20220526143201421](python/image-20220526143201421-1654138202739.png)
+
+# 文件的读写操作
+
+文件的读写俗称“IO操作”
+
+文件的读写操作流程
+
+![image-20220526143736596](python/image-20220526143736596-1654138202739.png)
+
+![image-20220526143748382](python/image-20220526143748382-1654138202739.png)
+
+## open()语法规则
+
+open()创建文件对象
+
+![image-20220526144035058](python/image-20220526144035058-1654138202739.png)
+
+## 常用的文件打开模式
+
+文本文件：存储的是普通“字符"文本，默认为unicode字符集，可以使用记本事程序打开
+二进制文件把数据内容用“字节"”进行存储，无法用记事本打开，必须使用专用的软件打开，举例：mp3音频文件，jpg图片.doc文档等
+
+![image-20220526144401674](python/image-20220526144401674-1654138202739.png)
+
+## 文件对象的常用方法
+
+![image-20220526144706581](python/image-20220526144706581-1654138202740.png)
+
+# with语句（上下文管理器）
+
+wth语句可以自动管理上下文资源，不论什么原因跳出wth块都能确保文件正确的关闭，以此来释放资源
+
+![image-20220526144908120](python/image-20220526144908120-1654138202740.png)
+
+# 目录操作
+
+	os模块是Python内置的与操作系统功能和文件系统相关的模块该模块中的语句的执行结果通常与操作系统有关，在不同的操作系统上运行，得到的结果可能不一样
+	os模块与os.path模块用于对目录或文件进行操作
+
+## os模块的常用函数
+
+```python
+import os
+os.system('notedpad.exe')
+#直接调用可执行文件
+os.startfile('可执行文件的位置')
+```
+
+![image-20220526145855721](python/image-20220526145855721-1654138202740.png)
+
+## os.path模块操作目录相关函数
+
+![image-20220526150528069](python/image-20220526150528069-1654138202740.png)
+
+
+
+# 附加
+
+## 断言
+
+```python
+#     Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常
+assert k > 1
+```
+
+## Python __call__()方法（详解版）
+
+http://c.biancheng.net/view/2380.html

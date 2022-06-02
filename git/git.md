@@ -26,7 +26,7 @@ https://www.cnblogs.com/hdlan/p/14395189.html
 
 ```shell
 设置开发者的用户名
-	git config --global user.name nicolas
+	git config --global user.name codeofli
 设置开发者邮箱
 	git config --global user.email 1162314270@qq.com
 取得全部的全局信息
