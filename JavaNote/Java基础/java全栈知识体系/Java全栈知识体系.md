@@ -1,3 +1,5 @@
+# Java 基础 - 知识点
+
 著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/java/basic/java-basic-lan-basic.html
 
 ## 运算
@@ -1367,6 +1369,121 @@ public InitialOrderTest() {
 - 父类(构造函数)
 - 子类(实例变量、普通语句块)
 - 子类(构造函数)
+
+著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/java/basic/java-basic-lan-basic.html
+
+## 反射
+
+每个类都有一个  **Class**  对象，包含了与类有关的信息。当编译一个新类时，会产生一个同名的 .class 文件，该文件内容保存着 Class 对象。
+
+类加载相当于 Class 对象的加载。类在第一次使用时才动态加载到 JVM 中，可以使用 `Class.forName("com.mysql.jdbc.Driver")` 这种方式来控制类的加载，该方法会返回一个 Class 对象。
+
+反射可以提供运行时的类信息，并且这个类可以在运行时才加载进来，甚至在编译时期该类的 .class 不存在也可以加载进来。
+
+Class 和 java.lang.reflect 一起对反射提供了支持，java.lang.reflect 类库主要包含了以下三个类:
+
+- **Field** : 可以使用 get() 和 set() 方法读取和修改 Field 对象关联的字段；
+- **Method** : 可以使用 invoke() 方法调用与 Method 对象关联的方法；
+- **Constructor** : 可以用 Constructor 创建新的对象。
+
+**Advantages of Using Reflection:**
+
+- **Extensibility Features**  : An application may make use of external, user-defined classes by creating instances of extensibility objects using their fully-qualified names.
+- **Class Browsers and Visual Development Environments**  :  A class browser needs to be able to enumerate the members of classes. Visual development environments can benefit from making use of type information available in reflection to aid the developer in writing correct code.
+- **Debuggers and Test Tools**  : Debuggers need to be able to examine private members on classes. Test harnesses can make use of reflection to systematically call a discoverable set APIs defined on a class, to insure a high level of code coverage in a test suite.
+
+**Drawbacks of Reflection:**
+
+Reflection is powerful, but should not be used indiscriminately. If it is possible to perform an operation without using reflection, then it is preferable to avoid using it. The following concerns should be kept in mind when accessing code via reflection.
+
+- **Performance Overhead**  : Because reflection involves types that are dynamically resolved, certain Java virtual machine optimizations can not be performed. Consequently, reflective operations have slower performance than their non-reflective counterparts, and should be avoided in sections of code which are called frequently in performance-sensitive applications.
+- **Security Restrictions**  : Reflection requires a runtime permission which may not be present when running under a security manager. This is in an important consideration for code which has to run in a restricted security context, such as in an Applet.
+- **Exposure of Internals**  :Since reflection allows code to perform operations that would be illegal in non-reflective code, such as accessing private fields and methods, the use of reflection can result in unexpected side-effects, which may render code dysfunctional and may destroy portability. Reflective code breaks abstractions and therefore may change behavior with upgrades of the platform.
+
+相关文章：[Java 基础 - 反射机制详解]()
+
+##  异常
+
+Throwable 可以用来表示任何可以作为异常抛出的类，分为两种:  **Error**  和 **Exception**。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种:
+
+- **受检异常** : 需要用 try...catch... 语句捕获并进行处理，并且可以从异常中恢复；
+- **非受检异常** : 是程序运行时错误，例如除 0 会引发 Arithmetic Exception，此时程序崩溃并且无法恢复。
+
+![img](https://pdai-1257820000.cos.ap-beijing.myqcloud.com/pdai.tech/public/_images/pics/PPjwP.png)
+
+相关文章：[Java 基础 - 异常机制详解]()
+
+##  泛型
+
+```java
+public class Box<T> {
+    // T stands for "Type"
+    private T t;
+    public void set(T t) { this.t = t; }
+    public T get() { return t; }
+} 
+```
+
+相关文章：[Java 基础 - 泛型机制详解]()
+
+##  注解
+
+Java 注解是附加在代码中的一些元信息，用于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。注解不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用。
+
+相关文章：[Java 基础 - 注解机制详解]()
+
+##  特性
+
+###  Java 各版本的新特性
+
+**New highlights in Java SE 8**
+
+1. Lambda Expressions
+2. Pipelines and Streams
+3. Date and Time API
+4. Default Methods
+5. Type Annotations
+6. Nashhorn JavaScript Engine
+7. Concurrent Accumulators
+8. Parallel operations
+9. PermGen Error Removed
+
+**New highlights in Java SE 7**
+
+1. Strings in Switch Statement
+2. Type Inference for Generic Instance Creation
+3. Multiple Exception Handling
+4. Support for Dynamic Languages
+5. Try with Resources
+6. Java nio Package
+7. Binary Literals, Underscore in literals
+8. Diamond Syntax
+
+- [Difference between Java 1.8 and Java 1.7?  (opens new window)](http://www.selfgrowth.com/articles/difference-between-java-18-and-java-17)
+- [Java 8 特性  (opens new window)](http://www.importnew.com/19345.html)
+
+###  Java 与 C++ 的区别
+
+- Java 是纯粹的面向对象语言，所有的对象都继承自 java.lang.Object，C++ 为了兼容 C 即支持面向对象也支持面向过程。
+- Java 通过虚拟机从而实现跨平台特性，但是 C++ 依赖于特定的平台。
+- Java 没有指针，它的引用可以理解为安全指针，而 C++ 具有和 C 一样的指针。
+- Java 支持自动垃圾回收，而 C++ 需要手动回收。
+- Java 不支持多重继承，只能通过实现多个接口来达到相同目的，而 C++ 支持多重继承。
+- Java 不支持操作符重载，虽然可以对两个 String 对象支持加法运算，但是这是语言内置支持的操作，不属于操作符重载，而 C++ 可以。
+- Java 的 goto 是保留字，但是不可用，C++ 可以使用 goto。
+- Java 不支持条件编译，C++ 通过 #ifdef #ifndef 等预处理命令从而实现条件编译。
+
+[What are the main differences between Java and C++?  (opens new window)](http://cs-fundamentals.com/tech-interview/java/differences-between-java-and-cpp.php)
+
+###  JRE or JDK
+
+- JRE is the JVM program, Java application need to run on JRE.
+- JDK is a superset of JRE, JRE + tools for developing java programs. e.g, it provides the compiler "javac"
+
+##  参考资料
+
+- Eckel B. Java 编程思想[M]. 机械工业出版社, 2002.
+- Bloch J. Effective java[M]. Addison-Wesley Professional, 2017.
 
 ## 相关链接
 

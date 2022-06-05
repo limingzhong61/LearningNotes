@@ -302,12 +302,6 @@ System.out.println(s4 == s5);  // true
 - [StackOverflow : What is String interning?  (opens new window)](https://stackoverflow.com/questions/10578984/what-is-string-interning)
 - [深入解析 String#intern  (opens new window)](https://tech.meituan.com/in_depth_understanding_string_intern.html)
 
-
-
-
-
-
-
 ## 字符串String  
 
 ### 特点  
