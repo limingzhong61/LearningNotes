@@ -163,7 +163,68 @@ System.out.println(m == n); // false
 Integer.MIN_VALUE = -Integer.MIN_VALUE
 ```
 
-著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/java/basic/java-basic-lan-basic.html
+参考链接：https://pdai.tech/md/java/basic/java-basic-lan-basic.html
+
+
+
+### 浮点数之间的等值判断
+
+**浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用equals来判断**。 说明：浮点数采用“尾数+阶码”的编码方式，类似于科学计数法的“有效数字+指数”的表示方式。二进制无法精确表示大部分的十进制小数，具体原理参考《码出高效》。 
+
+####  反例：
+
+  ```java
+float a = 1.0F - 0.9F;
+float b = 0.9F - 0.8F;
+if (a == b) {
+    // 预期进入此代码块，执行其它业务逻辑
+    // 但事实上a==b的结果为false
+}
+Float x = Float.valueOf(a);
+Float y = Float.valueOf(b);
+if (x.equals(y)) {
+    // 预期进入此代码块，执行其它业务逻辑
+    // 但事实上equals的结果为false
+} 
+  ```
+
+#### 正例：
+
+(1) 指定一个误差范围，两个浮点数的差值在此范围之内，则认为是相等的。
+
+```java
+float a = 1.0F - 0.9F;
+float b = 0.9F - 0.8F;
+float diff = 1e-6F;
+if (Math.abs(a - b) < diff) {
+    System.out.println("true");
+} 
+
+```
+
+```java
+public static boolean equals(double a, double b) {
+    float diff = 1e-6F;
+    return Math.abs(a - b) < diff;
+}
+```
+
+(2) 使用BigDecimal来定义值，再进行浮点数的运算操作。
+
+```java
+BigDecimal a = new BigDecimal("1.0");
+BigDecimal b = new BigDecimal("0.9");
+BigDecimal c = new BigDecimal("0.8");
+BigDecimal x = a.subtract(b);
+BigDecimal y = b.subtract(c);
+if (x.compareTo(y) == 0) {
+    System.out.println("true");
+}
+```
+
+来自：java开发手册
+
+
 
 ## String
 
