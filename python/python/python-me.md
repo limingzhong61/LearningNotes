@@ -1,3 +1,7 @@
+## Vscode——python环境输出中文乱码的一种解决方法
+
+https://blog.csdn.net/Williamcsj/article/details/121940871
+
 ## pip‘ 不是内部或外部命令，也不是可运行的程序或批处理文件
 
 添加环境变量:
