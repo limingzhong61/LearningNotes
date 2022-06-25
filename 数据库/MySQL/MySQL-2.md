@@ -4583,7 +4583,7 @@ LOOP循环语句用来重复执行某些语句。LOOP内的语句一直重复执
 
 LOOP语句的基本格式如下：
 
-```
+```mysql
 [loop_label:] LOOP
 	循环执行的语句
 END LOOP [loop_label]
@@ -4595,7 +4595,7 @@ END LOOP [loop_label]
 
 使用LOOP语句进行循环操作，id值小于 10 时将重复执行循环过程。
 
-```
+```mysql
 DECLARE id INT DEFAULT 0 ;
 add_loop:LOOP
     SET id = id + 1 ;
@@ -4637,7 +4637,7 @@ DELIMITER ;
 
 WHILE语句创建一个带条件判断的循环过程。WHILE在执行语句执行时，先对指定的表达式进行判断，如果为真，就执行循环内的语句，否则退出循环。WHILE语句的基本格式如下：
 
-```
+```mysql
 [while_label:] WHILE 循环条件 DO
 	循环体
 END WHILE [while_label];
@@ -4649,7 +4649,7 @@ while_label为WHILE语句的标注名称；如果循环条件结果为真，WHIL
 
 WHILE语句示例，i值小于 10 时，将重复执行循环过程，代码如下：
 
-```
+```mysql
 DELIMITER //
 
 CREATE PROCEDURE test_while()
