@@ -196,6 +196,17 @@ $\hat{a},\widehat{A}$
 
  ![img](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/20160927145319800.png) 
 
+### LaTeX 换行
+
+https://blog.csdn.net/DUTwangtaiyu/article/details/114281954
+
+#### 方法一：输入 **`\\`**
+
+![在这里插入图片描述](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/20210302115338816.png)
+
+结果即只进行单纯换行，并无缩进
+![在这里插入图片描述](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/20210302115440326.png)
+
 ## 三、矩阵和行列式
 
 ```latex
@@ -260,6 +271,8 @@ $ \lim_{x \to 0} \frac{3x^2 +7x^3}{x^2 +5x^4} = 3 $
 $$ \lim_{x \to 0} \frac{3x^2 +7x^3}{x^2 +5x^4} = 3 $$
 
 ##### 3、积分
+
+integral： 积分
 
  积分中，需要注意的是，在多重积分内 dx 和 dy 之间 使用一个斜杠加一个逗号 , 来增大稍许间距。同样，在两个积分号之间使用一个斜杠加一个感叹号 ! 来减小稍许间距。使之更美观。
 
@@ -330,3 +343,64 @@ $$ \frac{d}{dt} \int \!\!\! \int \!\!\! \int_{\textbf{R}^3} \left
 ![image-20211121212108892](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/image-20211121212108892.png)
 
 ## 
+
+## latex求和符号上下标
+
+https://blog.csdn.net/weixin_39655362/article/details/110806154
+
+一般在手写的时候通常都是用左边这种格式，也是我们一般认为的“标准格式”。而我们有时也会看到一些书上或者论文里出现右边这种格式，这种格式我们称为text style，也就是普通文本的样式。
+
+<img src="LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/9684f378f58f823f0af5a212d6ab5a09.png" alt="9684f378f58f823f0af5a212d6ab5a09.png" style="zoom:50%;" />
+
+在[latex](https://so.csdn.net/so/search?q=latex&spm=1001.2101.3001.7020)中，通常是会自动将行内公式（或者也叫内联公式）写成textstyle，这样主要是为了让公式上下更加紧凑，在文字间显示时既能保持公式大小，也不至于顶出行。而在行间公式里则默认标准格式，这种写法更加接近手写体，显得开阔、大方。
+
+<img src="LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/b984bf4380f82ef607999b4a2f44744f.png" alt="b984bf4380f82ef607999b4a2f44744f.png" style="zoom:50%;" />
+
+那不同的格式怎么打出来呢？
+
+不过要注意的是，**textstyle命令要写在运算符的前面**，**而limits命令要写在运算符的后面**。这样就可以不受行内还是行间的限制，任何时候都可以打出我们想要的上下标了
+
+### textstyle
+
+```latex
+$$\textstyle \int_a^b f(x)\,dx$$
+```
+
+
+$$
+\textstyle \int_a^b f(x)\,dx
+$$
+
+
+### 默认模式
+
+```latex
+$$\int_a^b f(x)\,dx$$
+```
+
+
+$$
+\int_a^b f(x)\,dx
+$$
+
+
+### limits
+
+$$
+\int\limits_a^b f(x)dx
+$$
+
+但是注意，这种打法只对**运算符**有效，字母的上下标样式是不能这样改的
+
+正确的做法是**使用overset和underset**
+
+![bb4810deca4ac4390bb90a465993e631.gif](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/bb4810deca4ac4390bb90a465993e631.gif)
+
+用这两个命令其实也可以编辑运算符的上下标位置，但这就完全没有必要了。关于符号摆放位置我们在后续的教程里再单独讲一讲
+
+![289ba1b92a778823f6b5f2fd4cbf89e0.gif](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/289ba1b92a778823f6b5f2fd4cbf89e0.gif)
+
+
+
+
+
