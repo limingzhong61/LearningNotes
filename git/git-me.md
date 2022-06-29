@@ -138,3 +138,17 @@ git config --get core.ignorecase
 git config core.ignorecase false 
 ```
 原文链接：https://blog.csdn.net/WaiteZQ/article/details/124339556
+
+## git 解决远程仓库文件大小写问题
+
+git默认配置不区分大小写
+
+所以执行：
+
+```bash
+git config core.ignorecase false
+```
+
+关闭git忽略大小写配置，即可检测到大小写名称更改
+
+https://www.jianshu.com/p/420d38913578?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
