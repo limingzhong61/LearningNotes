@@ -137,18 +137,48 @@ git config --get core.ignorecase
 ```
 git config core.ignorecase false 
 ```
-原文链接：https://blog.csdn.net/WaiteZQ/article/details/124339556
+##### 解决方案如下：
 
-## git 解决远程仓库文件大小写问题
+1. 用`git`执行下列命令：
 
-git默认配置不区分大小写
-
-所以执行：
-
-```bash
-git config core.ignorecase false
+```ruby
+$ git config core.ignorecase false
 ```
 
-关闭git忽略大小写配置，即可检测到大小写名称更改
+解释：设置本地`git`环境识别大小写
 
-https://www.jianshu.com/p/420d38913578?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation
+1. 修改文件夹名称，全部改为小写（F2重命名修改即可），然后`push`到远程仓库。
+    这时如我前面的图片所示，仓库上就会有重名的文件(文件夹)了。
+2. 删除多余的文件，我这里就是把`Footer`,`Header`,`Menu`等给删掉。
+    a).  执行命令，删除远程文件（删除文件夹里面的文件，文件夹也会消失）
+
+```ruby
+# 删除Header文件夹下的所有文件
+$ git rm --cached src/components/Header -r
+# 删除Footer文件夹下的所有文件
+$ git rm --cached src/components/Footer -r
+# 删除Menu文件夹下的所有文件
+$ git rm --cached src/components/Menu -r
+```
+
+如果显示如下，说明操作成功：
+
+```bash
+rm 'src/components/Menu/Header.js'
+rm 'src/components/Menu/Header.less'
+...
+```
+
+b). 同步，提交到远程仓库
+
+```ruby
+# 添加在缓存
+$ git add .
+# 提交到本地
+$ git commit -m'rm files'
+# 提交到远程仓库 origin
+& git push origin master
+```
+
+
+链接：https://www.jianshu.com/p/420d38913578
