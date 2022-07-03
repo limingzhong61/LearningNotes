@@ -2995,7 +2995,61 @@ os.startfile('可执行文件的位置')
 
 
 
+# 魔法方法
 
+### 什么是Python魔法方法
+
+    魔法方法是在Python的类中被双下划线前后包围的方法，如常见的 ：`init、new、__del__`等。这些方法在类或对象进行特定的操作时会自动被调用，我们可以使用或重写这些魔法方法，给自定义的类添加各种特殊的功能来满足自己的需求。
+
+几乎每个魔法方法是python的内置方法。方法都有对应的内置函数，或者运算符，对这个对象使用这些函数或者运算符时就会调用类中的对应魔法方法，可以理解为重写这些python的内置函数
+
+### 常用的魔法方法
+
+#### init
+
+    最为常见并熟知的魔法方法就是__init__()方法，可以用此方法来定义一个对象的初始化操作。例如：
+
+```python
+class MyClass:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+```
+
+#### new
+
+    init()方法很容易被认为是在实例化对象时调用的第一个方法，其实不是，当我们实例化一个对象的时候，例如class1=MyClass(1, 2)，第一个被调用的是__new__()方法，而后再调用__init__()方法，并把一些参数传给__init__()方法，new()方法才是真正地创建了实例化对象，init()方法只是给这个对象进行了初始化操作。
+
+```python
+class MyClass:
+    def __init__(self, a, b):
+        print("__init__()方法被调用")
+        self.a = a
+        self.b = b
+
+    def __new__(cls, *args, **kwargs):
+        print("__new__()方法被调用")
+        print("args：", args)
+        c = super().__new__(cls)
+        return c
+
+
+class1 = MyClass(1, 2)
+复制代码
+```
+
+执行结果如下：  
+
+![在这里插入图片描述](python/8c18642276f14118a786c5679b526c61.png)    
+
+    需要注意的是： new()方法第一个参数必须是cls参数，表示当前类，必须返回一个实例化对象，没有什么特别的需求，最好不用重写此方法。
+
+
+
+
+参考链接：https://blog.csdn.net/m0_61655732/article/details/120647338
+
+参考链接 https://blog.csdn.net/qq_38520096/article/details/79237593
 
 # 附加
 

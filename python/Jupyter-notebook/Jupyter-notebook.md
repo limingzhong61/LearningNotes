@@ -8,13 +8,11 @@
 
 能够编写、运行python文件的程序很多，比如python安装自带的IDLE、程序员喜爱的pycharm、数据科学全家桶Anaconda，还有Spyder、Thonny等。
 
-而我，独爱jupyter notebook。
-
 Jupyter notebook是用python进行数据科学、机器学习的必备工具。
 
 突出优点：
 
-- 学习Jupyter notebook非常容易，按照我的视频教程一步步做，再自己尝试一下，之后写代码即可健步如飞。
+- 学习Jupyter notebook非常容易。
 
 - 能够独立运行一个、几个或全部python代码块，更容易看到中间变量的值，从而进行调试
 - 可以插入Markdown说明文字和Latex数学公式，让枯燥的代码充满颜值，可读性爆表
@@ -82,7 +80,7 @@ jupyter notebook
 
 # 用Jupyter notebook写python代码
 
-## 写下并运行第一行python代码
+## 写下并运行python代码
 
 点击左上角`Untitled`给新建的python文档文件重新命名。
 
@@ -115,11 +113,6 @@ Jupyter notebook中，有两种单元格：代码单元格和Markdown单元格�
 
 > Markdown是程序员通用的撰写文档的语法，可以轻松实现标题、引用、链接、图片等，非常简洁易学，Github代码托管网站、有道云笔记、简书、知乎、CSDN论坛、电子邮件等都支持Markdown语法。
 >
-> 学习Markdown，推荐我制作的博客和视频教程：
->
-> [二十分钟精通排版神器Markdown，从此word和秀米是路人](<https://www.jianshu.com/p/4475b9d8810f>)<br>
->
-> [Bilibili视频：二十分钟精通排版神器Markdown](<https://www.bilibili.com/video/av35579542>)<br>
 
 编辑Markdown单元格，输入以下内容：
 
@@ -141,7 +134,7 @@ Jupyter notebook中，有两种单元格：代码单元格和Markdown单元格�
 
 
 
-# 抛弃鼠标，只用键盘
+# Jupyter notebook快捷键
 
 下面介绍Jupyter notebook快捷键，掌握这些快捷键之后，你将彻底解放你拿鼠标的那只手，更专注、高效地敲代码了。
 
@@ -190,6 +183,8 @@ h 查看所有快捷键
 ![编辑模式快捷键](Jupyter-notebook/13714448-62d750fe7af8823e.png)
 
 ## 在Markdown单元格中输入数学公式
+
+**主要就是latex的语法，详见latex笔记**
 
 分别在两个Markdown单元格内输入以下内容：
 
