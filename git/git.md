@@ -308,6 +308,25 @@ git push origin master
 
 - `-f, --force `:  force updates,**请谨慎使用，会强制将远程仓库内容更新为本地。**
 
+### 设置git push和pull的默认分支
+
+设置git push和git pull的默认分支：
+
+```
+git branch --set-upstream-to=origin/<远程分支> <本地分支>
+```
+
+
+		更为简洁的方式是在push时，使用-u参数
+
+更为简洁的方式是在push时，使用-u参数
+
+```
+git push -u origin <远程分支>
+```
+
+-u参数会在push的同时会指定当前分支的默认上游分支；
+
 ### 查看某个远程仓库
 
 使用 `git remote show [remote-name]` 命令

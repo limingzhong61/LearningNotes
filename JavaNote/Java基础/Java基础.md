@@ -689,7 +689,79 @@ split(String regex, int limit)：部分拆分
 
 `(正则)`：**将多个正则作为一组**，可以为这一组单独设置次数注解  
 
+### 贪婪模式与非贪婪模式
 
+**正则表达式默认的匹配是贪婪模式**，即总是**尽可能匹配更多的字符串。**
+在**正则表达式的后面加 ?则会使用非贪婪模式匹配**，即总是尽可能少的匹配。
+直接上个例子，
+
+```java
+String str="abcaxc";
+Patter p="ab.*c";
+```
+
+
+如果是贪婪模式，上面使用模式p匹配字符串str，结果就是匹配到：abcaxc，匹配到了所有的字符串。
+
+如果是非贪婪模式，上面使用模式p匹配字符串str，结果就是匹配到：abc，只匹配到了部分的字符串。
+
+编程中怎样区分这两种模式？
+
+默认情况下，正则用的都是贪婪模式，**如果要使用非贪婪模式，需要在量词后面直接加上一个问号"?"，**量词包括如下，
+
+(1) {m,n}：m到n个。
+
+(2) *：任意多个。
+
+(3) +：一个到多个。
+
+(4) ?：0或一个。
+
+再上个程序，用贪婪和非贪婪模式找到content中的内容，
+
+```java
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class RegularTest {
+  public static void main(String[] arg) {
+    String text = "(content:\"hello root\";hello:\"word\";)";
+    String rule1 = "content:\".+\"";  // 贪婪模式
+    String rule2 = "content:\".+?\""; // 非贪婪模式
+
+
+    System.out.println("文本：" + text);
+    System.out.println("贪婪模式：" + rule1);
+    Pattern p1 = Pattern.compile(rule1);
+    Matcher m1 = p1.matcher(text);
+    while (m1.find()) {
+      System.out.println("匹配结果：" + m1.group(0));
+    }
+
+ 
+
+    System.out.println("非贪婪模式：" + rule2);
+    Pattern p2 = Pattern.compile(rule2);
+    Matcher m2 = p2.matcher(text);
+    while (m2.find()) {
+      System.out.println("匹配结果：" + m2.group(0));
+    }
+
+  }
+}
+```
+
+如果是贪婪模式，返回两个字符串，而非贪婪模式，则只返回第一个，
+
+文本：(content:"hello root";hello:"word";)
+贪婪模式：content:".+"
+匹配结果：content:"hello root";hello:"word"
+非贪婪模式：content:".+?"
+匹配结果：content:"hello root"
+针对不同场景，我们就可以选择合适的模式。
+
+原文链接：https://blog.csdn.net/bisal/article/details/120714677
 
 
 

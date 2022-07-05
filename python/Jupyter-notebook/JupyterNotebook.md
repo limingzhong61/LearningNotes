@@ -4,7 +4,7 @@
 
 # 为什么学Jupyter notebook？
 
-<img src="Jupyter-notebook/13714448-24964dfe5bf967db.png" alt="jupyter notebook" style="zoom: 25%;" />
+<img src="JupyterNotebook/13714448-24964dfe5bf967db.png" alt="jupyter notebook" style="zoom: 25%;" />
 
 能够编写、运行python文件的程序很多，比如python安装自带的IDLE、程序员喜爱的pycharm、数据科学全家桶Anaconda，还有Spyder、Thonny等。
 
@@ -22,7 +22,7 @@ Jupyter notebook是用python进行数据科学、机器学习的必备工具。
 
 比如下图，包含了Markdown说明文档、代码块、代码运行结果、图片嵌入等元素，特别适合Python数据科学和机器学习撰写文档。
 
-![jupyter notebook代码分块运行、嵌入Markdown文档和图片](Jupyter-notebook/13714448-2443a11c336e5dcb.png)
+![jupyter notebook代码分块运行、嵌入Markdown文档和图片](JupyterNotebook/13714448-2443a11c336e5dcb.png)
 
 吴恩达的《深度学习》慕课的课后编程作业、大数据竞赛网站Kaggle上的代码文档、美国大学的数据科学课程的课后资料及编程作业，都是以jupyter notebook文件的形式给出的，也就是`.ipynb`文件。
 
@@ -42,7 +42,7 @@ Jupyter notebook是基于Ipython内核的，在浏览器中以网页形式运行
 >
 > Spyder和Jupyter notebook都是以Ipython为内核的。
 
-![ipython](Jupyter-notebook/13714448-a2490a2882107148.png)
+![ipython](JupyterNotebook/13714448-a2490a2882107148.png)
 
 ## 安装Jupyter notebook
 
@@ -62,7 +62,7 @@ pip install jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple
 jupyter notebook
 ```
 
-![jupyter notebook打开界面](Jupyter-notebook/13714448-803f32720cf0278e.png)
+![jupyter notebook打开界面](JupyterNotebook/13714448-803f32720cf0278e.png)
 
 点击右边的New-Python3即可创建python文档。
 
@@ -74,7 +74,7 @@ jupyter notebook
 
 勾选文件夹，点击rename即可重命名
 
-![勾选文件夹，点击rename重命名](Jupyter-notebook/13714448-8919418efb809f54.png)
+![勾选文件夹，点击rename重命名](JupyterNotebook/13714448-8919418efb809f54.png)
 
 最常用的是点击右边的New-Python3，创建python文档。
 
@@ -84,13 +84,13 @@ jupyter notebook
 
 点击左上角`Untitled`给新建的python文档文件重新命名。
 
-![重命名](Jupyter-notebook/13714448-13476809ac9b10e3.png)
+![重命名](JupyterNotebook/13714448-13476809ac9b10e3.png)
 
 在代码框中输入第一行python代码，shift+回车运行
 
-![输入第一行python代码](Jupyter-notebook/13714448-540050c6c6fd06ba.png)
+![输入第一行python代码](JupyterNotebook/13714448-540050c6c6fd06ba.png)
 
-![运行第一行python代码](Jupyter-notebook/13714448-6be52bc326129244.png)
+![运行第一行python代码](JupyterNotebook/13714448-6be52bc326129244.png)
 
 
 
@@ -126,11 +126,11 @@ Jupyter notebook中，有两种单元格：代码单元格和Markdown单元格�
 ![我是图片](https://i1.hdslb.com/bfs/face/c59e147cd3b1f6a7bb88690933499354a024b280.jpg@68w_68h.webp)
 ```
 
-![编辑Markdown单元格](Jupyter-notebook/13714448-7bf02cfeab7ecf42.png)
+![编辑Markdown单元格](JupyterNotebook/13714448-7bf02cfeab7ecf42.png)
 
 然后按`shift`+`Enter`运行该单元格。
 
-![Markdown渲染效果](Jupyter-notebook/13714448-6ff0bf8ba88c6b6c.png)
+![Markdown渲染效果](JupyterNotebook/13714448-6ff0bf8ba88c6b6c.png)
 
 
 
@@ -178,9 +178,9 @@ l 显示代码行号
 
 h 查看所有快捷键
 
-![命令模式快捷键](Jupyter-notebook/13714448-b9df2500cb80d59c.png)
+![命令模式快捷键](JupyterNotebook/13714448-b9df2500cb80d59c.png)
 
-![编辑模式快捷键](Jupyter-notebook/13714448-62d750fe7af8823e.png)
+![编辑模式快捷键](JupyterNotebook/13714448-62d750fe7af8823e.png)
 
 ## 在Markdown单元格中输入数学公式
 
@@ -198,21 +198,52 @@ $$x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
 初中数学内容
 ```
 
-![在Markdown单元格中输入Latex公式](Jupyter-notebook/13714448-0bbb7722aef50550.png)
+![在Markdown单元格中输入Latex公式](JupyterNotebook/13714448-0bbb7722aef50550.png)
 
 按`shift`+`Enter`渲染运行：
 
-![渲染之后的Latex数学公式](Jupyter-notebook/13714448-7fa655030c9da5ec.png)
+![渲染之后的Latex数学公式](JupyterNotebook/13714448-7fa655030c9da5ec.png)
 
-# 数据分析与可视化实战案例：学习时间与成绩的关系（线性回归）
+# 在jupyter notebook中显示目录
+
+
+
+1. 首先，安装插件。
+
+```
+pip install jupyter_contrib_nbextensions
+```
+
+2. 然后，配置nbextension，运行代码：jupyter contrib nbextension install --user。
+
+```
+jupyter contrib nbextension install --user
+```
+
+3. 最后启动jupyter notebook，选择 Nbextensions，勾选 Table of Contents。
+
+   在该位置可以为目录插件进行配置
+
+<img src="JupyterNotebook/image-20220705230218272.png" alt="image-20220705230218272" style="zoom:67%;" />
+
+运行效果如下
+
+![image-20220705230639081](JupyterNotebook/image-20220705230639081.png)
+
+![image-20220705230614075](JupyterNotebook/image-20220705230614075.png)
+
+
+# Other
+
+## 数据分析与可视化实战案例：学习时间与成绩的关系（线性回归）
 
 先用excel把玩数据
 
-![excel中的线性回归](Jupyter-notebook/13714448-8aeb063599a395b6.png)
+![excel中的线性回归](JupyterNotebook/13714448-8aeb063599a395b6.png)
 
 观察数据、导入数据、划分特征和标签、划分训练集和测试集、构建模型，模型可视化
 
-# 用Jupyter notebook制作ppt并在线分享
+## 用Jupyter notebook制作ppt并在线分享
 
 
 
