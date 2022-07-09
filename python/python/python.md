@@ -1,9 +1,7 @@
----
 title: python
 date: 2019-11-22 21:14:50
 categories: python 
- 
----
+
 [TOC]
 
 # 关于pyhton
@@ -277,6 +275,14 @@ from 库 import *
 
 ```python
 print({}.format()) {}表示槽，后续format()填入
+```
+
+例子：
+
+```python
+print("epoch:{},loss:{}".format(epoch,epoch_one_loss))
+#out:
+#epoch:999,loss:0.6657099835021155
 ```
 
 
@@ -2966,7 +2972,13 @@ os.system('notedpad.exe')
 os.startfile('可执行文件的位置')
 ```
 
-![image-20220526145855721](python/image-20220526145855721-1654138202740.png)
+| 函数                               | 说明                           |
+| ---------------------------------- | ------------------------------ |
+| getcwd()                           | 返回当前的工作目录             |
+| listdir (path)                     | 返回指定路径下的文件和目录信息 |
+| mkdir (path[, mode])               | 创建目录                       |
+| makedirs (path1/path2... [, mode]) | 创建多级目录                   |
+| chdir (path)                       | 将path设置为当前工作目录       |
 
 ## os.path模块操作目录相关函数
 
