@@ -137,6 +137,111 @@ The Series and the DataFrame are intimately related. It's helpful to think of a 
 
 ##  Reading data files
 
+常用函数
+
+| function                |                                       |
+| ----------------------- | ------------------------------------- |
+| train_df.columns.values | 查看df数据全部列名                    |
+| df.head()               | Print the first five rows of the data |
+| df.tail()               | Print the last five rows of the data  |
+| train_df.info()         | 查看df列名，dtype,等信息              |
+| train_df.describe()     | 整个数据集的相关统计信息              |
+|                         |                                       |
+
+### train_df.columns.values
+
+```python
+print(train_df.columns.values)
+```
+
+out:
+
+```
+['PassengerId' 'Survived' 'Pclass' 'Name' 'Sex' 'Age' 'SibSp' 'Parch'
+ 'Ticket' 'Fare' 'Cabin' 'Embarked']
+```
+
+### 查看数据帧的前5行和后五行
+
+（默认情况下）
+
+```python
+#前五行
+df.head()
+#后五行
+# Print the last five rows of the data
+df.tail()
+```
+
+### train_df.info()
+
+```python
+train_df.info()
+print('_'*40)
+```
+
+```
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+ #   Column       Non-Null Count  Dtype  
+---  ------       --------------  -----  
+ 0   PassengerId  891 non-null    int64  
+ 1   Survived     891 non-null    int64  
+ 2   Pclass       891 non-null    int64  
+ 3   Name         891 non-null    object 
+ 4   Sex          891 non-null    object 
+ 5   Age          714 non-null    float64
+ 6   SibSp        891 non-null    int64  
+ 7   Parch        891 non-null    int64  
+ 8   Ticket       891 non-null    object 
+ 9   Fare         891 non-null    float64
+ 10  Cabin        204 non-null    object 
+ 11  Embarked     889 non-null    object 
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.7+ KB
+________________________________________
+```
+
+### train_df.describe()
+
+```
+train_df.describe()
+```
+
+|       | PassengerId |   Survived |     Pclass |        Age |      SibSp |      Parch |       Fare |
+| ----: | ----------: | ---------: | ---------: | ---------: | ---------: | ---------: | ---------: |
+| count |  891.000000 | 891.000000 | 891.000000 | 714.000000 | 891.000000 | 891.000000 | 891.000000 |
+|  mean |  446.000000 |   0.383838 |   2.308642 |  29.699118 |   0.523008 |   0.381594 |  32.204208 |
+|   std |  257.353842 |   0.486592 |   0.836071 |  14.526497 |   1.102743 |   0.806057 |  49.693429 |
+|   min |    1.000000 |   0.000000 |   1.000000 |   0.420000 |   0.000000 |   0.000000 |   0.000000 |
+|   25% |  223.500000 |   0.000000 |   2.000000 |  20.125000 |   0.000000 |   0.000000 |   7.910400 |
+|   50% |  446.000000 |   0.000000 |   3.000000 |  28.000000 |   0.000000 |   0.000000 |  14.454200 |
+|   75% |  668.500000 |   1.000000 |   3.000000 |  38.000000 |   1.000000 |   0.000000 |  31.000000 |
+|   max |  891.000000 |   1.000000 |   3.000000 |  80.000000 |   8.000000 |   6.000000 | 512.329200 |
+
+
+
+### 指定行index加载文件
+
+
+```python
+## Path of the file to read
+flight_filepath = "./input_data/flight_delays.csv"
+
+## Read the file into a variable flight_data
+flight_data = pd.read_csv(flight_filepath, index_col="Month")
+```
+
+You may notice that the code is slightly shorter than what we used in the previous tutorial. In this case, since the row labels (from the `'Month'` column) don't correspond to dates, we don't add `parse_dates=True` in the parentheses. But, we keep the first two pieces of text as before, to provide both:
+
+- the filepath for the dataset (in this case, `flight_filepath`), and
+- the name of the column that will be used to index the rows (in this case, `index_col="Month"`).
+
+
+
+
+
 Being able to create a DataFrame or Series by hand is handy. But, most of the time, we won't actually be creating our own data by hand. Instead, we'll be working with data that already exists.
 
 Data can be stored in any of a number of different forms and formats. By far the most basic of these is the humble CSV file. When you open a CSV file you get something that looks like this:
@@ -173,6 +278,8 @@ Out[8]:
 ```
 
 So our new DataFrame has 130,000 records split across 14 different columns. That's almost 2 million entries!
+
+
 
 We can examine the contents of the resultant DataFrame using the `head()` command, which grabs the first five rows:
 
@@ -235,9 +342,7 @@ pd.set_option('max_rows', 5)
 
 **To start the exercise for this topic, please click [here](https://www.kaggle.com/kernels/fork/587910).**
 
-## Native accessors
-
-**获取列数据**
+## Native accessors-获取列数据
 
 Native Python objects provide good ways of indexing data. Pandas carries all of these over, which helps make it easy to start with.
 
@@ -352,8 +457,10 @@ This means that it's marginally easier to retrieve rows, and marginally harder t
 
 In [7]:
 
-```
+```python
 reviews.iloc[:, 0]
+# 是可以基于index-name和col-name的
+museum_data.loc['2018-07-01','Chinese American Museum'] 
 ```
 
 Out[7]:
@@ -741,7 +848,33 @@ Out[2]:
 
 ## Summary functions
 
-常见函数
+### 常见函数
+
+下面只是简单总结常见函数，具体使用详见笔记下面总结或自行百度
+
+| function                                  |                                                |
+| ----------------------------------------- | ---------------------------------------------- |
+| (reviews.points / reviews.price).idxmax() | Pandas `Series.idxmax()`函数返回最大值的行标签 |
+| [rows].idmin()                            | Pandas `Series.idxmax()`函数返回最小值的行标签 |
+| reviews.points.describe()                 | restructure the data in some useful way        |
+| `cancer_data['xx'][:5].max()`             | 一组数据中的最大值                             |
+| xx.count()                                | count=unique,统计不同值的个数                  |
+
+### 使用技巧
+
+统计函数是对**一组数据进行统计**
+
+下面代码对一列前五行进行统计
+
+```python
+#In the first five rows of the data, what is the
+# largest value for 'Perimeter (mean)'?
+cancer_data['Perimeter (mean)'][:5].max()
+```
+
+
+
+#### idxmax()-idmin()
 
 ```
 bargain_idx = (reviews.points / reviews.price).idxmax()
@@ -749,7 +882,17 @@ bargain_idx = (reviews.points / reviews.price).idxmax()
 
 Pandas `Series.idxmax()`函数返回最大值的行标签。如果多个值等于最大值，则返回具有该值的第一行标签。
 
+```python
+# Fill in the line below: On the Playstation Vita platform, which genre has the 
+# lowest average score? Please provide the name of the column, and put your answer 
+# in single quotes (e.g., 'Action', 'Adventure', 'Fighting', etc.)
+worst_genre = ign_data.loc["PlayStation Vita"].idxmin()
+print(worst_genre)
+```
 
+
+
+### describe()
 
 Pandas provides many simple "summary functions" (not an official name) which restructure the data in some useful way. For example, consider the `describe()` method:
 

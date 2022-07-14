@@ -232,6 +232,61 @@ jupyter contrib nbextension install --user
 
 ![image-20220705230614075](JupyterNotebook/image-20220705230614075.png)
 
+# Markdown和JupyterNotebook的相互转换
+
+把Markdown转成JupyterNotebook，一般情况下很少用到。
+李沐还专门改写了一个对中文支持更好的版本notedown，
+
+https://github.com/mli/notedown
+
+这个版本的原版本是
+
+https://github.com/aaren/notedown
+
+下面简单介绍一下使用方法（假设你已经安装好了JupyterNotebook)。
+
+ 用Jupyter记事本读写GitHub源文件
+根据http://zh.gluon.ai/chapter_appendix/jupyter.html描述，下面安装notedown插件，运行Jupyter记事本并加载插件。
+```
+pip install https://github.com/mli/notedown/tarball/master
+jupyter notebook --NotebookApp.contents_manager_class='notedown.NotedownContentsManager'
+```
+如果想每次运行Jupyter记事本时默认开启notedown插件，可以参考下面的步骤。
+
+首先，执行下面的命令生成Jupyter记事本配置文件（如果已经生成，可以跳过）：
+
+jupyter notebook --generate-config
+然后，将下面这一行加入到Jupyter记事本配置文件（一般在用户主目录下的隐藏文件夹.jupyter中的jupyter_notebook_config.py）的末尾：
+
+c.NotebookApp.contents_manager_class = 'notedown.NotedownContentsManager'
+之后，只需要运行jupyter notebook命令即可默认开启notedown插件。
+
+ 
+
+用notedown把markdown转换成JupyterNotebook
+在命令窗口下，输入以下简单命令即可，
+```
+notedown input.md > output.ipynb
+```
+
+用notedown把JupyterNotebook转成markdown
+当然，把Jupyter转成markdown也很简单，参考github上aaren的说明原文贴在下面
+
+```
+Convert a notebook into markdown, stripping all outputs:
+
+notedown input.ipynb --to markdown --strip > output.md
+Convert a notebook into markdown, with output JSON intact:
+
+notedown input.ipynb --to markdown > output_with_outputs.md
+Strip the output cells from markdown:
+
+notedown with_output_cells.md --to markdown --strip > no_output_cells.md
+```
+
+相关链接：https://blog.csdn.net/tanmx219/article/details/107052515
+
+
 
 # Other
 

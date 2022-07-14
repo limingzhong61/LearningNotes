@@ -17,6 +17,58 @@ pip 21.2.3 from C:\Users\Lenovo\AppData\Local\Programs\Python\Python39\lib\site-
 
 # 使用
 
+# python获取当前时间
+
+**python 如何获取当前系统的时间**
+
+**1、导入包**
+
+```
+import datetime
+```
+
+
+
+**2、获取当前的时间**
+
+```
+curr_time = datetime.datetime.now()　　# 2019-07-06 14:55:56.873893 <class 'datetime.datetime'>
+curr_time.year　　# 2019 <class 'int'>
+curr_time.month　　# 7 <class 'int'>
+curr_time.day　　# 6 <class 'int'>
+curr_time.hour　　# 14 <class 'int'>
+curr_time.minute　　# 55 <class 'int'>
+curr_time.second　　# 56 <class 'int'>
+curr_time.date()　　# 2019-07-06 <class 'datetime.date'>
+```
+
+
+
+**3、格式化**
+
+通过datetime.datetime.now()，我们获取到的时间格式为：2019-07-06 14:55:56.873893，类型：<class 'datetime.datetime'>
+
+我们可以使用strftime()转换成我们想要的格式。处理之后的返回的值为2019-07-06、07/06等目标形式，类型为str
+
+```
+time_str = curr_time.strftime("%Y-%m-%d")　　# 2019-07-06
+time_str = curr_time.strftime("%m/%d")　　# 07/06
+```
+
+**4、类型转换**
+
+时间一般通过：时间对象，时间字符串，时间戳表示
+
+通过[datetime](https://www.py.cn/jishu/jichu/20899.html)获取到的时间变量，类型为：datetime，那么datetime与str类型如何互相转换呢？
+
+```
+datetime-->str
+time_str = datetime.datetime.strftime(curr_time,'%Y-%m-%d %H:%M:%S')　　# 2019-07-06 15:50:12
+str-->datetime
+time_str = '2019-07-06 15:59:58'
+curr_time = datetime.datetime.strptime(time_str,'%Y-%m-%d %H:%M:%S')
+```
+
 # pycharm导入python项目
 
 选择New environment 或者 Existing environment都可以，路径选择本地配置的python.exe路径即可；

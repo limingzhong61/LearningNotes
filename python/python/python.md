@@ -103,6 +103,33 @@ if 是保留字，If 是变量
 | ==     | =        | 等于     |
 | ！ =   | ≠        | 不等于   |
 
+### 关系运算符连续使用
+
+注意：在python中**比较运算法是可以连续多次的**
+
+这样在c语言中会得到错误的结果，在java中是不符合语法规范的。
+
+如：
+
+```python
+a = -2
+print(-100 <= a <= -1)
+# True
+```
+
+```c
+#include <stdio.h>
+
+int main(){
+    int a = -2;
+    printf("%d",-100 <= a <= -1);
+    // 0
+    return 0;
+}
+```
+
+
+
 ```python
 if <condition>: <statement>
 ```
@@ -664,7 +691,7 @@ z = 1.23e-4+5.6e+89j
 | float(x)          | 将x变成浮点数，增加小数部分 float(12) 结果为12.0； float("1.23") 结果为1.23 |
 | complex(x)        | 将x变成复数，增加虚数部分 complex(4) 结果为 4 + 0j           |
 
-## 字符串
+# 字符串
 
 **由0个或多个字符组成的有序字符序列**
 -字符串是字符的有序序列，可以对其中的字符进行索引
@@ -753,6 +780,47 @@ z = 1.23e-4+5.6e+89j
 | n *x 或x *n  | 复制n次字符串x                          |
 | x in s       | 如果x是s的子串，返回True，否则返回False |
 
+### 字符串的比较操作
+
+​    运算符：`>,>=,<,<=,==,!=`
+
+**比较规则**:首先比较两个字符串中的第- -个字符，如果相等则继续比较下一个字符，依次比较下去，直到两个字符串中的字符不相等时，其比较结果就是两个字符串的比较结果，两个字符串中的所有后续字符将不再被比较
+
+**比较原理**:两字符进行比较时，比较的是其ordinal value(原始值),调用内置函数ord可以得到指定字符的ordinal value（ASCII码）。与内置函数ord对应的是内置函数chr,调用内置函数chr时指定ordinal value可以得到其对应的字符
+
+**== 与 is 的区别**：
+		== 比较的是value
+		is 比较的是id
+
+
+
+```python
+
+print("hello" > "hel")
+print("hello" > "interest")
+# 第二个，解释：
+print(ord("h"), ord("i"))  # 104<145
+
+a=b="123"
+c="123"
+print(a == b)
+print(a is b)
+print(a == c)
+print(a is c) # 此处显示为true是因为，pycharm做了优化，“123”在驻留池中，a，b，c存储的都是对“123”的引用
+```
+
+```
+True
+False
+104 105
+True
+True
+True
+True
+```
+
+
+
 ### 字符串处理函数
 
 | 函数及使用     | 描述                                                         |
@@ -783,6 +851,7 @@ z = 1.23e-4+5.6e+89j
 
 #### 字符串搜索相关
 
+```
 str.find('t')            //搜索指定字符串，没有返回-1
 
 str.find('t',start)      //指定起始位置搜索
@@ -805,7 +874,7 @@ eg:
 
 >>> 'skate'.find('t',2,4)
 
-3
+
 
 >>> 'skate'.rfind('t')
 
@@ -814,6 +883,7 @@ eg:
 >>> 'skate'.count('t')
 
 1
+```
 
 原文链接：https://blog.csdn.net/weixin_39763953/article/details/111850409
 
@@ -856,7 +926,7 @@ eg:
 '3.140000e+00,3.140000E+00,3.140000,314.000000%'
 ```
 
-## 序列类型iterator
+# 序列类型iterator
 
 Iterator Types
 
@@ -948,7 +1018,7 @@ def func():
 | ls.reverse()    | 将列表ls中的元素反转                   |
 |                 |                                        |
 
-## 集合类型
+# 集合类型
 
 集合是多个元素的无序组合
 - **集合类型与数学中的集合概念一致**
@@ -1049,7 +1119,7 @@ False
 ['p', 'y', 123]
 ```
 
-## 字典类型及操作 
+# 字典类型及操作 
 
 ### 字典类型定义 
 
@@ -2993,19 +3063,263 @@ os.startfile('可执行文件的位置')
 | isdir (path)      | 用于判断是否为路径                                           |
 |                   |                                                              |
 
+# python执行系统命令的方法
+
+Python的os模块，见名之意，opera system的意思是毫无疑问了。该模块是Python的内建模块，也可以说是内建库了，该模块内的函数自然也是内建函数了，我们要和系统命令交互，需要使用它的system（），popen（）这两个函数，或者使用commands模块，或者使用subprocess模块，前面两个函数和commands模块是比较陈旧的，现在**官方比较推荐也可以说强烈推荐的是subprocess模块。**
+
+(1) os.system（系统层面的直接调用），这个调用相当直接，且是同步进行的，程序需要阻塞并等待返回。返回值是依赖于系统的，直接返回系统的调用返回值，所以windows和linux是不一样的。
+
+仅仅在一个子终端运行系统命令，而不能获取命令执行后的返回信息
+
+(2) os.popen（新开线程方式），可以看出，popen方法通过p.read()获取终端输出，而且popen需要关闭close().当执行成功时，close()不返回任何值，失败时，close()返回系统返回值. 可见它获取返回值的方式和os.system不同。
+
+该方法不但执行命令还返回执行后的信息对象，好处在于：将返回的结果赋于一变量，便于程序的处理。
+
+(3)  使用模块 commands（ python3失效）
+
+（4）  使用模块 subprocess（Python文档中目前全力推荐），直接调用命令，返回值即是系统返回。shell=True表示命令最终在shell中运行。Python文档中出于安全考虑，不建议使用shell=True。
+
+## os.system（系统层面的直接调用）
+
+```python
+import os
+os.system('git status')
+os.system('git add .')
+```
 
 
 
+```
+import os
+import commands
+print('=============================ls')
+os.system('ls -al /')
+print('===========df')
+df = os.popen('df -ah').read()
+print(df)
+print('=========================free')
+a = commands.getoutput("free -mh")
+```
+
+
+print(a)
+输出结果为：
+
+```
+===========================ls
+total 28
+dr-xr-xr-x.  17 root root  244 Jan 24 12:11 .
+dr-xr-xr-x.  17 root root  244 Jan 24 12:11 ..
+-rw-r--r--    1 root root    0 Jan 24 12:11 .autorelabel
+lrwxrwxrwx.   1 root root    7 Jan 24 11:12 bin -> usr/bin
+dr-xr-xr-x.   5 root root 4096 Jan 24 12:11 boot
+drwxr-xr-x   19 root root 3320 Feb  1 09:29 dev
+drwxr-xr-x. 138 root root 8192 Feb  1 09:29 etc
+drwxr-xr-x.   2 root root    6 Nov  5  2016 home
+lrwxrwxrwx.   1 root root    7 Jan 24 11:12 lib -> usr/lib
+lrwxrwxrwx.   1 root root    9 Jan 24 11:12 lib64 -> usr/lib64
+drwxr-xr-x.   2 root root    6 Nov  5  2016 media
+drwxr-xr-x.   3 root root   19 Jan 24 11:34 mnt
+drwxr-xr-x.   4 root root   34 Jan 24 11:58 opt
+dr-xr-xr-x  229 root root    0 Feb  1 09:29 proc
+dr-xr-x---.  11 root root 4096 Feb  1 09:30 root
+drwxr-xr-x   39 root root 1200 Feb  1 09:29 run
+lrwxrwxrwx.   1 root root    8 Jan 24 11:12 sbin -> usr/sbin
+drwxr-xr-x.   2 root root    6 Nov  5  2016 srv
+dr-xr-xr-x   13 root root    0 Feb  1 09:29 sys
+drwxrwxrwt.  21 root root 4096 Feb  1 09:46 tmp
+drwxr-xr-x.  13 root root  155 Jan 24 11:12 usr
+drwxr-xr-x.  21 root root 4096 Jan 24 11:44 var
+===========df
+Filesystem      Size  Used Avail Use% Mounted on
+rootfs             -     -     -    - /
+sysfs              0     0     0    - /sys
+proc               0     0     0    - /proc
+devtmpfs        1.9G     0  1.9G   0% /dev
+securityfs         0     0     0    - /sys/kernel/security
+tmpfs           1.9G     0  1.9G   0% /dev/shm
+devpts             0     0     0    - /dev/pts
+tmpfs           1.9G  9.0M  1.9G   1% /run
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+cgroup             0     0     0    - /sys/fs/cgroup/systemd
+pstore             0     0     0    - /sys/fs/pstore
+cgroup             0     0     0    - /sys/fs/cgroup/pids
+cgroup             0     0     0    - /sys/fs/cgroup/cpu,cpuacct
+cgroup             0     0     0    - /sys/fs/cgroup/net_cls,net_prio
+cgroup             0     0     0    - /sys/fs/cgroup/perf_event
+cgroup             0     0     0    - /sys/fs/cgroup/freezer
+cgroup             0     0     0    - /sys/fs/cgroup/memory
+cgroup             0     0     0    - /sys/fs/cgroup/cpuset
+cgroup             0     0     0    - /sys/fs/cgroup/hugetlb
+cgroup             0     0     0    - /sys/fs/cgroup/blkio
+cgroup             0     0     0    - /sys/fs/cgroup/devices
+configfs           0     0     0    - /sys/kernel/config
+/dev/sda6        70G  4.7G   66G   7% /
+systemd-1          -     -     -    - /proc/sys/fs/binfmt_misc
+debugfs            0     0     0    - /sys/kernel/debug
+mqueue             0     0     0    - /dev/mqueue
+hugetlbfs          0     0     0    - /dev/hugepages
+nfsd               0     0     0    - /proc/fs/nfsd
+/dev/sr0        4.3G  4.3G     0 100% /mnt/cdrom
+/dev/sda3       5.0G   33M  5.0G   1% /home
+/dev/sda2        20G  164M   20G   1% /var
+/dev/sda1       497M  128M  370M  26% /boot
+sunrpc             0     0     0    - /var/lib/nfs/rpc_pipefs
+tmpfs           378M  4.0K  378M   1% /run/user/0
+binfmt_misc        0     0     0    - /proc/sys/fs/binfmt_misc
+
+=========================free
+              total        used        free      shared  buff/cache   available
+Mem:           3.7G        939M        1.8G        8.9M        1.0G        2.5G
+Swap:          4.0G          0B        4.0G
+```
+
+以上是os模块的system方法，popen方法和commands库调用Linux库的方法。后续补充subprocess的调用Linux系统命令的方法。（人在外面没Python环境）
+原文链接：https://blog.csdn.net/alwaysbefine/article/details/113485055
+
+## subprocess
+
+subprocess 模块允许我们启动一个新进程，并连接到它们的输入/输出/错误管道，从而获取返回值。
+
+## 使用 subprocess 模块
+
+subprocess 模块首先推荐使用的是它的 run 方法，更高级的用法可以直接使用 Popen 接口。
+
+**run 方法语法格式如下：**
+
+```
+subprocess.run(args, *, stdin=None, input=None, stdout=None, stderr=None, capture_output=False, shell=False, cwd=None, timeout=None, check=False, encoding=None, errors=None, text=None, env=None, universal_newlines=None)
+```
+
+- args：表示要执行的命令。必须是一个字符串，字符串参数列表。
+- stdin、stdout 和 stderr：子进程的标准输入、输出和错误。其值可以是 subprocess.PIPE、subprocess.DEVNULL、一个已经存在的文件描述符、已经打开的文件对象或者 None。subprocess.PIPE 表示为子进程创建新的管道。subprocess.DEVNULL 表示使用 os.devnull。默认使用的是 None，表示什么都不做。另外，stderr 可以合并到 stdout 里一起输出。
+- timeout：设置命令超时时间。如果命令执行时间超时，子进程将被杀死，并弹出 TimeoutExpired 异常。
+- check：如果该参数设置为 True，并且进程退出状态码不是 0，则弹 出 CalledProcessError 异常。
+- encoding: 如果指定了该参数，则 stdin、stdout 和 stderr 可以接收字符串数据，并以该编码方式编码。否则只接收 bytes 类型的数据。
+- shell：如果该参数为 True，将通过操作系统的 shell 执行指定的命令。
+
+run 方法调用方式返回 CompletedProcess 实例，和直接 Popen 差不多，实现是一样的，实际也是调用 Popen，与 Popen 构造函数大致相同，例如:
+
+## 实例
+
+```python
+\#执行ls -l /dev/null 命令
+\>>> subprocess.run(["ls", "-l", "/dev/null"])
+crw-rw-rw-  1 root  wheel   3,  2 5 4 13:34 /dev/null
+CompletedProcess(args=['ls', '-l', '/dev/null'], returncode=0)
+```
+
+**returncode**: 执行完子进程状态，通常返回状态为0则表明它已经运行完毕，若值为负值 "-N",表明子进程被终。
+
+简单实例：
+
+## 实例
+
+```python
+import subprocess
+def runcmd(command):
+    ret = subprocess.run(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8",timeout=1)
+    if ret.returncode == 0:
+        print("success:",ret)
+    else:
+        print("error:",ret)
+
+
+runcmd(["dir","/b"])#序列参数
+runcmd("exit 1")#字符串参数
+```
+
+输出结果如下：
+
+```
+success: CompletedProcess(args=['dir', '/b'], returncode=0, stdout='test.py\n', stderr='')
+error: CompletedProcess(args='exit 1', returncode=1, stdout='', stderr='')
+```
+
+------
+
+## Popen() 方法
+
+Popen 是 subprocess的核心，子进程的创建和管理都靠它处理。
+
+构造函数：
+
+```
+class subprocess.Popen(args, bufsize=-1, executable=None, stdin=None, stdout=None, stderr=None, 
+preexec_fn=None, close_fds=True, shell=False, cwd=None, env=None, universal_newlines=False, 
+startupinfo=None, creationflags=0,restore_signals=True, start_new_session=False, pass_fds=(),
+*, encoding=None, errors=None)
+```
+
+**常用参数：**
+
+- args：shell命令，可以是字符串或者序列类型（如：list，元组）
+- bufsize：缓冲区大小。当创建标准流的管道对象时使用，默认-1。
+  0：不使用缓冲区
+  1：表示行缓冲，仅当universal_newlines=True时可用，也就是文本模式
+  正数：表示缓冲区大小
+  负数：表示使用系统默认的缓冲区大小。
+- stdin, stdout, stderr：分别表示程序的标准输入、输出、错误句柄
+- preexec_fn：只在 Unix 平台下有效，用于指定一个可执行对象（callable object），它将在子进程运行之前被调用
+- shell：如果该参数为 True，将通过操作系统的 shell 执行指定的命令。
+- cwd：用于设置子进程的当前目录。
+- env：用于指定子进程的环境变量。如果 env = None，子进程的环境变量将从父进程中继承。
+
+创建一个子进程，然后执行一个简单的命令:
+
+## 实例
+
+\>>> **import** subprocess
+\>>> p = subprocess.Popen('ls -l', shell=True)
+\>>> total 164
+-rw-r--r--  1 root root  133 Jul  4 16:25 admin-openrc.sh
+-rw-r--r--  1 root root  268 Jul 10 15:55 admin-openrc-v3.sh
+...
+\>>> p.returncode
+\>>> p.wait()
+0
+\>>> p.returncode
+
+这里也可以使用 **p = subprocess.Popen(['ls', '-cl'])** 来创建子进程。
+
+### Popen 对象方法
+
+- poll(): 检查进程是否终止，如果终止返回 returncode，否则返回 None。
+- wait(timeout): 等待子进程终止。
+- communicate(input,timeout): 和子进程交互，发送和读取数据。
+- send_signal(singnal): 发送信号到子进程 。
+- terminate(): 停止子进程,也就是发送SIGTERM信号到子进程。
+- kill(): 杀死子进程。发送 SIGKILL 信号到子进程。
+
+## 实例
+
+**import** time
+**import** subprocess
+
+**def** cmd(command):
+  subp = subprocess.Popen(command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8")
+  subp.wait(2)
+  **if** subp.poll() == 0:
+    **print**(subp.communicate()[1])
+  **else**:
+    **print**("失败")
 
 
 
+cmd("java -version")
+cmd("exit 1")
 
+输出结果如下：
 
+```
+java version "1.8.0_31"
+Java(TM) SE Runtime Environment (build 1.8.0_31-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
 
+失败
+```
 
-
-
-
+https://www.runoob.com/w3cnote/python3-subprocess.html
 
 # 魔法方法
 
