@@ -854,7 +854,7 @@ Out[2]:
 
 | function                                  |                                                |
 | ----------------------------------------- | ---------------------------------------------- |
-| (reviews.points / reviews.price).idxmax() | Pandas `Series.idxmax()`函数返回最大值的行标签 |
+[rows-data].idxmax() | Pandas `Series.idxmax()`函数返回最大值的行标签 |
 | [rows].idmin()                            | Pandas `Series.idxmax()`函数返回最小值的行标签 |
 | reviews.points.describe()                 | restructure the data in some useful way        |
 | `cancer_data['xx'][:5].max()`             | 一组数据中的最大值                             |
