@@ -1,4 +1,4 @@
-## pandas官方user_guide
+pandas官方user_guide
 
 [pandas官方user_guide](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#object-creation)
 
@@ -101,7 +101,7 @@ A Series, by contrast, is a sequence of data values. If a DataFrame is a table, 
 
 In [5]:
 
-```
+```python
 pd.Series([1, 2, 3, 4, 5])
 ```
 
@@ -204,6 +204,21 @@ ________________________________________
 ```
 
 ### train_df.describe()
+
+```python
+DataFrame.describe(percentiles=None, include=None, exclude=None, datetime_is_numeric=False)
+
+```
+
+**Parameters:**
+
+**include**: ‘all’, list-like of dtypes or None (default), optional
+
+A white list of data types to include in the result. Ignored for `Series`. Here are the options:
+
+- ‘all’ : All columns of the input will be included in the output.
+- A list-like of dtypes : Limits the results to the provided data types. To limit the result to numeric types submit `numpy.number`. To limit it instead to object columns submit the `numpy.object` data type. **Strings can also be used in the style of `select_dtypes` (e.g. `df.describe(include=['O'])`).** To select pandas categorical columns, use `'category'`
+- None (default) : The result will include all numeric columns.
 
 ```
 train_df.describe()
@@ -317,6 +332,10 @@ Out[10]:
 | 2    | US       | Tart and snappy, the flavors of lime flesh and... | NaN                                | 87     | 14.0  | Oregon            | Willamette Valley   | Willamette Valley | Paul Gregutt       | @paulgwine            | Rainstorm 2013 Pinot Gris (Willamette Valley)     | Pinot Gris     | Rainstorm           |
 | 3    | US       | Pineapple rind, lemon pith and orange blossom ... | Reserve Late Harvest               | 87     | 13.0  | Michigan          | Lake Michigan Shore | NaN               | Alexander Peartree | NaN                   | St. Julian 2013 Reserve Late Harvest Riesling ... | Riesling       | St. Julian          |
 | 4    | US       | Much like the regular bottling from 2012, this... | Vintner's Reserve Wild Child Block | 87     | 65.0  | Oregon            | Willamette Valley   | Willamette Valley | Paul Gregutt       | @paulgwine            | Sweet Cheeks 2012 Vintner's Reserve Wild Child... | Pinot Noir     | Sweet Cheeks        |
+
+## Viewing data
+
+
 
 ##  Your turn
 
@@ -852,13 +871,7 @@ Out[2]:
 
 下面只是简单总结常见函数，具体使用详见笔记下面总结或自行百度
 
-| function                                  |                                                |
-| ----------------------------------------- | ---------------------------------------------- |
-[rows-data].idxmax() | Pandas `Series.idxmax()`函数返回最大值的行标签 |
-| [rows].idmin()                            | Pandas `Series.idxmax()`函数返回最小值的行标签 |
-| reviews.points.describe()                 | restructure the data in some useful way        |
-| `cancer_data['xx'][:5].max()`             | 一组数据中的最大值                             |
-| xx.count()                                | count=unique,统计不同值的个数                  |
+
 
 ### 使用技巧
 
@@ -1396,7 +1409,7 @@ The **data type for a column in a DataFrame or a Series is known** as the **dtyp
 
 You can use the `dtype` property to grab the type of a specific column. For instance, we can get the dtype of the `price` column in the `reviews` DataFrame:
 
-```
+```python
 import pandas as pd
 reviews = pd.read_csv("../input/wine-reviews/winemag-data-130k-v2.csv", index_col=0)
 pd.set_option('max_rows', 5)
@@ -1498,17 +1511,21 @@ Out[6]:
 
 ### Replacing missing values
 
+```
+reviews.region_2.fillna("Unknown")
+```
+
 **Replacing missing values** is a common operation. Pandas provides a really handy method for this problem: `fillna()`. `fillna()` provides a few different strategies for mitigating such data. For example, we can simply replace each `NaN` with an `"Unknown"`:
 
 In [7]:
 
-```
+```python
 reviews.region_2.fillna("Unknown")
 ```
 
 Out[7]:
 
-```
+```python
 0         Unknown
 1         Unknown
            ...   
@@ -1699,3 +1716,459 @@ The `lsuffix` and `rsuffix` parameters are necessary here because the **data has
 ## Your turn
 
 If you haven't started the exercise, you can **[get started here](https://www.kaggle.com/kernels/fork/638064)**.
+
+# 下方均为自己总结
+
+大多来自[Pandas-User Guide](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)
+
+对于`DataFrame`和`Series`都是Pandas常用的数据容器类型，所以**很多方法和变量都是通用的**。
+
+# Viewing data
+
+[Pandas官网-Viewing data](https://pandas.pydata.org/pandas-docs/stable/user_guide/10min.html#viewing-data)
+
+Here is how to view the top and bottom rows of the frame:
+
+| function   |                            |
+| ---------- | -------------------------- |
+| df.head()  |                            |
+| df.tail(3) |                            |
+| df.index   | Display the index, columns |
+| df.columns |                            |
+
+
+
+# Descriptive statistics-描述性统计
+
+[Pandas官网-Descriptive statistics](https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#descriptive-statistics)
+
+## 常用函数
+
+| function                      |                                                              |
+| ----------------------------- | ------------------------------------------------------------ |
+| guess_df.median()             | 一组值中的中位数                                             |
+| `Series.idxmax()`             | 返回最大值的行标签                                           |
+| Pandas `Series.idxmax()`      | 返回最小值的行标签                                           |
+| reviews.points.describe()     | restructure the data in some useful way                      |
+| `cancer_data['xx'][:5].max()` | 一组数据中的最大值                                           |
+| xx.count()                    | count=unique,统计不同值的个数                                |
+| Series.mode()                 | The mode(众数) is the value that **appears most often.**     |
+| DataFrame.isna()              | Return a **boolean same-sized object** indicating if the values are NA. |
+
+### 使用方式
+
+**统计函数通常有两种使用方式**，一种是Series.mode()，另一种是DataFrame.mode()
+
+There exists a large number of methods for computing descriptive statistics and other related operations **on [Series](https://pandas.pydata.org/pandas-docs/stable/reference/series.html#api-series-stats), [DataFrame](https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#api-dataframe-stats).** Most of these are aggregations (hence producing a lower-dimensional result) like [`sum()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sum.html#pandas.DataFrame.sum), [`mean()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.mean.html#pandas.DataFrame.mean), and [`quantile()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.quantile.html#pandas.DataFrame.quantile), but some of them, like [`cumsum()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.cumsum.html#pandas.DataFrame.cumsum) and [`cumprod()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.cumprod.html#pandas.DataFrame.cumprod), produce an object of the same size. Generally speaking, these methods take an **axis** argument, just like *ndarray.{sum, std, …}*, but the axis can be specified by name or integer:
+
+- **Series**: no axis argument needed
+- **DataFrame**: “index” (axis=0, default), “columns” (axis=1)
+
+
+
+### DataFrame.isna()
+
+```python
+#1. 删除缺失值最多的列。
+nan_max_id = data.isna().sum(axis = 0).idxmax()
+print(data)
+print(data.isna())
+
+print(nan_max_id)
+del_data = data.drop(nan_max_id,axis=1)
+```
+
+```python
+# out
+NumRooms Alley   Price
+0       NaN  Pave  127500
+1       2.0   NaN  106000
+2       4.0   NaN  178100
+3       NaN   NaN  140000
+   NumRooms  Alley  Price
+0      True  False  False
+1     False   True  False
+2     False   True  False
+3      True   True  False
+Alley
+```
+
+## Summarizing data: describe
+
+There is a convenient [`describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe) function which computes a variety of summary statistics about **a Series or the columns of a DataFrame** (excluding NAs of course):
+
+```python
+In [94]: series = pd.Series(np.random.randn(1000))
+
+In [95]: series[::2] = np.nan
+
+In [96]: series.describe()
+Out[96]: 
+count    500.000000
+mean      -0.021292
+std        1.015906
+min       -2.683763
+25%       -0.699070
+50%       -0.069718
+75%        0.714483
+max        3.160915
+dtype: float64
+
+In [97]: frame = pd.DataFrame(np.random.randn(1000, 5), columns=["a", "b", "c", "d", "e"])
+
+In [98]: frame.iloc[::2] = np.nan
+
+In [99]: frame.describe()
+Out[99]: 
+                a           b           c           d           e
+count  500.000000  500.000000  500.000000  500.000000  500.000000
+mean     0.033387    0.030045   -0.043719   -0.051686    0.005979
+std      1.017152    0.978743    1.025270    1.015988    1.006695
+min     -3.000951   -2.637901   -3.303099   -3.159200   -3.188821
+25%     -0.647623   -0.576449   -0.712369   -0.691338   -0.691115
+50%      0.047578   -0.021499   -0.023888   -0.032652   -0.025363
+75%      0.729907    0.775880    0.618896    0.670047    0.649748
+max      2.740139    2.752332    3.004229    2.728702    3.240991
+```
+
+You can select specific percentiles to include in the output:
+
+```
+In [100]: series.describe(percentiles=[0.05, 0.25, 0.75, 0.95])
+Out[100]: 
+count    500.000000
+mean      -0.021292
+std        1.015906
+min       -2.683763
+5%        -1.645423
+25%       -0.699070
+50%       -0.069718
+75%        0.714483
+95%        1.711409
+max        3.160915
+dtype: float64
+```
+
+By default, the median is always included.
+
+For a **non-numerical Series object**, [`describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.describe.html#pandas.Series.describe) will give a simple summary of the number of **unique values and most frequently occurring values**:
+
+```
+In [101]: s = pd.Series(["a", "a", "b", "b", "a", "a", np.nan, "c", "d", "a"])
+
+In [102]: s.describe()
+Out[102]: 
+count     9
+unique    4
+top       a
+freq      5
+dtype: object
+```
+
+Note that on a mixed-type DataFrame object, [`describe()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe) will restrict the summary to include **only numerical columns** or, if none are, only categorical columns:
+
+```
+In [103]: frame = pd.DataFrame({"a": ["Yes", "Yes", "No", "No"], "b": range(4)})
+
+In [104]: frame.describe()
+Out[104]: 
+              b
+count  4.000000
+mean   1.500000
+std    1.290994
+min    0.000000
+25%    0.750000
+50%    1.500000
+75%    2.250000
+max    3.000000
+```
+
+#### `include`/`exclude` arguments.
+
+This behavior can be controlled by providing a list of types as **`include`/`exclude` arguments.** The special value `all` can also be used:
+
+```
+In [105]: frame.describe(include=["object"])
+Out[105]: 
+          a
+count     4
+unique    2
+top     Yes
+freq      2
+
+In [106]: frame.describe(include=["number"])
+Out[106]: 
+              b
+count  4.000000
+mean   1.500000
+std    1.290994
+min    0.000000
+25%    0.750000
+50%    1.500000
+75%    2.250000
+max    3.000000
+
+In [107]: frame.describe(include="all")
+Out[107]: 
+          a         b
+count     4  4.000000
+unique    2       NaN
+top     Yes       NaN
+freq      2       NaN
+mean    NaN  1.500000
+std     NaN  1.290994
+min     NaN  0.000000
+25%     NaN  0.750000
+50%     NaN  1.500000
+75%     NaN  2.250000
+max     NaN  3.000000
+```
+
+That feature relies on [select_dtypes](https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#basics-selectdtypes). Refer to there for details about accepted inputs.
+
+# Pandas修正数据-增删改查数据
+
+### 删除列数据
+
+```
+train_df.drop(['Ticket', 'Cabin'], axis=1)
+```
+
+
+
+```python
+print("Before", train_df.shape, test_df.shape, combine[0].shape, combine[1].shape)
+
+train_df = train_df.drop(['Ticket', 'Cabin'], axis=1)
+test_df = test_df.drop(['Ticket', 'Cabin'], axis=1)
+combine = [train_df, test_df]
+
+"After", train_df.shape, test_df.shape, combine[0].shape, combine[1].shape
+```
+
+## 替换数据
+
+```python
+title_mapping = {"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Rare": 5}
+for dataset in combine:
+    dataset['Title'] = dataset['Title'].map(title_mapping)
+    dataset['Title'] = dataset['Title'].fillna(0)
+
+train_df.head()
+```
+
+### 替换空值
+
+
+
+用该列中位数替换NAN值（前提该列是数值型的一列）
+
+```python
+test_df['Fare'].fillna(test_df['Fare'].dropna().median(), inplace=True)
+```
+
+
+
+## 创造一列值
+
+直接计算两列创造一列值
+
+FamilySize这一列在原来的df上没有
+
+```python
+for dataset in combine:
+    dataset['FamilySize'] = dataset['SibSp'] + dataset['Parch'] + 1
+```
+
+
+
+## 高级表达式查找替换
+
+```python
+for dataset in combine:
+    for i in range(0, 2):
+        for j in range(0, 3):
+            guess_df = dataset[(dataset['Sex'] == i) & \
+                                  (dataset['Pclass'] == j+1)]['Age'].dropna()
+
+            # age_mean = guess_df.mean()
+            # age_std = guess_df.std()
+            # age_guess = rnd.uniform(age_mean - age_std, age_mean + age_std)
+
+            age_guess = guess_df.median()
+
+            # Convert random age float to nearest .5 age
+            guess_ages[i,j] = int( age_guess/0.5 + 0.5 ) * 0.5
+            
+    for i in range(0, 2):
+        for j in range(0, 3):
+            dataset.loc[ (dataset.Age.isnull()) & (dataset.Sex == i) & (dataset.Pclass == j+1),\
+                    'Age'] = guess_ages[i,j]
+
+    dataset['Age'] = dataset['Age'].astype(int)
+
+train_df.head()
+```
+
+## 处理缺失值
+
+### 删除缺失值最多的列
+
+```python
+#1. 删除缺失值最多的列。
+nan_max_id = data.isna().sum(axis = 0).idxmax()
+print(data)
+print(nan_max_id)
+data.drop(nan_max_id,axis=1)
+```
+
+
+
+# 交叉表（crosstab）和透视表（pivotTab）
+
+```python
+import  numpy as np
+import  pandas as pd
+"""
+1：透视表（pivotTab）
+透视表是将原有的DataFrame的列分别作为行索引和列索引，然后对指定的列应用聚集函数
+"""
+df = pd.DataFrame({'类别':['水果','水果','水果','蔬菜','蔬菜','肉类','肉类'],
+                '产地':['美国','中国','中国','中国','新西兰','新西兰','美国'],
+                '水果':['苹果','梨','草莓','番茄','黄瓜','羊肉','牛肉'],
+               '数量':[5,5,9,3,2,10,8],
+               '价格':[5,5,10,3,3,13,20]})
+print(df)
+print(df.pivot_table(index=['产地','类别']))
+#行索引为"产地"，列索引为'类别'
+#对“价格”应用'max',并提供分项统计，缺失值填充0
+print(df.pivot_table('价格',index='产地',columns='类别',aggfunc='max',margins=True,fill_value=0))
+print("*******************交叉表的信息******************************")
+"""
+交叉表
+用于统计分组频率的特殊透视表
+"""
+print(pd.crosstab(df['类别'],df['产地'],margins=True))
+```
+
+![img](Pandas/20181219195426388.png)
+
+![img](Pandas/20181219195448303.png)
+原文链接：https://blog.csdn.net/bll1992/article/details/85106722
+
+# DataFrame类型转换成Numpy中array类型的三种方法
+
+```python
+import numpy as np
+
+import pandas as pd
+
+df=pd.DataFrame({'A':[1,2,3],'B':[4,5,6],'C':[7,8,9]})
+```
+
+1.使用[DataFrame](https://so.csdn.net/so/search?q=DataFrame&spm=1001.2101.3001.7020)中的values方法
+
+```python
+df.values
+```
+
+2.使用DataFrame中的as_matrix()方法
+
+```undefined
+df.as_matrix()
+```
+
+3.使用Numpy中的array方法
+
+```bash
+np.array(df)
+```
+
+# Pandas库
+
+## 使用
+
+### pandas 将字符串映射为数字的方法
+
+在有些数据集中，有些数据变量用字符串表示，但为了方便处理，往往想转换为好处理的格式，这时候不一定要用one hot进行编码，也可以直接转成整数：
+
+test_df["xx"] = pd.factorize(test_df["xx"])[0].astype(int)
+
+但是这样映射的数字是从0开始的，如果有初始要求，可以对映射结果加上某个值，例如，把从0开始变为从15开始：
+
+test_df["xx"] = test_df["xx"].add(15)
+
+```python
+gift_cards["user_id"] = pd.factorize(gift_cards["user_id"])[0].astype(int)
+```
+
+效果
+
+​      
+
+```python
+	 	user_id         item_id  ratings        time
+0       B001GXRQW0   APV13CM0919JD      1.0  1229644800
+1       B001GXRQW0  A3G8U1G1V082SN      5.0  1229472000
+2       B001GXRQW0   A11T2Q0EVTUWP      5.0  1229472000
+3       B001GXRQW0   A9YKGBH3SV22C      5.0  1229472000
+4       B001GXRQW0  A34WZIHVF3OKOL      1.0  1229472000
+...            ...             ...      ...         ...
+147189  B01H5PPJT4  A2K9WVQW9TLWNK      5.0  1536969600
+147190  B01H5PPJT4  A149ALSR6TPGF7      4.0  1536278400
+147191  B01H5PPJT4  A2Q066NZCQSCOR      5.0  1535500800
+147192  B01H5PPJT4  A1KJLWCW7XBS8I      5.0  1534550400
+147193  B01H5PPJT4   ANABUB0FRZXRM      5.0  1534204800
+```
+
+
+
+```python
+        user_id         item_id  ratings        time
+0             0   APV13CM0919JD      1.0  1229644800
+1             0  A3G8U1G1V082SN      5.0  1229472000
+2             0   A11T2Q0EVTUWP      5.0  1229472000
+3             0   A9YKGBH3SV22C      5.0  1229472000
+4             0  A34WZIHVF3OKOL      1.0  1229472000
+...         ...             ...      ...         ...
+147189      858  A2K9WVQW9TLWNK      5.0  1536969600
+147190      858  A149ALSR6TPGF7      4.0  1536278400
+147191      858  A2Q066NZCQSCOR      5.0  1535500800
+147192      858  A1KJLWCW7XBS8I      5.0  1534550400
+147193      858   ANABUB0FRZXRM      5.0  1534204800
+```
+
+
+很成功
+
+原文链接：https://blog.csdn.net/baishuiniyaonulia/article/details/123782779
+
+
+很成功
+
+原文链接：https://blog.csdn.net/baishuiniyaonulia/article/details/123782779
+
+## pd.get_dummies方法理解
+
+1.举例说明：
+1.1 在jupyter notebook里面输入如下代码：
+import numpy as np
+import pandas as pd
+data = pd.DataFrame({"学号":[1001,1002,1003,1004],
+                    "性别":["男","女","女","男"],
+                    "学历":["本科","硕士","专科","本科"]})
+data
+![在这里插入图片描述](Pandas/2021041414583462.png)
+1.2 显示结果：
+
+1.3 使用 pd.get_dummies(data)
+pd.get_dummies(data)
+![在这里插入图片描述](Pandas/20210414150013125.png)
+1.4结果：
+
+以上可以看出，用**pd.get_dummies() 方法是为了将原本不好区分的数据进行再次打标签区分，从而得到更细的数据。**
+
+原文链接：https://blog.csdn.net/scar2016/article/details/115698961
+
+
+

@@ -185,7 +185,7 @@ git checkout .
 git reset HEAD <file>...
 ```
 
-**将暂存区的文件撤回到工作区 :多个文件**
+**将暂存区的文件撤回到工作区 :`.`-多个文件**
 
 ```
 git reset HEAD .

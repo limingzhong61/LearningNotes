@@ -609,15 +609,52 @@ split(String regex) ：全部拆分
 split(String regex, int limit)：部分拆分  
 ```
 
+#### Pattern,Matcher
+
+**获得表达式中所有的匹配项**
+
+```java
+String text = "MyCalendar();\n" +
+    "MyCalendar.book(10, 20); // returns true\n" +
+    "MyCalendar.book(50, 60); // returns true\n" +
+    "MyCalendar.book(10, 40); // returns true\n" +
+    "MyCalendar.book(5, 15); // returns false\n" +
+    "MyCalendar.book(5, 10); // returns true\n" +
+    "MyCalendar.book(25, 55); // returns true\n。";
+String rule1 = "\\d+,\\s+\\d+";
+Pattern p1 = Pattern.compile(rule1);
+Matcher m1 = p1.matcher(text);
+String rule2 = "true|false";
+Pattern p2 = Pattern.compile(rule2);
+Matcher m2 = p2.matcher(text);
+while (m1.find()) {
+    String group = m1.group(0);
+    String group2 = null;
+    if (m2.find()) {
+        group2 = m2.group(0);
+    }
+    String[] split = group.split(",");
+    System.out.println("匹配结果：" + m1.group(0) + "," + group2);
+    System.out.println(myCalendarTwo.book(Integer.parseInt(split[0]), Integer.parseInt(split[1].trim())));
+
+    System.out.println(String.valueOf(myCalendarTwo.book(Integer.parseInt(split[0]), Integer.parseInt(split[1].trim())) ==
+                                      Boolean.parseBoolean(group2)).toUpperCase(Locale.ROOT));
+}
+```
+
+
+
 ### 正则标记  
 
 都在Pattern类定义  
 
 #### 单个字符（匹配数量1）  
 
+**注意java中转义字符为`'\\'`**
+
 ```java
 字符：由一个字符组成  
-'\\', 转移字符'\'  
+'\\', 转义字符'\'  
 '\t'制表符  
 '\n' 换行符  
 ```
@@ -674,11 +711,11 @@ split(String regex, int limit)：部分拆分
 #### 数量表达式  
 
 正则`{n}`：表示正则正好出现n次  
-正则`{n,}`：表示正则出现n次及以上  
-正则`{n,m}`：表示正则**出现{n,m}次**  
-正则`？`：==  {0,1}，表示正则可以出现0次或1次  
-正则`*`：== {0,}  表示正则可以出现0次或1次或多次， >= 0
-正则`+`：`=={1,}` 表示正则可以出现1次或1次以上 ，>=1  
+		正则`{n,}`：表示正则出现n次及以上  
+		正则`{n,m}`：表示正则**出现{n,m}次**  
+		正则`？`：==  {0,1}，表示正则可以出现0次或1次  
+		正则`*`：== {0,}  表示正则可以出现0次或1次或多次， >= 0
+		正则`+`：`=={1,}` 表示正则可以出现1次或1次以上 ，>=1  
 
 
 #### 逻辑表达式  
@@ -754,11 +791,15 @@ public class RegularTest {
 
 如果是贪婪模式，返回两个字符串，而非贪婪模式，则只返回第一个，
 
+```
 文本：(content:"hello root";hello:"word";)
 贪婪模式：content:".+"
 匹配结果：content:"hello root";hello:"word"
 非贪婪模式：content:".+?"
 匹配结果：content:"hello root"
+```
+
+
 针对不同场景，我们就可以选择合适的模式。
 
 原文链接：https://blog.csdn.net/bisal/article/details/120714677

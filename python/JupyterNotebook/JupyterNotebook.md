@@ -113,6 +113,7 @@ Jupyter notebook中，有两种单元格：代码单元格和Markdown单元格�
 
 > Markdown是程序员通用的撰写文档的语法，可以轻松实现标题、引用、链接、图片等，非常简洁易学，Github代码托管网站、有道云笔记、简书、知乎、CSDN论坛、电子邮件等都支持Markdown语法。
 >
+> Markdown使用，详见Markdown.md笔记
 
 编辑Markdown单元格，输入以下内容：
 
@@ -235,19 +236,14 @@ jupyter contrib nbextension install --user
 # Markdown和JupyterNotebook的相互转换
 
 把Markdown转成JupyterNotebook，一般情况下很少用到。
-李沐还专门改写了一个对中文支持更好的版本notedown，
+李沐还专门改写了一个对中文支持更好的版本notedown，https://github.com/mli/notedown
 
-https://github.com/mli/notedown
-
-这个版本的原版本是
-
-https://github.com/aaren/notedown
+这个版本的原版本是https://github.com/aaren/notedown
 
 下面简单介绍一下使用方法（假设你已经安装好了JupyterNotebook)。
 
- 用Jupyter记事本读写GitHub源文件
-根据http://zh.gluon.ai/chapter_appendix/jupyter.html描述，下面安装notedown插件，运行Jupyter记事本并加载插件。
-```
+ 用Jupyter记事本读写GitHub源文件，根据http://zh.gluon.ai/chapter_appendix/jupyter.html描述，下面安装notedown插件，运行Jupyter记事本并加载插件。
+```bash
 pip install https://github.com/mli/notedown/tarball/master
 jupyter notebook --NotebookApp.contents_manager_class='notedown.NotedownContentsManager'
 ```
@@ -255,10 +251,18 @@ jupyter notebook --NotebookApp.contents_manager_class='notedown.NotedownContents
 
 首先，执行下面的命令生成Jupyter记事本配置文件（如果已经生成，可以跳过）：
 
+```
 jupyter notebook --generate-config
+```
+
+
 然后，将下面这一行加入到Jupyter记事本配置文件（一般在用户主目录下的隐藏文件夹.jupyter中的jupyter_notebook_config.py）的末尾：
 
+```
 c.NotebookApp.contents_manager_class = 'notedown.NotedownContentsManager'
+```
+
+
 之后，只需要运行jupyter notebook命令即可默认开启notedown插件。
 
  
@@ -285,18 +289,6 @@ notedown with_output_cells.md --to markdown --strip > no_output_cells.md
 ```
 
 相关链接：https://blog.csdn.net/tanmx219/article/details/107052515
-
-
-
-# Other
-
-## 数据分析与可视化实战案例：学习时间与成绩的关系（线性回归）
-
-先用excel把玩数据
-
-![excel中的线性回归](JupyterNotebook/13714448-8aeb063599a395b6.png)
-
-观察数据、导入数据、划分特征和标签、划分训练集和测试集、构建模型，模型可视化
 
 ## 用Jupyter notebook制作ppt并在线分享
 
