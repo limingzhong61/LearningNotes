@@ -554,7 +554,7 @@ module.exports = {
 
 效果可以点击本文中的图片查看, 具体使用你可以参考: [插件官网  (opens new window)](https://vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html)。
 
-著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/about/blog/blog-build-vuepress.html
+
 
 ### 添加评论插件
 
@@ -609,7 +609,7 @@ plugins: {
 
 ![image-20220507201453869](vuepress/image-20220507201453869.png)
 
-著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/about/blog/blog-build-vuepress.html
+
 
 ### 添加Copy自动加版权信息
 
@@ -646,7 +646,7 @@ Copyright © 夕月
 Link: http://localhost:8080/JavaNote/javaSE/javaSE.html
 ```
 
-著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/about/blog/blog-build-vuepress.html
+
 
 ### 添加Sitemap信息
 
@@ -674,7 +674,7 @@ module.exports = {
 
 更多请参考插件：[vuepress-plugin-sitemap](https://github.com/ekoeryanto/vuepress-plugin-sitemap)
 
-著作权归https://pdai.tech所有。 链接：https://pdai.tech/md/about/blog/blog-build-vuepress.html
+
 
 ### 添加代码拷贝
 
