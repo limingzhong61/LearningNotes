@@ -5,3 +5,4 @@
 ## 相关链接
 
 参考仓库：git@github.com:fengdu78/Coursera-ML-AndrewNg-Notes.git
+仓库链接：https://github.com/fengdu78/Coursera-ML-AndrewNg-Notes

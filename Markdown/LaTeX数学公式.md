@@ -10,13 +10,13 @@ $ 表示行内公式：
 
 质能守恒方程可以用一个很简洁的方程式 $E=mc^2$ 来表达。
 
-$$ 表示整行公式：
+`$$` 表示整行公式：
 
-$$\sum_{i=1}^n a_i=0$$
+$$ \sum_{i=1}^n a_i=0 $$
 
 $$f(x_1,x_x,\ldots,x_n) = x_1^2 + x_2^2 + \cdots + x_n^2 $$
 
-$$\sum^{j-1}_{k=0}{\widehat{\gamma}_{kj} z_k}$$
+$$ \sum^{j-1}_{k=0}{\widehat{\gamma}_{kj} z_k}$$
 
 访问 [MathJax](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference) 参考更多使用方法。
 
@@ -87,13 +87,13 @@ $$\sum^{j-1}_{k=0}{\widehat{\gamma}_{kj} z_k}$$
 
 ##### 1、上下标
 
- 上标：表示$ f(x) = x^ 2 $
+ 上标：表示 $ f(x) = x^ 2 $
 
 ```latex
 `$ f(x) = x^ 2 $` 或者 `$ f(x) = {x}^ {2} $` 均可
 ```
 
- 下标：表示$ f(x) = x_2 $
+ 下标：表示 $ f(x) = x_2 $
 
 ```latex
 $ f(x) = x_2 $ 或者 $ f(x) = {x}_{2} $ 均可

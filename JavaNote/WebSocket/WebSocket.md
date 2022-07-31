@@ -94,8 +94,6 @@ Java WebSocket应用由一系列的websocketEndpoint组成。Endgoint 是一个j
 
 ![image-20220330212900815](WebSocket/image-20220330212900815.png)
 
-![image-20220327225056575](WebSocket/image-20220327225056575.png)
-
 ![image-20220329095435502](WebSocket/image-20220329095435502.png)
 
 ![image-20220329095452409](WebSocket/image-20220329095452409.png)

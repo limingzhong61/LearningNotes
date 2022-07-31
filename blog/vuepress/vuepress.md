@@ -713,7 +713,7 @@ module.exports = {
 /config.md	/config.html
 当你访问 /guide/而 404 时,这是由于guide目录下缺乏了它对应的 README.md文件
 
-![img](vuepress/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZYkdob2VFWVA3dm9xVmZxejVndEZxQjVPZThXWWIxdnluaWJ2U2lhaWM2ZXF3bEhzOVloelhSeTQ1WjRQUWJ4dWpPQ3BtSXRPeUJvSjhBZkZZOFppY3hVQkEvNjQw)
+![img](vuepress/xxxx123.png)
 
 ### 安装某插件后不生效
 
@@ -734,7 +734,7 @@ module.exports = {
 
 当您的md文件没有任何内容时,就会显示文件路径,如/read/lingdu/wanted.html),如下所示
 
-![img](vuepress/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZYkdob2VFWVA3dm9xVmZxejVndEZxQjVPZThXWWIxdkxTaWFXRVZIblpqRVBCRXFXOGZ3SHBRNzU1a1NMYWliRkdSNTFKbldCS0NKU2t0RW5KRDY1VnpnLzY0MA)
+![img](vuepress/xxx1.png)
 
 这是由于你的 md文件中缺乏标题导致的，标题的产生有两种方式
 
@@ -821,7 +821,7 @@ search: false
 
 https://segmentfault.com/a/1190000022275001
 
-### 常见问题
+## 常见问题
 
 Error in render: "Error: Module parse failed: Unexpected character '�' (1:0)
 
@@ -830,6 +830,10 @@ Error in render: "Error: Module parse failed: Unexpected character '�' (1:0)
 404问题
 
 可能是文件名多了空格，如 `Docker .md`
+
+- Module not found: Error: Can't resolve './data:image/png;base64,iVBO。。。。。。 in 'D:\Users\Lenovo\Desktop\vuepress\vuepress-blog\docs\md\机器学习\Seaborn'
+
+这个正确的不用解决
 
 ## 使用主题
 
@@ -900,7 +904,9 @@ nginx代理，顶部导航栏路由错误
   },
 ```
 
+## vuepress中使用数学公式-latex
 
+https://blog.csdn.net/baidu_23377847/article/details/124683150
 
 ## 参考链接
 
