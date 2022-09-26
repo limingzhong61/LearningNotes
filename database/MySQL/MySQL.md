@@ -2294,37 +2294,69 @@ ORDER BY department_id, salary DESC;
 
 ------
 
-### 2. 分页
+### 分页
 
-------
+#### 应用场景
 
-#### 2. 1 背景
+实际的web项目中需要根据用户的需求提交对应的分页查询的sql语句
 
-背景 1 ：查询返回的记录太多了，查看起来很不方便，怎么样能够实现分页查询呢？
+####  实现规则
 
-背景 2 ：表里有 4 条数据，我们只想要显示第 2 、 3 条数据怎么办呢？
 
-#### 2. 2 实现规则
 
 - 分页原理
   所谓分页显示，就是将数据库中的结果集，一段一段显示出来需要的条件。
 
 - MySQL中使用 LIMIT 实现分页
 
-- 格式：
+  **限制返回的行数**。可以有两个参数，第一个参数为**起始行**，**从 0 开始**；第二个参数为返回的总行数。
+
+**格式：**
 
   ```sql
   LIMIT [位置偏移量,] 行数
   LIMIT n <==> LIMIT 0,n
   ```
 
-  第一个“位置偏移量”参数指示MySQL从哪一行开始显示，是一个可选参数，**如果不指定“位置偏移量”，将会从表中的第一条记录开始**（第一条记录的位置偏移量是 0 ，第二条记录的位置偏移量是1 ，以此类推）；第二个参数“行数”指示返回的记录条数。
+  **语法：**
 
-- 举例
+  ```mysql
+  select 字段|表达式,...
+  from 表
+  【where 条件】
+  【group by 分组字段】
+  【having 条件】
+  【order by 排序的字段】
+  limit 【起始行，】条目数;
+  # 使用offset
+  select 字段|表达式,...
+  from 表
+  【where 条件】
+  【group by 分组字段】
+  【having 条件】
+  【order by 排序的字段】
+  limit 条目数 offset 起始行;
+  ```
+
+- **起始条目索引从0开始**：第一个“位置偏移量”参数指示MySQL从哪一行开始显示，是一个可选参数，**如果不指定“位置偏移量”，将会从表中的第一条记录开始**（第一条记录的位置偏移量是 0 ，第二条记录的位置偏移量是1 ，以此类推）；第二个参数“行数”指示返回的记录条数。
+
+- 分页公式 ：（**当前页数- 1 ）\*每页条数，每页条数**
+
+  ```sql
+  SELECT * FROM table
+  LIMIT(PageNo - 1 )*PageSize,PageSize;
+  ```
+
+- **注意：LIMIT 子句必须放在整个SELECT语句的最后！**
+
+- 使用 LIMIT 的好处
+  约束返回结果的数量可以减少数据表的网络传输量，也可以提升查询效率。如果我们**知道返回结果只有1 条，就可以使用LIMIT 1，告诉 SELECT 语句只需要返回一条记录即可**。这样的好处就是 SELECT 不需要扫描完整的表，只需要检索到一条符合条件的记录即可返回。
+
+**举例：**
 
   ```sql
   --前 10 条记录：
-  SELECT * FROM 表名 LIMIT 0 , 10 ;
+  SELECT * FROM 表名 LIMIT 0, 10 ;
   或者
   SELECT * FROM 表名 LIMIT 10 ;
   
@@ -2335,45 +2367,47 @@ ORDER BY department_id, salary DESC;
   SELECT * FROM 表名 LIMIT 20 , 10 ;
   ```
 
-  > MySQL 8.0中可以使用“LIMIT 3 OFFSET 4”，意思是获取从第 5 条记录开始后面的 3 条记录，和“LIMIT 4,3;”返回的结果相同。
+  > MySQL 8.0中可以使用“LIMIT 3 OFFSET 4”，意思是获取从第 5 条记录（标号为4的记录，0开始）开始后面的 3 条记录，和“LIMIT 4,3;”返回的结果相同。
 
-- 分页显式公式 ：（**当前页数- 1 ）\*每页条数，每页条数**
 
-  ```
-  SELECT * FROM table
-  LIMIT(PageNo - 1 )*PageSize,PageSize;
-  ```
 
-- **注意：LIMIT 子句必须放在整个SELECT语句的最后！**
+### offset
 
-- 使用 LIMIT 的好处
-  约束返回结果的数量可以减少数据表的网络传输量，也可以提升查询效率。如果我们知道返回结果只有1 条，就可以使用LIMIT 1，告诉 SELECT 语句只需要返回一条记录即可。这样的好处就是 SELECT 不需要扫描完整的表，只需要检索到一条符合条件的记录即可返回。
+当 **limit和offset组合使用的时候**，limit后面只能有一个参数，表示要取的的数量,offset表示要跳过的数量 。
 
-#### 2. 3 拓展
+```mysql
+select * from article 
+LIMIT 3 OFFSET 1
+```
+
+ 表示跳过1条数据,从第2条数据开始取，取3条数据，也就是取2,3,4三条数据
+
+
+#### 拓展
 
 在不同的 DBMS 中使用的关键字可能不同。在 MySQL、PostgreSQL、MariaDB 和 SQLite 中使用 LIMIT 关键字，而且需要放到 SELECT 语句的最后面。
 
 - 如果是 SQL Server 和 Access，需要使用 TOP 关键字，比如：
 
-  ```
+  ```sql
   SELECT TOP 5 name, hp_max FROM heros ORDER BY hp_max DESC
   ```
 
 - 如果是 DB2，使用FETCH FIRST 5 ROWS ONLY这样的关键字：
 
-  ```
+  ```sql
   SELECT name, hp_max FROM heros ORDER BY hp_max DESC FETCH FIRST 5 ROWS ONLY
   ```
 
 - 如果是 Oracle，你需要基于 ROWNUM 来统计行数：
 
-  ```
+  ```sql
   SELECT rownum,last_name,salary FROM employees WHERE rownum < 5 ORDER BY salary DESC;
   ```
 
   需要说明的是，这条语句是先取出来前 5 条数据行，然后再按照 hp_max 从高到低的顺序进行排序。但这样产生的结果和上述方法的并不一样。我会在后面讲到子查询，你可以使用
 
-  ```
+  ```sql
   SELECT rownum, last_name,salary
   FROM (
   SELECT last_name,salary
@@ -2383,6 +2417,11 @@ ORDER BY department_id, salary DESC;
   ```
 
   得到与上述方法一致的结果。
+
+
+
+
+
 
 ## 6多表查询
 
@@ -4122,7 +4161,7 @@ WHERE 和 HAVING 也不是互相排斥的，我们可以在一个查询里面同
 
 #### 4. 1 查询的结构
 
-```
+```sql
 #方式 1 ：
 SELECT ...,....,...
 FROM ...,...,....
@@ -4234,7 +4273,7 @@ SQL 中子查询的使用大大增强了 SELECT 查询的能力，因为很多�
 
 现有解决方式：
 
-```
+```sql
 #方式一：
 SELECT salary
 FROM employees

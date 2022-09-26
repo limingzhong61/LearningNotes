@@ -21,6 +21,36 @@ npm init -y
 
 npm初始化项目,会生成package.json文件。
 
+#### 启动起来：
+
+```
+npm run dev
+vuepress dev docs
+```
+
+
+或者在 package.json 文件里配置一个命令：
+
+```js
+"scripts" :{
+    "start": "vuepress dev docs"
+}
+```
+
+
+就可以用以下命令启动：
+
+就可以用以下命令启动：
+
+```bash
+npm run start
+# 或
+npm start
+
+```
+
+
+
 ## 目录配置
 
 极简基本结构：
@@ -67,7 +97,7 @@ docs文件夹下新建`.vuepress`文件夹，该目录存放vuepress的所有配
 
 ```js
 module.exports = {
-    title: '夕月',
+    title: 'codeofli',
     description: '~从后端到全栈开发~和夕月一起学~'
 }
 ```
@@ -95,33 +125,6 @@ features:
   details: 掌握Node项目部署、发布流程，打通全栈，完成产品的自主研发上线。
 footer: MIT Licensed | © 2019-present 夕月
 ---
-```
-
-#### 启动起来：
-
-```
-vuepress dev docs
-```
-
-
-或者在 package.json 文件里配置一个命令：
-
-```js
-"scripts" :{
-    "start": "vuepress dev docs"
-}
-```
-
-
-就可以用以下命令启动：
-
-就可以用以下命令启动：
-
-```bash
-npm run start
-# 或
-npm start
-
 ```
 
 config.js 中的配置对应下图中的 ①

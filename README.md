@@ -24,7 +24,7 @@ title: codeOflI的学习笔记
 
 为了更方便查看，本仓库做成了一个在线的博客
 
-- 在线博客：<https://www.yestojudge.cn/>
+- 在线博客：<https://www.codeofli.top/>
 
   > 使用vuepress
 

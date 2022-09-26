@@ -432,6 +432,29 @@ public native String intern();
 String reversedStr = new StringBuffer(strs).reverse().toString()
 ```
 
+#### 使用api统计子串出现次数
+
+```java
+import java.util.*;
+public class Main{
+    /** 
+    把他们统一转成小写，然后在判断字符出现的次数
+    */
+    public static void main(String[] args){
+       Scanner scan = new Scanner(System.in);
+        //完整的字符串
+        String str1 = scan.nextLine().toLowerCase();
+        //单个字符
+        String str2 = scan.nextLine().toLowerCase();
+        //出现的次数 = 完整字符串的长度-单个字符串的长度
+        int num = str1.length() - str1.replaceAll(str2,"").length();
+        System.out.println(num);
+        
+    }
+}
+
+```
+
 
 
 ## 枚举enum 
@@ -724,7 +747,7 @@ while (m1.find()) {
 	正则1|正则2：两个正则的或  
 #### 分组
 
-`(正则)`：**将多个正则作为一组**，可以为这一组单独设置次数注解  
+`(正则)`：**将多个正则作为一组**，可以**为这一组单独设置次数注解**  
 
 ### 贪婪模式与非贪婪模式
 

@@ -2217,13 +2217,13 @@ alter table emp add foreign key (deptid) references dept(did);
 
 - `Cascade方式`：在父表上update/delete记录时，同步update/delete掉子表的匹配记录
 - `Set null方式`：在父表上update/delete记录时，将子表上匹配记录的列设为null，但是要注意子表的外键列不能为not null
-- `No action方式`：如果子表中有匹配的记录，则不允许对父表对应候选键进行update/delete操作
+- `No action方式`：**如果子表中有匹配的记录，则不允许对父表对应候选键进行update/delete操作**
 - `Restrict方式`：同no action， 都是立即检查外键约束
-- `Set default方式`（在可视化工具SQLyog中可能显示空白）：父表有变更时，子表将外键列设置成一个默认的值，但Innodb不能识别
+- `Set default方式`（在可视化工具SQLyog中可能显示空白）：父表有变更时，**子表将外键列设置成一个默认的值，但Innodb不能识别**
 
-如果没有指定等级，就相当于Restrict方式。
+**如果没有指定等级，就相当于Restrict方式。**
 
-对于外键约束，最好是采用: `ON UPDATE CASCADE ON DELETE RESTRICT` 的方式。
+对于外键约束，**最好是采用: `ON UPDATE CASCADE ON DELETE RESTRICT` 的方式。**
 
 （ 1 ）演示 1 ：on update cascade on delete set null
 

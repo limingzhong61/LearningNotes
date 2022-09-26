@@ -182,3 +182,308 @@ $ git commit -m'rm files'
 
 
 链接：https://www.jianshu.com/p/420d38913578
+
+## 怎么撤销 git commit 提交的代码
+
+## 问题
+
+比如：我在项目里面添加了一个新的组件 gitTest.vue，
+
+写完之后，我就提交代码：
+
+```
+git add .
+git commit -m '提交git测试组件'
+```
+
+
+
+
+### git reset 命令
+
+[菜鸟教程：git reset 命令](https://www.runoob.com/git/git-reset.html)
+
+git reset 命令用于回退版本，可以指定退回某一次提交的版本。
+
+git reset 命令语法格式如下：
+
+```
+git reset [--soft | --mixed | --hard] [HEAD]
+```
+
+1
+
+- -mixed 为默认，可以不用带该参数，用于重置暂存区的文件与上一次的提交(commit)保持一致，工作区文件内容保持不变。
+  **不删除工作空间改动代码，撤销 commit，并且撤销 `git add .` 操作,回退到未提交git add .的工作区状态**
+  git reset --mixed HEAD^ 和 `git reset HEAD^` 效果是一样的
+- –soft 参数用于回退到某个版本
+  不删除工作空间改动代码，撤销 commit，不撤销 git add .
+- –hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交
+  删除工作空间改动代码，撤销 commit，撤销 git add .
+  实例：
+
+$ git reset HEAD^            		# 回退所有内容到上一个版本  
+$ git reset HEAD^ hello.php  		# 回退 hello.php 文件的版本到上一个版本  
+$ git reset 052e             		# 回退到指定版本
+$ git reset --soft HEAD~3    		# 回退上上上一个版本
+$ git reset --hard HEAD~3     		# 回退上上上一个版本  
+$ git reset --hard bae128          	# 回退到某个版本回退点之前的所有信息。 
+$ git reset --hard origin/master  	# 将本地的状态回退到和远程的一样 
+1
+2
+3
+4
+5
+6
+7
+注意：谨慎使用 –hard 参数，它会删除回退点之前的所有信息。
+
+HEAD 说明：
+
+HEAD 表示当前版本
+HEAD^ 上一个版本
+HEAD^^ 上上一个版本
+HEAD^^^ 上上上一个版本
+可以使用 ～数字表示
+
+HEAD~0 表示当前版本
+HEAD~1 上一个版本
+HEAD~2 上上一个版本
+HEAD~3 上上上一个版本
+解决
+执行完commit后，想撤回commit，怎么办？
+
+通过上面的 git reset 命令学习，可以知道：使用下面的命令
+
+# 回退上一个版本，然后需要删掉代码
+git reset --hard HEAD~1
+1
+2
+执行完我们发现已经回退到了提交前的状态
+
+可以输入查看日志命令：
+
+git log --oneline -10
+1
+
+拓展
+推荐阅读：Git 工具 - 重置揭密
+————————————————
+版权声明：本文为CSDN博主「凯小默」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/kaimo313/article/details/118578629
+
+# git切换分支时，如何保存当前分支的修改(暂时不想提交
+
+### git切换分支时，如何保存当前分支的修改(暂时不想提交)
+
+下面是我自己的理解
+
+暂且将当前分支称为a分支，即将切换的分支称为b分支
+
+1. 若a分支修改一半，并不着急提交，且需要到b分支上修改开发时，我们可以选择git stash ，git pull 将a分支的修改暂存到堆栈区中，然后切换到b分支进行开发，然后切换到a分支继续开发，释放堆栈中的保存的文件有以下两种
+
+   1. git stash pop 这种方法是直接将堆栈中的文件释放出来，并且删除堆栈中的文件
+
+   2. git stash apply 这种方法是将堆栈中的东西恢复出来，但是堆栈中还保留，这种方法比较保守，但同时也比较安全。
+
+      > git stash pop和git stash apply 使用哪一种比较好呢？视情况而定
+      >
+      > 直接使用git stash pop 属于简单粗暴，也不是不可以，大部分情况下都没事，但是如果你从b分支重新切换到a分支，在这期间，有人在a分支上更新并提交了代码并且包含你git stash 中的文件时，这个时候你再git stash pop 的时候就会很麻烦，会报错产生冲突，会让你开始合并区分，因为释放的文件是根据之前的版本修改的
+      >
+      > 这个时候听着就很头疼，也很棘手，怎么办呢？就解决冲突呗~~
+      >
+      > 还有个区别就是git stash list查看一下当前堆栈当中已经有的记录
+      >
+      > git stash pop 默认的是应用的栈顶的记录，也就是 stash@{0}
+      >
+      > git stash apply 可以自由选择我们想要应用的记录stash@{0}，stash@{1}，stash@{2}........
+
+2. 如果a分支修改的文件，b分支上也有**且两个分支的文件源码是一样的**
+
+   ，是可以顺利切换过去的，不管是在工作树还是暂存区的直接切换过去都不会报错。
+
+   注：这里的文件一样指的不仅仅是文件名而是包括文件里的内容，如两个分支中都有home.vue文件，若里面的代码不一样那么切换的时候也会报错
+
+3. 若a分支修改的文件在b分支上没有，就会有以下提示
+   ![img](img_git-me/1876175-20220421194400171-1289597985.png)
+
+若你继续选择（强制）切换分支，那么就会丢弃你本地所有修改的分支。
+
+1. 若a分支修改的多个文件，b分支有的有，有的没有，那么切换分支的时候也会有这样的提示，如果继续checkout，那么a分支上的所有修改也将会都被丢弃。
+
+> git stash：备份当前工作区内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前工作区内容保存到Git栈中
+> git pull：拉取服务器上当前分支代码
+> git stash pop：从Git栈中读取最近一次保存的内容，恢复工作区相关内容。同时，用户可能进行多次stash操作，需要保证后stash的最先被取到，所以用栈（先进后出）来管理；pop取栈顶的内容并恢复
+> git stash list：显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。
+> git stash clear：清空Git栈
+
+参考链接：https://www.cnblogs.com/wszzj/p/16175740.html
+
+# git常用命令
+
+## 合并提交几个commit为一个
+
+```
+git rebase -i
+```
+
+
+
+![image-20220828213808424](img_git-me/image-20220828213808424.png)
+
+### 把一个代码的提交信息合并到另一个分支里面去
+
+```
+git cherry -pick
+```
+
+### 补充提交-git commit 少提交了一个文件
+
+```
+git commit --amend
+```
+
+# git修改登录账号密码
+
+1.修改Idea中的账号密码配置
+
+![img](img_git-me/2019082818564591.png)
+
+2.如若上方不生效可以选择修改控制面板中的配置（找到对应的git仓库）
+
+![img](img_git-me/20190828185913415.png)
+
+ 
+
+# git 常见冲突解决
+
+总结：**自己git stash用的比较多一点**
+
+—— git pull遇到报错Your local changes to the following files would be overwritten by merge
+
+## 1 场景
+
+在进行代码开发时，忘了先git pull到本地之后，直接在台式机上的代码进行编写，突然想起忘了pull了，然后想用git pull来更新本地代码。结果报错：
+
+```
+error: Your local changes to the following files would be overwritten by merge: xxx/xxx/xxx.xx Please, commit your changes or stash them before you can merge. Aborting
+```
+
+## 2 报错分析
+
+出现这个问题的原因是其他人修改了项目中的代码文件xxx并提交到远程版本库中去了，而你本地也修改了改代码文件xxx，这时候你进行git pull操作就好出现冲突了，上面报错的意思是我台式机上新修改的代码的文件，将会被git服务器上的代码覆盖，我们当然不想刚刚写的代码被覆盖掉，那么我们应该如何解决呢。
+
+## 3 解决方案：
+
+在报错中我们看到官方推荐的解决方案是使用直接commit或者**使用stash**。那么我们来看看这两种操作方式的区别和使用：
+
+### 3.1 方案一：使用stash
+
+**保留本地的方式修改**（强烈推荐，还有一种是直接拉取服务器的（不推荐使用就不写了），这样你本地修改的代码的，就会舍弃，相当于你写的代码直接没，你还的重新写）。
+主要方式如下：
+  通过**git stash**将**工作区恢复到上次提交的内容，同时备份并暂时隐藏本地所做的修改**，之后就可以正常git pull了，git pull完成后，执行**git stash pop**将之前**本地做的修改隐藏的应用拉取到当前工作区**。
+**stash翻译为“隐藏”**，如下操作：
+
+```
+git stash
+git pull
+git stash pop
+```
+
+
+
+`git stash`: **备份当前的工作区**的内容，从**最近的一次提交中读取相关内容**，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。
+`git stash pop`: 从**Git栈中读取最近一次保存的内容**，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，**pop会从最近的一个stash**中读取内容并恢复。
+git stash list: 显示**Git栈内的所有备份**，可以利用这个列表来决定从那个地方恢复。
+git stash clear: **清空Git栈**。此时使用gitk等图形化工具会发现，原来stash的哪些节点都消失了。
+3.2 方案二：硬覆盖（谨慎使用，使用前先备份当前代码!!!）：
+放弃本地修改，只保留服务器端代码，则直接回退到上一个版本，再进行pull：
+
+```
+git reset --hard
+git pull origin master
+```
+
+
+
+注：其中origin master表示git的主分支。
+
+## 4 Git冲突解决方法实际应用场景
+
+### 4.1 硬覆盖应用
+
+忽略本地修改，强制拉取远程到本地，硬覆盖是一种比较通用的方式吗，但是不建议使用，如果使用需要先将修改在本地做好备份，否则本得改变将丢失。
+主要是项目中的文档目录，看的时候可能多了些标注，现在远程文档更新，本地的版本已无用，可以强拉
+
+```
+git fetch --all
+
+git reset --hard origin/dev
+
+git pull
+```
+
+
+
+## 4.2 commit和pull的先后顺序造成的冲突的情况
+
+**关于commit和pull的先后顺序**，commit >> pull >> push 和 pull >> commit >> push的顺序，两种情况都遇到过代码冲突。解决方法如下：
+
+### 4.2.1 未commit先pull（pull >> commit >> push）
+
+**未commit先pull，视本地修改量选择revert或stash**
+
+**场景:**
+同事 有新提交
+我 没有pull -> 修改了文件 -> pull -> 提示有冲突
+
+#### 4.2.1.1 本地修改量小
+
+如果本地修改量小，例如只修改了一行，可以按照以下流程:
+
+ git revert(把自己的代码取消) >> git pull >> 在最新代码上修改 >> [pull确认最新] >> commit&push
+
+#### 4.2.1.2 本地修改量大
+
+本地修改量大，冲突较多,有两种方式处理:
+
+##### 第一种：
+
+stash save(把自己的代码隐藏存起来) >> 重新pull -> stash pop(把存起来的隐藏的代码取回来 ) >> 代码文件会显示冲突 >> 右键选择edit conficts，解决后点击编辑页面的 mark as resolved >>  commit&push
+
+
+
+##### 第二种：
+
+stash save(把自己的代码隐藏存起来) >> 重新pull >> stash pop(把存起来的隐藏的代码取回来 ) >> 代码文件会显示冲突 >> 右键选择resolve conflict >> 打开文件解决冲突 ->commit&push
+1
+
+##### 4.2.2 已commit未push(commit >> pull >> push)
+
+已commit未push，视本地修改量选择reset或直接merge。
+
+场景：
+同事 有新提交
+我 没有pull >> 修改了文件 >> commit >> pull >> 提示有冲突
+
+##### 4.2.2.1 修改量小
+
+修改量小，直接回退到未提交的版本（可选择是否保存本地修改）
+如果本地修改量小，例如只修改了一行，可以按照以下流程
+
+reset(回退到未修改之前，选hard模式，把自己的更改取消) >> 重新pull >> 在最新代码上修改 >> [pull确认最新] >> commit&push
+1
+ps：实际上完全可以采取直接merge的方法，这里主要是根据尽量避免merge的原则，提供一种思路
+
+##### 4.2.2.2 修改量大
+
+修改量大，直接merge，再提交（目前常用）
+
+```
+commit后pull显示冲突 >> 手动merge解决冲突 >> 重新commit >> push
+```
+
+
+————————————————
+
+原文链接：https://blog.csdn.net/qq_41018861/article/details/118442711

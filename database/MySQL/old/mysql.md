@@ -790,90 +790,7 @@ SELECT solution_id,problem_id,user_id,MIN(runtime) as runtime FROM solution
         WHERE contest_id = 19 AND result = 0 GROUP BY problem_id,user_id
 ```
 
-## 分页查询
 
-### [¶](#limit) LIMIT
-
-**限制返回的行数**。可以有两个参数，第一个参数为**起始行**，**从 0 开始**；第二个参数为返回的总行数。
-
-应用场景：
-
-```
-实际的web项目中需要根据用户的需求提交对应的分页查询的sql语句
-```
-
-语法：
-
-```mysql
-select 字段|表达式,...
-from 表
-【where 条件】
-【group by 分组字段】
-【having 条件】
-【order by 排序的字段】
-limit 【起始行，】条目数;
-# 使用offset
-select 字段|表达式,...
-from 表
-【where 条件】
-【group by 分组字段】
-【having 条件】
-【order by 排序的字段】
-limit 条目数 offset 起始行;
-```
-
-
-
-特点：
-
-1. 起始条目索引从0开始
-
-2. limit子句放在查询语句的最后
-
-3. 公式：
-
-   ```sql
-   select * from  表 limit （page-1）*sizePerPage,sizePerPage
-   ```
-   
-   假如:
-   每页显示条目数sizePerPage
-   要显示的页数 page
-
-返回前 5 行:
-
-```sql
-SELECT *
-FROM mytable
-LIMIT 5;   
-```
-
-
-
-```sql
-SELECT *
-FROM mytable
-LIMIT 0, 5;
-```
-
-返回第 3 ~ 5 行:
-
-```sql
-SELECT *
-FROM mytable
-LIMIT 2, 3;  
-```
-
-### offset
-
-当 **limit和offset组合使用的时候**，limit后面只能有一个参数，表示要取的的数量,offset表示要跳过的数量 。
-
-```mysql
-select * from article 
-LIMIT 3 OFFSET 1
-```
-
- 表示跳过1条数据,从第2条数据开始取，取3条数据，也就是取2,3,4三条数据
 
 ## 联合查询，组合查询
 
@@ -2237,11 +2154,15 @@ mysqldump是导出数据过程中使用非常频繁的一个工具
 
 **mysqldump备份**：
 
+```
 mysqldump -u用户名 -p密码 -h主机 数据库 a -w "sql条件" --lock-all-tables > 路径
+```
 
 案例：
 
+```
 mysqldump -uroot -p1234 -hlocalhost db1 a -w "id in (select id from b)" --lock-all-tables > c:\aa.txt
+```
 
 **mysqldump还原**：
 

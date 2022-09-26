@@ -26,9 +26,9 @@ https://www.cnblogs.com/hdlan/p/14395189.html
 
 ```shell
 设置开发者的用户名
-	git config --global user.name codeofli
+	git config --global user.name mingzli
 设置开发者邮箱
-	git config --global user.email 1162314270@qq.com
+	git config --global user.email nicolaslee5@foxmail.com
 取得全部的全局信息
 	git config --list
 	git config -l
@@ -538,7 +538,8 @@ git clone （HTTPS）https://github.com/codeOflI/ssm-crud
 
 ### git克隆下来只有master分支的问题
 
-一. git克隆下来只有master分支，切换其它分支
+#### 1. git克隆下来只有master分支，切换其它分支
+
 当我们 git clone + 远程仓库地址 下来代码之后，git branch 发现只有master分支，而我们大多时候都是在其它分支处理事情的，所以我们用git branch -a 查看所有分支
 
 ```bash
@@ -548,7 +549,13 @@ git clone （HTTPS）https://github.com/codeOflI/ssm-crud
 ![在这里插入图片描述](git/18fd36f35c28447d84408f843d7740b1.png)
 
 上图我已经切换到非master的dev_1.5分支,已经正式使用，要想达到这个最终目的，我们只需要
-git checkout -t origin/xxx (xxx指你要切换的分支名,比如我的就是dev_1.5)
+`git checkout -t origin/xxx` (xxx指你要切换的分支名,比如我的就是dev_1.5)
+
+```bash
+git checkout -t origin/xxx
+```
+
+
 
 ```bash
 D:\Users\Lenovo\Desktop\note>git checkout -h

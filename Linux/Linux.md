@@ -38,31 +38,7 @@ categories: note
 
 ![1565532090697](Linux/centos联网-1652182443089.png)
 
-### vmtools的安装和使用
 
-3.7.1安装vmtools的步骤说明
-
-1.进入centos
-
-2.点击vm菜单的->installvmwaretools
-
-3.centos会出现一个vm的安装包
-
-4.点击右键解压,得到一个安装文件
-
-5.进入该vm解压的目录，该文件在/root/桌面/vmware-tools-distrib/下
-
-6.安装./vmware-install.pl
-
-7.全部使用默认设置即可8.需要reboot重新启动即可生效
-
-3.7.2使用vmtools来设置windows和linux的共享文件夹
-
-1)菜单->vm->setting,如图设置即可注意:设置选项为alwaysenable,这样可以读写了
-
-2)windows和centos可共享d:/share目录可以读写文件了
-
-3)在centos的/mnt/hgfs/下
 
 ## Linux的目录结构
 
@@ -250,7 +226,7 @@ Vim具有程序编辑的能力，可以看做是Vi的增强版本，可以主动
 
 #### 3) 在**文件中查找某个单词**
 
-[命令行下/关键字，回车查找,  **输入n 就是查找下一个**]
+[命令行下/关键字，回车查找,  **输入n （next）就是查找下一个**]
 
 如查找bind
 
@@ -2104,6 +2080,10 @@ killall进程名称（功能描述：通过进程名称杀死进程，也支持�
 
 -9:表示强迫进程立即停止
 
+```
+kill -9中，9代表的就是9号信号，带有强制执行的意思，它告诉进程：“无论你现在在做什么，立刻停止”。.
+```
+
 14.3.4最佳实践：
 
 案例1：踢掉某个非法登录用户
@@ -2193,11 +2173,21 @@ init(1)─┬─ManagementAgent(13688)─┬─{ManagementAgen}(13706)
 
 #### 2systemctl管理指令：
 
-| systemctl命令                 | 说明     |
-| ----------------------------- | -------- |
-| systemctl start [unit type]   | 启动服务 |
-| systemctl stop [unit type]    | 停止服务 |
-| systemctl restart [unit type] | 重启服务 |
+| systemctl命令                   | 说明                 |
+| ------------------------------- | -------------------- |
+| systemctl start [unit type]     | 启动服务             |
+| systemctl stop [unit type]      | 停止服务             |
+| systemctl restart [unit type]   | 重启服务             |
+| systemctl enable nginx.service  | 在开机时启用一个服务 |
+| systemctl disable nginx.service | 在开机时禁用一个服务 |
+
+
+显示一个服务的状态：`systemctl status postfix.service`
+
+查看服务是否开机启动：`systemctl is-enabled nginx.service`
+查看已启动的服务列表：`systemctl list-unit-files|grep enabled`
+
+查看启动失败的服务列表：`systemctl --failed`
 
 14.5.3使用案例：
 
@@ -2206,6 +2196,26 @@ init(1)─┬─ManagementAgent(13688)─┬─{ManagementAgen}(13706)
 ```sh
 systemctl start docker
 ```
+
+#### 防火墙
+
+centos7后关闭防火墙
+
+```shell
+systemctl stop firewalld
+```
+
+设置开机关闭防火墙服务
+
+```
+[root@localhost ~]# systemctl disable firewalld
+Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+```
+
+
+
+
 
 
 
@@ -2229,12 +2239,6 @@ num  target     prot opt source               destination
 
 Chain OUTPUT (policy ACCEPT)
 num  target     prot opt source               destination
-```
-
-centos7后关闭防火墙
-
-```shell
-# systemctl stop firewalld
 ```
 
 
@@ -2655,3 +2659,82 @@ wget 是一个从网络上自动下载文件的自由工具，支持通过 HTTP�
 
 所谓自动下载，是指 wget 可以在用户退出系统的之后在继续后台执行，直到下载任务完成。
 
+# Centos下安装SSH、FTP服务
+
+https://blog.csdn.net/qq_57007794/article/details/124080886
+
+```
+Port=22  #设置SSH的端口号是22(默认端口号为22)
+
+Protocol 2  #启用SSH版本2协议
+
+ListenAddress 192.168.0.222  #设置服务监听的地址
+
+DenyUsers   user1 user2 foo  #拒绝访问的用户(用空格隔开)
+
+AllowUsers  root osmond vivek  #允许访问的用户(用空格隔开)
+
+PermitRootLogin  no  #禁止root用户登陆
+
+PermitEmptyPasswords no  #用户登陆需要密码认证
+
+PasswordAuthentication  yes  #启用口令认证方式
+
+
+```
+
+```
+TYPE=Ethernet                # 网卡类型：为以太网
+PROXY_METHOD=none            # 代理方式：关闭状态
+BROWSER_ONLY=no                # 只是浏览器：否
+BOOTPROTO=dhcp                # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]
+DEFROUTE=yes                # 默认路由：是, 不明白的可以百度关键词 `默认路由` 
+IPV4_FAILURE_FATAL=no        # 是不开启IPV4致命错误检测：否
+IPV6INIT=yes                # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]
+IPV6_AUTOCONF=yes            # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_DEFROUTE=yes            # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_FAILURE_FATAL=no        # 是不开启IPV6致命错误检测：否
+IPV6_ADDR_GEN_MODE=stable-privacy            # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]
+NAME=ens33                    # 网卡物理设备名称
+UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698    # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用
+DEVICE=ens33                    # 网卡设备名称, 必须和 `NAME` 值一样
+ONBOOT=no  
+IPADDR="192.168.36.5" #192.168.59.x, x为3~255. 
+NETMASK="255.255.255.0" #子网掩码 
+GATEWAY="192.168.36.1" #网关IP
+```
+
+
+
+
+
+```
+TYPE=Ethernet                # 网卡类型：为以太网
+PROXY_METHOD=none            # 代理方式：关闭状态
+BROWSER_ONLY=no                # 只是浏览器：否
+BOOTPROTO=static                # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]
+DEFROUTE=yes                # 默认路由：是, 不明白的可以百度关键词 `默认路由` 
+IPV4_FAILURE_FATAL=no        # 是不开启IPV4致命错误检测：否
+IPV6INIT=yes                # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]
+IPV6_AUTOCONF=yes            # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_DEFROUTE=yes            # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]
+IPV6_FAILURE_FATAL=no        # 是不开启IPV6致命错误检测：否
+IPV6_ADDR_GEN_MODE=stable-privacy            # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]
+NAME=ens33                    # 网卡物理设备名称
+UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698    # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用
+DEVICE=ens33                    # 网卡设备名称, 必须和 `NAME` 值一样
+ONBOOT=yes  
+IPADDR="192.168.36.5" #192.168.59.x, x为3~255. 
+NETMASK="255.255.255.0" #子网掩码 
+GATEWAY="192.168.36.1" #网关IP
+```
+
+
+
+## SSH连接缓慢解决方法
+
+https://blog.csdn.net/tainyu/article/details/124317063		
+
+# systemctl 实现开机自启服务
+
+https://blog.csdn.net/qq_29663071/article/details/80814081
