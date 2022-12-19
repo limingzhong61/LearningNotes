@@ -17,18 +17,18 @@ title: codeOflI的学习笔记
 
 本仓库同步托管在Github和Gitee中
 
-- Gitee仓库：<https://gitee.com/codeOflI/LearningNotes>
-- Github仓库：<https://github.com/codeOflI/LearningNotes>
+- Gitee仓库：<https://gitee.com/limingzhong61/LearningNotes>
+- Github仓库：<https://github.com/limingzhong61/LearningNotes>
 
 ## 在线阅读
 
 为了更方便查看，本仓库做成了一个在线的博客
 
-- 在线博客：<https://www.codeofli.top/>
+- 在线博客：<https://www.limingzhong61.top/>
 
   > 使用vuepress
 
-- 在线博客：<https://codeofli.github.io/>
+- 在线博客：<https://limingzhong61.github.io/>
 
   > 使用hexo搭建,笔记内容未更新
 
