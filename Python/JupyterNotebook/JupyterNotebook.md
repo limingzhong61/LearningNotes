@@ -153,7 +153,7 @@ y 将Markdown单元格转换为代码单元格
 
 shift+Enter 运行本单元格，选择下面的代码块
 
-ctrl+Enter 运行本单元格
+**ctrl+Enter 运行本单元格**
 
 alt+Enter 运行本单元格，在下方新建一个单元格
 
@@ -161,7 +161,7 @@ a 在上方新建一个单元格（above）
 
 b 在下方新建一个单元格（below）
 
-d 删除选中的单元格（delete）
+**d 删除选中的单元格（delete）**
 
 x 剪切本单元格
 
@@ -223,6 +223,10 @@ jupyter contrib nbextension install --user
 
 3. 最后启动jupyter notebook，选择 Nbextensions，勾选 Table of Contents。
 
+   ```
+   jupyter notebook
+   ```
+   
    在该位置可以为目录插件进行配置
 
 <img src="JupyterNotebook/image-20220705230218272.png" alt="image-20220705230218272" style="zoom:67%;" />

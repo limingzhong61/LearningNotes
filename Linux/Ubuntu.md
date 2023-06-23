@@ -1,5 +1,7 @@
 # Ubuntu
 
+
+
 ### Ubuntu的介绍Ubuntu
 
 Python：开发平台Ubuntu
@@ -12,7 +14,57 @@ Python：开发平台Ubuntu
 
 Ubuntu下载地址：http://cn.ubuntu.com/download/
 
-### Ubuntu的安装
+## Ubuntu的安装
+
+用户名 lee
+
+密码 123456
+
+用户：root
+
+密码 123456
+
+https://blog.csdn.net/qq_43377653/article/details/126877889
+
+### VMware安装Ubuntu后网络连接失败解决办法
+
+https://blog.csdn.net/CHYabc123456hh/article/details/112890125
+
+**方法3解决**
+
+### ubuntu ssh
+
+https://blog.csdn.net/DCJwwh/article/details/128520453
+
+#### ubuntu ssh root
+
+**ubuntu在终端root用户及密码可以正常登陆,但是用ssh登陆,系统却总是提示密码不对**
+
+原因：
+
+​    [ubuntu](https://so.csdn.net/so/search?q=ubuntu&spm=1001.2101.3001.7020)系统的SSH 默认root权限禁用密码登录
+
+解决方法：
+
+vi /etc/ssh/sshd_config
+将PermitRootLogin项改为yes
+service sshd restart 重启sshd服务即可
+
+
+
+### Ubuntu22.04使用笔记本电脑安装摄像头步骤
+
+http://www.taodudu.cc/news/show-3248144.html
+
+```
+Job for vmware-tools.service failed because the control process exited eith err or code.
+
+unable to start services for vmware tools
+```
+
+
+
+
 
 18.2.1安装的步骤
 
@@ -32,13 +84,15 @@ Ubuntu下载地址：http://cn.ubuntu.com/download/
 
 ### Ubuntu的root用户 
 
-18.3.1介绍
+#### 18.3.1介绍
 
 安装ubuntu成功后，**都是普通用户权限**，并没有最高root权限，如果需要使用root权限的时候，通常都会在命令前面加上sudo。
 
-有的时候感觉很麻烦。我们一般使用su命令来直接切换到root用户的，但是如果没有给root设置初始密码，就会抛出su:Authentication failure这样的问题。所以，我们只要给root用户设置一个初始密码就好了。
+有的时候感觉很麻烦。我们一般使用su命令来直接切换到root用户的，但是**如果没有给root设置初始密码，就会抛出su:Authentication failure这样的问题。**所以，我们只要给root用户设置一个初始密码就好了。
 
-18.3.2 给root用户设置密码并使用
+###  给root用户设置密码并使用
+
+https://blog.csdn.net/WHEgqing/article/details/129379047
 
 1)输入sudo passwd命令，输入一般用户密码并设定root用户密码。
 
@@ -55,6 +109,20 @@ nicolas@ubuntu:~$ sudo passwd
 重新输入新的 UNIX 密码： 
 passwd：已成功更新密码
 ```
+
+### Ubuntu vi命令键盘错乱问题解决
+
+刚装好[Ubuntu](https://so.csdn.net/so/search?q=Ubuntu&spm=1001.2101.3001.7020)系统，使用 vi 命令发现键盘是错乱的，输入任何值都会换行，我们可以通过安装 vim 命令解决，命令如下：
+
+```bash
+sudo apt install vim
+```
+
+安装完成后，再使用 vim 命令打开文件，发现问题解决。
+
+
+
+
 
 18.4Ubuntu下开发Python
 
@@ -235,7 +303,9 @@ udp6       0      0 :::5353                 :::*
 
 •登出登出命令：exit或者logout
 
-## 安装C++编译器
+## 安装软件
+
+### 安装C++编译器
 
 打开终端输入sudo apt-get install build-essential 安装gcc和一些库函数。提供C/C++的编译环境
 
@@ -243,7 +313,7 @@ udp6       0      0 :::5353                 :::*
 
 注意编译c++程序要用g++
 
-## 安装JDK
+### 安装JDK
 
 https://blog.csdn.net/weixin_38924500/article/details/106215048
 

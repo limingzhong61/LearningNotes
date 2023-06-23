@@ -26,7 +26,7 @@ https://www.cnblogs.com/hdlan/p/14395189.html
 
 ```shell
 设置开发者的用户名
-	git config --global user.name mingzli
+	git config --global user.name mzli
 设置开发者邮箱
 	git config --global user.email nicolaslee5@foxmail.com
 取得全部的全局信息
@@ -49,6 +49,10 @@ Initialized empty Git repository in E:/gitpro/.git/
 
 ## 文件区域
 
+git分为3个文件区域
+
+工作区——暂存区——版本库
+
 1. **工作区**
    用户编写代码的文件夹
    所有的文件操作以工作区为主
@@ -63,6 +67,8 @@ Initialized empty Git repository in E:/gitpro/.git/
    真正发布的代码
    
    git stage
+   
+   
    
    ![image-20211105101003523](Git/image-20211105101003523.png)
 
@@ -87,6 +93,7 @@ git add .
 ```
 
 添加所有在仓库目录中创建的新文件到暂存区
+
 3、将文件提交到版本库中
 
 ```shell
@@ -157,7 +164,38 @@ git reset --hard 1fc9d3f（Commit id）
 
 ### 撤销修改
 
-#### 撤销工作区修改
+#### 撤销add操作——暂存区到工作区
+
+
+
+如果您已经使用 `git add` 命令将文件添加到 Git 暂存区，但是希望撤销添加操作，您可以使用以下命令将文件从暂存区中移除：
+
+```shell
+git reset <file>
+```
+
+其中，`<file>` 是您想要撤销添加操作的文件名或文件路径。
+
+如果您想要**撤销所有已添加到暂存区的文件**，可以使用以下命令：
+
+```
+git reset
+```
+
+这将移除所有已添加到暂存区的文件。请注意，这不会影响您已经提交的文件，只会将它们从暂存区中移除。
+
+
+
+#### 撤销工作区修改——还原文件的所有更改
+
+**撤销对某个文件的修改，而不是撤销添加操作**，可以使用以下命令：
+
+```
+luaCopy code
+git checkout -- <file>
+```
+
+这将**还原指定文件的最新提交版本，并覆盖暂存区和工作目录中的任何更改**。请注意，这将永久删除您在该文件上进行的所有未提交更改。
 
 显示那些文件发生了改变
 
@@ -252,6 +290,83 @@ $ git rm \*~
 # 远程仓库的使用
 
 [git-book:Git-基础-远程仓库的使用](https://git-scm.com/book/zh/v2/Git-基础-远程仓库的使用)
+
+## 配置远程仓库
+
+### Git配置SSH
+
+ssh通信模式
+
+1. 启动git bash输入下列命令-生成ssh key密钥
+
+在此之中可以使用linux命令
+
+```sh
+ ssh-keygen -t rsa -C "1162314270@qq.com"
+```
+
+命令输入后，首先询问用户密钥的保存位置
+	默认为公钥和私钥保存在：`用户/xxx/.ssh/id_rsa.pub`
+	然后询问是否设置保护密码
+
+2、将公钥内容保存到GITHUB
+		打开github的setting页面添加ssh key
+
+​		id_rsa.pub
+
+公钥文件，保存在外部使用**==(保存到github的ssh密匙中)==**
+
+​		id_rsa
+
+私钥文件，做本机标识
+
+
+​		
+
+将公钥内容复制到key内容中
+
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxecsbj2eVTZoHuCkW5GxxupV9jSbj/MePZPHHhhdH lmz
+```
+
+
+
+```
+C:\Users\11623>ssh-keygen -t rsa -C "lmz"
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\11623/.ssh/id_rsa):
+C:\Users\11623/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\11623/.ssh/id_rsa.
+Your public key has been saved in C:\Users\11623/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:722mRw92N2R2fb71Yr3tBEgSQORYxzzzF6n4xRkh7Mk lmz
+The key's randomart image is:
++---[RSA 2048]----+
+|       o=+o.. .o |
+|       + .=...+  |
+|      . . .B.+ +.|
+|          .oE.=++|
+|        S  ..o=.o|
+|         .  = .o+|
+|          .o + o*|
+|         . .+ +o+|
+|          o=.. ++|
++----[SHA256]-----+
+
+```
+
+4、在github上建立远程仓库信息
+	不选择：Initialize this repository with a README
+	创建仓库后界面上就给出了仓库的访问地址
+	SSH，有了SSH key直接连接
+		https://github.com/NicolasCoder/rep.git
+	HRRPS,所有人都可以连接
+		https://github.com/NicolasCoder/rep.git
+删除github仓库
+	仓库的setting
 
 ### problem
 
@@ -388,80 +503,7 @@ Git 可以给历史中的某一个提交打上标签，以示重要。比较有�
 
 [https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE](https://git-scm.com/book/zh/v2/Git-基础-打标签)
 
-## 配置远程仓库
 
-ssh通信模式
-1.启动git bash
-  在此之中可以使用linux命令
-2、生成ssh key密钥
-
-```git
- ssh-keygen -t rsa -C "1162314270@qq.com"
-```
-
-```
-命令输入后，首先询问用户密钥的保存位置
-	/c/Users/11623/.ssh/id_rsa
-	默认为公钥和私钥保存在：用户/.ssh/id_rsa
-瑞后询问是否设置保护密码
-```
-
-3、将公钥内容保存到GITHUB
-	
-
-公钥文件，保存在外部使用**==(保存到github的ssh密匙中)==**
-		id_rsa.pub
-	
-
-私钥文件，做本机标识
-	id_rsa
-	打开github的setting页面添加ssh key
-		
-
-将公钥内容复制到key内容中
-
-```
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDaUZOQterXD2TZWb9VMO/s4jaIBIp0GIlsBlMZ+fl50NWbua4R8EtudIPIiMDGxsE7UmE/HGBMedsCjo1nS6h5OLz9ZT0n5h4FYOqurQWsyfdm+tgZK5mK/t1e93WlF+cjja+KiCMbntMYq7o/FGPWnlFlfiz9KiVos+oRWgC3RUx4hDqZoKFmfTxAiXQMJy2/pVYmHqliZ9+6mOvRJoe2C1mmTClTU5y9KLw8AWF0jTykUAeAfZjX1lwub8xkJ34QSNZFaBiouWcA7sz/Qa8kDGdFbZwR41Ugc+P4KYli72pecsbj2eVTZoHuCkW5GxxupV9jSbj/MePZPHHhhdH lmz
-```
-
-
-
-```
-C:\Users\11623>ssh-keygen -t rsa -C "lmz"
-Generating public/private rsa key pair.
-Enter file in which to save the key (C:\Users\11623/.ssh/id_rsa):
-C:\Users\11623/.ssh/id_rsa already exists.
-Overwrite (y/n)? y
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in C:\Users\11623/.ssh/id_rsa.
-Your public key has been saved in C:\Users\11623/.ssh/id_rsa.pub.
-The key fingerprint is:
-SHA256:722mRw92N2R2fb71Yr3tBEgSQORYxzzzF6n4xRkh7Mk lmz
-The key's randomart image is:
-+---[RSA 2048]----+
-|       o=+o.. .o |
-|       + .=...+  |
-|      . . .B.+ +.|
-|          .oE.=++|
-|        S  ..o=.o|
-|         .  = .o+|
-|          .o + o*|
-|         . .+ +o+|
-|          o=.. ++|
-+----[SHA256]-----+
-
-```
-
-4、在github上建立远程仓库信息
-	不选择：Initialize this repository with a README
-	创建仓库后界面上就给出了仓库的访问地址
-	SSH，有了SSH key直接连接
-		https://github.com/NicolasCoder/rep.git
-	HRRPS,所有人都可以连接
-		https://github.com/NicolasCoder/rep.git
-删除github仓库
-	仓库的setting
 
 ## 客服端访问
 
@@ -536,11 +578,103 @@ git clone （HTTPS）https://github.com/codeOflI/ssm-crud
 
 注：**==git clone默认只会克隆master==**
 
+### git clone 下载所有分支
+
+通常情况下，我们使用命令 git clone 来下载代码。但是下载的代码一般都是默认分支(默认分支可以再gitlab/github里设置)。
+
+```bash
+# 克隆代码,仅下载一个分支,gitlab/github上设置的默认分支,一般是master/main。也可以指定分支clone
+git clone https://github.com/pcottle/learnGitBranching.git
+```
+
+此时。
+
+```bash
+# 显示本地分支(注意:是本地分支),分支前面有 * 号的表示处于当前分支
+git branch
+# 显示所有分支,包括远程分支。
+git branch -a
+```
+
+在有网的情况下。我们clone代码之后，切换分支时比较容易的，通过。
+
+```shell
+git checkout 分支名
+```
+
+即可切换分支。但是如果说目前并不知道要用到哪些分支。而且我需要把代码传输到内网环境下使用，那就只能 挨个去checkout 所有分支，然后就进行内网传输。
+
+#### --bare 参数
+
+这就带来一个问题，如果代码分支数量少还好说，如果分支比较多，就比较麻烦了。有什么简单的方法可以一次下载所有分支么？
+
+通过我们在做Git迁移时，需要使用到一个命令。
+
+```shell
+git clone --bare https://github.com/pcottle/learnGitBranching
+```
+
+即 git clone --bare (需要注意这种方法下载的文件是不能直接使用的)。 关于git迁移，可以[查阅](https://www.jianshu.com/p/7932c715c138)
+
+**那么现在我们也可以通过使用这种方式来进行全量分支的下载**。
+
+```shell
+# 创建一个空文件夹
+mkdir repo
+# 进入该文件夹
+cd repo
+# 使用bare方式clone代码。并把下载后的文件夹重命名为 .git
+git clone --bare path/to/repo.git .git
+# 使用该命令(不用担心core.bare是否存在) 或 git config --bool core.bare false
+git config --unset core.bare
+# 上面的命令执行完,再执行该命令,就可以看到仓库里面的内容了
+git reset --hard
+```
+
+```
+git clone --bare git@github.com:DerekYRC/mini-spring.git .git
+```
+
+之后你就可以通过
+
+```
+git branch
+```
+
+命令查看本地所有分支。你会发现本地有所有的分支。
+
+这里有几点需要注意：
+
+1.是使用bare的形式去下载
+
+2.下载完后重命名文件夹
+
+3.将重命名后的文件夹，放到一个空文件中(这一步不是必须的,但是有必要,因为如果不这么做并且所在文件夹的文件数量有很多的的话,后续的两个命令恢复的代码,会搞的比较乱)
+
+目前来说这种方式是最好的下载git所有分支的办法了。网上的其他方法并不好用。
+
+参见：git - How do I clone all remote branches? - Stack Overflow 
+
+Jacob Fike的回答
+————————————————
+版权声明：本文为CSDN博主「kanyun123」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/kanyun123/article/details/116749871
+
+
+
+
+
 ### git克隆下来只有master分支的问题
 
 #### 1. git克隆下来只有master分支，切换其它分支
 
 当我们 git clone + 远程仓库地址 下来代码之后，git branch 发现只有master分支，而我们大多时候都是在其它分支处理事情的，所以我们用git branch -a 查看所有分支
+
+```shell
+git branch -a 
+```
+
+
 
 ```bash
 -a, --all             list both remote-tracking and local branches
@@ -840,11 +974,17 @@ build/
 .vscode/
 ```
 
+
+
+## .gitignore不生效问题解决方法
+
+https://blog.csdn.net/Saintmm/article/details/120847019
+
 # 删除git上已经提交的文件
 
 1.先查看有哪些文件可以删除,但是不真执行删除
 
-```
+```sh
 git rm -r -n job-executor-common/target/*
 ```
 
@@ -862,9 +1002,9 @@ git rm -r  job-executor-common/target/*
 
 此时,就把指定目录下所有内容从本地版本库中删除了
 
-如果只想从版本库中删除,但是本地仍旧保留的话,加上 --cached 参数
+如果只想**从版本库中删除**,但是本地仍旧保留的话,加上 --cached 参数
 
-```
+```sh
 git rm -r --cached job-executor-common/target/*
 ```
 
@@ -873,7 +1013,7 @@ git rm -r --cached job-executor-common/target/*
 再执行提交操作即可
 
 ```
-git commit -m"移除target目录下所有文件"
+git commit -m "移除target目录下所有文件"
 git push origin dev其中origin dev为分支名称
 ```
 

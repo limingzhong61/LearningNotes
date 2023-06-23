@@ -2422,8 +2422,13 @@ LIMIT 3 OFFSET 1
 
 
 
+## 6多表查询、
 
-## 6多表查询
+> 注：cross join是笛卡尔积，理论上不应该支持on语法，但是MySQL在这方面做的比较奇怪。
+>
+> 总共有五种join：cross，outer full，outer left，outer right和inner。除了cross之外都支持on语法。
+>
+> **cross join 和inner join 这俩在 MySQL 中没有区别~，cross join 同样支持on过滤笛卡尔积**
 
 多表查询，也称为关联查询，指两个或更多个表一起完成查询操作。
 
@@ -2497,7 +2502,7 @@ SELECT 107 * 27 FROM dual;
 
 我们把上述多表查询中出现的问题称为：笛卡尔积的错误。
 
-#### 1. 2 笛卡尔积（或交叉连接）的理解
+#### cross join—笛卡尔积（或交叉连接）的理解
 
 笛卡尔乘积是一个数学运算。假设我有两个集合 X 和 Y，那么 X 和 Y 的笛卡尔积就是 X 和 Y 的所有可能组合，也就是第一个对象来自于 X，第二个对象来自于 Y 的所有可能。组合的个数即为两个集合中元素个数的乘积数。
 
@@ -2559,7 +2564,7 @@ WHERE employees.department_id = departments.department_id;
 
 ![1649566844687](MySQL/1649566844687.png)
 
-```
+```sql
 SELECT employees.employee_id, employees.last_name,
 	employees.department_id, departments.department_id,
 	departments.location_id
@@ -2620,7 +2625,7 @@ WHERE e.department_id = d.department_id;
 
 ![1649567177196](MySQL/1649567177196.png)
 
-```
+```sql
 SELECT e.last_name, e.salary, j.grade_level
 FROM employees e, job_grades j
 WHERE e.salary BETWEEN j.lowest_sal AND j.highest_sal;
@@ -2664,7 +2669,7 @@ WHERE worker.manager_id = manager.employee_id ;
 
 - Oracle 对 SQL92 支持较好，而 MySQL 则不支持 SQL92 的外连接。
 
-  ```
+  ```sql
   #左外连接
   SELECT last_name,department_name
   FROM employees ,departments
@@ -2688,7 +2693,7 @@ WHERE worker.manager_id = manager.employee_id ;
 
 - 使用JOIN…ON子句创建连接的语法结构：
 
-  ```
+  ```sql
   SELECT table1.column, table2.column,table3.column
   FROM table
   	JOIN table2 ON table1 和 table2 的连接条件
@@ -2750,9 +2755,9 @@ ON d.location_id = l.location_id;
 
 ![1649567786267](MySQL/1649567786267.png)
 
-#### 3. 3 外连接(OUTER JOIN)的实现
+#### 外连接(OUTER JOIN)的实现
 
-##### 3. 3. 1 左外连接(LEFT OUTER JOIN)
+##### 左外连接(LEFT OUTER JOIN)
 
 - 语法：
 
@@ -2775,7 +2780,7 @@ ON d.location_id = l.location_id;
 
   ![1649567858182](MySQL/1649567858182.png)
 
-##### 3. 3. 2 右外连接(RIGHT OUTER JOIN)
+#####  右外连接(RIGHT OUTER JOIN)
 
 - 语法：
 
@@ -2800,7 +2805,7 @@ ON d.location_id = l.location_id;
 
 > 需要注意的是，LEFT JOIN 和 RIGHT JOIN 只存在于 SQL 99 及以后的标准中，在 SQL 92 中不存在，只能用 (+) 表示。
 
-##### 3. 3. 3 满外连接(FULL OUTER JOIN)
+##### 满外连接(FULL OUTER JOIN)
 
 - 满外连接的结果 = 左右表匹配的数据 + 左表没有匹配到的数据 + 右表没有匹配到的数据。
 - SQL 99 是支持满外连接的。使用FULL JOIN 或 FULL OUTER JOIN来实现。
@@ -3015,6 +3020,10 @@ WHERE e.department_id = d.department_id;
 ------
 
 ### 7. 章节小结
+
+注：**多表连接表的连接顺序从左往右**
+
+<img src="img_MySQL/image-20221026143728409.png" alt="image-20221026143728409" style="zoom: 80%;" />
 
 ------
 
@@ -5432,7 +5441,7 @@ WHERE job_id LIKE '%REP%';
 
 - 使用 UPDATE 语句更新数据。语法如下：
 
-  ```
+  ```sql
   UPDATE table_name
   SET column1=value1, column2=value2, ... , column=valuen
   [WHERE condition]
@@ -5479,7 +5488,7 @@ WHERE job_id LIKE '%REP%';
 
   ![1650097225574](MySQL/1650097225574.png)
 
-  ```
+  ```sql
   DELETE FROM table_name [WHERE <condition>];
   ```
 

@@ -72,7 +72,7 @@ ip addr
 
 ​	8）、使用客户端连接linux；
 
-#### 2在linux虚拟机上安装docker
+#### 2在linux上安装docker
 
 步骤：(安装不成功可以到菜鸟教程安装)
 
@@ -84,18 +84,21 @@ uname -r
 
 2、安装docker
 
+centos：
+
 ```
 yum install docker
 ```
 
-ubuntu
+ubuntu：
 
 ```shell
 sudo apt install docker.io
 ```
 
 3、输入y确认安装
-		4、启动docker
+
+4、启动docker
 
 ```shell
 [root@localhost ~]# systemctl start docker
@@ -211,9 +214,135 @@ docker cp 第一个参数指定本地文件或者文件夹，第二个参数指�
 sudo docker cp /home/ubuntu/yoj.sql mysql:/home
 ```
 
+# docker中安装mysql
+
+> 以下为5.7版本的安装记录，建议以后使用8.0+的版本，因为自己也使用的8.0+的版本。
+
+1 拉取mysql镜像
+
+```shell 
+[root@hadoop-104 module]# docker pull mysql:5.7
+```
+
+查看镜像
+
+```
+[root@hadoop-104 module]# docker images
+REPOSITORY  TAG    IMAGE ID     CREATED       SIZE
+mysql       5.7    f5829c0eee9e 2 hours ago   455MB
+```
+
+2 启动mysql容器
+
+```shell
+# --name指定容器名字 -v目录挂载 -p指定端口映射  -e设置mysql参数 -d后台运行
+sudo docker run -p 3306:3306 --name mysql --privileged=true \
+-v /mydata/mysql/log:/var/log/mysql \
+-v /mydata/mysql/data:/var/lib/mysql \
+-v /mydata/mysql/conf:/etc/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:5.7
+```
+
+### 修改MySQL配置
+
+```shell
+vi /mydata/mysql/conf/my.cnf
+```
+
+插入内容如下：
+
+```conf
+[client]
+default-character-set=utf8
+[mysql]
+default-character-set=utf8
+[mysqld]
+init_connect='SET collation_connection = utf8_unicode_ci'
+init_connect='SET NAMES utf8'
+character-set-server=utf8
+collation-server=utf8_unicode_ci
+skip-character-set-client-handshake
+skip-name-resolve
+```
+
+重启mysql
+
+```properties
+docker restart mysql
+```
+
+进入容器查看配置：
+
+```shell
+[root@hadoop-104 conf]# docker exec -it mysql /bin/bash
+root@b3a74e031bd7:/# whereis mysql
+mysql: /usr/bin/mysql /usr/lib/mysql /etc/mysql /usr/share/mysql
+
+root@b3a74e031bd7:/# ls /etc/mysql 
+my.cnf
+root@b3a74e031bd7:/# cat /etc/mysql/my.cnf 
+[client]
+default-character-set=utf8
+[mysql]
+default-character-set=utf8
+[mysqld]
+init_connect='SET collation_connection = utf8_unicode_ci'
+init_connect='SET NAMES utf8'
+character-set-server=utf8
+collation-server=utf8_unicode_ci
+skip-character-set-client-handshake
+skip-name-resolve
+root@b3a74e031bd7:/# 
+```
+
+==设置启动docker时，即运行mysql==
+
+```
+[root@hadoop-104 ~]# docker update mysql --restart=always
+mysql
+```
+
+**注意：解决MySQL 连接慢的问题**
+在配置文件中加入如下，并重启mysql
+[mysqld]
+skip-name-resolve
+解释：
+skip-name-resolve：跳过域名解析
+
+### 通过容器的mysql 命令行工具连接
+
+```sh
+docker exec -it mysql mysql -uroot -proot
+```
+
+### 设置远程访问MySQL
+
+注意这是在mysql中执行的命令
+
+```mysql
+mysql> 
+grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
+flush privileges;
+```
+
+需要先关闭防火墙
+
+```
+systemctl stop firewalld
+```
+
+如果设置了还不能成功访问，可以逐个重启mysql容器，docker，和linux
+
+### 进入容器文件系统
+
+```
+docker exec -it mysql /bin/bash
+```
 
 
-# Docker-MySQL
+
+## Docker-MySQL
 
 ### 设置远程访问MySQL
 
@@ -232,7 +361,7 @@ service iptables stop
 
 
 
-## 安装MySQL示例
+安装MySQL示例
 
 ```shell
 docker pull mysql
@@ -344,7 +473,7 @@ docker run -it -v /test:/soft centos /bin/bash
 docker run -it -v /hmoe/ubuntu:/tmp mysql02 /bin/bash
 ```
 
-# mysql使用
+## mysql使用
 
 ```shell
 
@@ -353,7 +482,7 @@ sudo docker run -p 3306:3306 --name mysql8 -e MYSQL_ROOT_PASSWORD=root -d mysql:
 
 --name: 容器名
 
-## MySql 导入 *.sql文件
+## MySql 导入sql文件
 
 ### 1.将本地sql文件导入容器
 
@@ -365,6 +494,7 @@ docker cp 第一个参数指定本地文件或者文件夹，第二个参数指�
 
 ```shell
 sudo docker cp /home/ubuntu/yoj.sql mysql8:/home
+docker cp /root/lmz-record/lmz_record.sql mysql:/home/lmz_record.sql
 ```
 
 ### 登入容器内MYSQL执行sql
@@ -383,7 +513,7 @@ docker exec -it mysql8 mysql -uroot -p
 执行sql文件 
 
 ```
-source /home/yoj.sql
+source /home/lmz_record.sql
 ```
 
 
@@ -537,6 +667,70 @@ crontab -e：
 * * * * * sh /home/ubuntu/sql_bak/mysql_dumps.sh > /home/ubuntu/sql_bak/mysql_dumps.log 2>&1
 ```
 
+# docker安装nginx
+
+* 随便启动一个nginx实例，**只是为了复制出配置**
+
+  ```shell
+  docker run -p80:80 --name nginx -d nginx:1.10   
+  ```
+
+* 将容器内的配置文件拷贝到/mydata/nginx/conf/ 下
+
+  ```shell
+  mkdir -p /mydata/nginx/html
+  mkdir -p /mydata/nginx/logs
+  mkdir -p /mydata/nginx/conf
+  docker container cp nginx:/etc/nginx/  /mydata/nginx/conf/ 
+  #由于拷贝完成后会在config中存在一个nginx文件夹，所以需要将它的内容移动到conf中
+  mv /mydata/nginx/conf/nginx/* /mydata/nginx/conf/
+  rm -rf /mydata/nginx/conf/nginx
+  ```
+
+* 终止原容器：
+
+  ```shell
+  docker stop nginx
+  ```
+
+* 执行命令删除原容器：
+
+  ```shell
+  docker rm nginx
+  ```
+
+* 创建新的Nginx，执行以下命令
+
+  ```shell
+  docker run -p 80:80 --name nginx --privileged=true \
+   -v /mydata/nginx/html:/usr/share/nginx/html \
+   -v /mydata/nginx/logs:/var/log/nginx \
+   -v /mydata/nginx/conf/:/etc/nginx \
+   -d nginx:1.10
+  ```
+
+* 设置开机启动nginx
+
+  ```
+  docker update nginx --restart=always
+  ```
+
+* 创建“/mydata/nginx/html/index.html”文件，测试是否能够正常访问
+
+  ```
+  echo '<h2>hello nginx!</h2>' >/mydata/nginx/html/index.html
+  ```
+
+  访问：http://ngix所在主机的IP:80/index.html
+
+本机地址：http://192.168.137.1/
+
+```
+docker exec -it nginx /bin/bash
+```
+
+
+
 # 安装redis
 
 ```shell
@@ -607,4 +801,50 @@ docker run -d --privileged=true -p 6379:6379 --restart always -v /root/docker/re
 --appendonly yes                   -> 开启数据持久化
 ```
 
- 
+#  Docker开启和关闭容器自启动
+
+## 1.开启自启
+
+在docker启动容器可以增加参数来达到，当docker 服务重启之后 自动启动容器，命令如下：
+
+```sh
+docker run –restart=always
+```
+
+
+当然如果你的容器已经启动,可以通过update命令进行修改,命令如下：
+
+```sh
+docker update --restart=always <CONTAINER ID>
+```
+
+## 2.关闭自启
+
+对某一个容器关闭自启动：
+
+```sh
+docker update --restart=no <CONTAINER ID>
+```
+
+
+取消所有自启动，命令如下：
+
+```sh
+docker update --restart=no $(docker ps -q)
+```
+
+
+
+## 3.docker-compose配置容器自启动
+
+配置启动容器时添加下述配置项，docker-compose 关机或者重启docker时就会生效
+
+![img](img_Docker/1991cac8e120433785e071fbc7cdd1ad.png)
+
+
+# docker停止全部启动的容器
+
+```sh
+docker stop $(docker ps -q)
+```
+

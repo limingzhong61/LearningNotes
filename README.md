@@ -3,6 +3,8 @@ title: codeOflI的学习笔记
 ---
 # 📙codeOflI的学习笔记
 
+> 注：此文件夹下的文件为归档笔记，用于更新博客
+
 ## 项目介绍
 
 个人学习笔记，如果笔记对您有帮助的话，欢迎star支持，谢谢~
@@ -17,18 +19,18 @@ title: codeOflI的学习笔记
 
 本仓库同步托管在Github和Gitee中
 
-- Gitee仓库：<https://gitee.com/limingzhong61/LearningNotes>
-- Github仓库：<https://github.com/limingzhong61/LearningNotes>
+- Gitee仓库：<https://gitee.com/codeOflI/LearningNotes>
+- Github仓库：<https://github.com/codeOflI/LearningNotes>
 
 ## 在线阅读
 
 为了更方便查看，本仓库做成了一个在线的博客
 
-- 在线博客：<https://www.limingzhong61.top/>
+- 在线博客：<https://www.codeofli.top/>
 
   > 使用vuepress
 
-- 在线博客：<https://limingzhong61.github.io/>
+- 在线博客：<https://codeofli.github.io/>
 
   > 使用hexo搭建,笔记内容未更新
 
@@ -64,8 +66,7 @@ title: codeOflI的学习笔记
 
 [JVM笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/JVM/JVM%E4%B8%8A%E7%AF%87-%E5%86%85%E5%AD%98%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87/JVM.md)
 
-
-## MySQL
+### MySQL
 
 > 来源Bilibili尚硅谷宋红康老师老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.999.0.0)
 

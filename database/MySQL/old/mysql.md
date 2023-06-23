@@ -2518,6 +2518,8 @@ USE ssm_crud;
 
 ```sql
 set password for root@localhost = password('123'); 
+
+set password for root@localhost = password('123456'); 
 ```
 
 

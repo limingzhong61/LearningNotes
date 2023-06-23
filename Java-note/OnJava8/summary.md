@@ -1,0 +1,3 @@
+### 拓展阅读
+
+《Java Concurrency in Practice》，出自 Brian Goetz，Tim Peierls， Joshua Bloch，Joseph Bowbeer，David Holmes 和 Doug Lea (Addison Wesley，2006 年)——这些基本上就是 Java 并发世界中的名人名单了《Java Concurrency in Practice》第二版，出自 Doug Lea (Addison-Wesley，2000 年)。尽管这本书出版时间远远早于 Java 5 发布，但 Doug 的大部分工作都写入了 **java.util.concurrent** 库。因此，这本书对于全面理解并发问题至关重要。 它超越了 Java，讨论了跨语言和技术的并发编程。 尽管它在某些地方可能很钝，但值得多次重读（最好是在两个月之间进行消化）。 道格（Doug）是世界上为数不多的真正了解并发编程的人之一，因此这是值得的。

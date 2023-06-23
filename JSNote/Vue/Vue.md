@@ -2431,15 +2431,16 @@ Vue.component(Button.name, Button)
 ```
 
 # 第 5 章： vue-router
-## 5.1. 理解
+## 1. 理解
 5.1.1. 说明
 1) 官方提供的用来实现 SPA 的 vue 插件
 2) github: https://github.com/vuejs/vue-router
-3) 中文文档: http://router.vuejs.org/zh-cn/
-4) 下载: 
+3) 中文文档: https://router.vuejs.org/zh/index.html
+
+## 安装
 
 ```shell
-npm install vue-router --save 
+npm install vue-router@4
 ```
 
 5.1.2. 相关 API 说明
@@ -3306,7 +3307,59 @@ chainWebpack: (config) => {
 
 -**使用引用路径“@”,而不是相关路径。**相对于相关路径更好写，毕竟直接自顶向下。
 
-# [Vue CLI](https://cli.vuejs.org/zh/)
+# Vue CLI
+
+官网：https://cli.vuejs.org/zh/
+
+## 创建一个项目
+
+官网：https://cli.vuejs.org/zh/guide/creating-a-project.html
+
+### 使用图形化界面[#](https://cli.vuejs.org/zh/guide/creating-a-project.html#使用图形化界面)
+
+你也可以通过 `vue ui` 命令以图形化界面创建和管理项目：
+
+```shell
+vue ui
+```
+
+上述命令会打开一个浏览器窗口，并以图形化界面将你引导至项目创建的流程。
+
+![图形化界面预览](img_Vue/ui-new-project.png)
+
+## 启动项目-Project setup
+
+```sh
+npm run serve
+```
+
+
+
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+
+```
+npm run build
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## vue.config.js
 
@@ -3384,3 +3437,42 @@ module.exports = {
   如果这个值是一个函数，则会接收被解析的配置作为参数。该函数既可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本。
 
   更多细节可查阅：[配合 webpack > 简单的配置方式](
+
+# vue3-- element-ui
+
+element-ui-vue3官网:https://element-plus.gitee.io/zh-CN/
+
+## 安装
+
+https://element-plus.gitee.io/zh-CN/guide/installation.html
+
+```shell
+# NPM
+npm install element-plus --save
+```
+
+
+
+## 快速开始
+
+https://element-plus.gitee.io/zh-CN/guide/quickstart.html#%E7%94%A8%E6%B3%95
+
+### vue导入element-ui 快速开发
+
+https://element-plus.gitee.io/zh-CN/guide/quickstart.html#完整引入
+
+如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
+
+```js
+import { createApp } from 'vue'
+import App from './App.vue'
+
+// 导入element-plus
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
+const app = createApp(App)
+
+app.use(ElementPlus)
+app.mount('#app')
+```

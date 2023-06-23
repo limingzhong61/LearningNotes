@@ -91,6 +91,10 @@ Internet 想象成一个巨大的资源库，则局域网中的客户端要访
 
 ## Nginx 的安装
 
+**docker中安装nginx详见：**
+
+docker.md
+
 [Nginx 安装配置|菜鸟教程](https://www.runoob.com/linux/nginx-install-setup.html)
 
 进入 [nginx 官网](http://nginx.org/)，下载
@@ -321,7 +325,11 @@ server {
 
 **root 指令放在 server 上下文中**。当响应请求的 location 区块中，没有自己的 root 指令，上述的 root 指令才会被使用。
 
-## 反向代理
+
+
+
+
+## 反向代理-location
 
 ### nginx 配置实例 反向代理1
 
@@ -366,7 +374,7 @@ server {
 proxy_pass   http://127.0.0.1:8080;
 ```
 
-```
+```json
 server {
     location / {
         root   html;
@@ -385,7 +393,7 @@ server {
 
 实现效果：
 
-使用 nginx 反向代理， 根据访问的路径跳转到不同端口的服务中
+使用 nginx 反向代理， 根据**访问的路径跳转到不同端口的服务中**
 
 nginx 监听端口为 80
 
@@ -407,7 +415,7 @@ nginx 监听端口为 80
 
 2 ）开放对外访问的端口号 9001 8080 8081
 
-```
+```json
  server {
         listen       80;
         server_name  localhost;
@@ -431,11 +439,43 @@ nginx 监听端口为 80
 
 1、= ：用于不含正则表达式的 uri 前，要求请求字符串与 uri 严格匹配，如果匹配成功，就停止继续向下搜索并立即处理该请求。 
 
-2、~：用于表示 uri 包含正则表达式，并且区分大小写。 
+2、~：用于表示 uri **包含正则表达式**，并且**区分大小写**。 
 
 3、~*：用于表示 uri 包含正则表达式，并且不区分大小写。 
 
 4、^~：**用于不含正则表达式的 uri 前**，要求 Nginx 服务器找到标识 uri 和请求字符串匹配度最高的 location 后，立即使用此 location 处理请求，而不再使用 location 块中的正则 uri 和请求字符串做匹配。 注意：如果 uri 包含正则表达式，则必须要有 ~ 或者 ~* 标识。
+
+## Nginx之location详解
+
+https://blog.csdn.net/qq_40907977/article/details/106815216?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-106815216-blog-124910643.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-106815216-blog-124910643.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=10
+
+## 代理特例
+
+http://localhost:5000/xxx/yyy/test ---> http://localhost:8858/xxx/yyy/test**（8858更加精准）**
+
+http://localhost:5000/xxx/test ---> http://localhost:8081/xxx/test
+
+一个url http://localhost:5000/xxx/yyy/ 路径可能包含两个服务，更加精准的会被匹配到
+
+```json
+server {
+    listen       5000;
+    server_name  localhost;
+    # root D:/Users/Lenovo/Desktop/geoserver/mapbox-lg-test;
+    location /xxx/ {
+    	proxy_pass http://localhost:8081;
+    }
+    location /xxx/yyy/ {
+        proxy_pass http://localhost:8858; 
+    }
+}
+```
+
+![image-20221025210834301](img_nginx/image-20221025210834301.png)
+
+如果注释掉/xxx/yyy/的location代理，则会到8801
+
+![image-20221025211015468](img_nginx/image-20221025211015468.png)
 
 
 
@@ -968,6 +1008,24 @@ gzip虽然好用，但是一下类型的资源不建议启用。
 
 显著减少,vue只是支持gzip,开启需要服务器进行
 
+# centOS7安装nginx及nginx配置
+
+https://blog.csdn.net/qq_37345604/article/details/90034424
+
+## 安装nginx
+
+### 1、下载nginx安装包
+
+```crystal
+wget http://nginx.org/download/nginx-1.22.1.tar.gz  
+```
+
+### 2、把压缩包解压到usr/local/nginx
+
+```undefined
+tar -zxvf  nginx-1.22.1.tar.gz 
+```
+
 ## windows
 
 ### 下载
@@ -1001,4 +1059,8 @@ start nginx.exe
 
 
 
+
+```
+docker exec -it nginx /bin/bash
+```
 

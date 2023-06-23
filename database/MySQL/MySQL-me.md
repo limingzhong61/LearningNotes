@@ -37,3 +37,15 @@ GROUP BY
 
 ![image-20220623103725696](MySQL-me/image-20220623103725696.png)
 
+# MySql 导入sql文件
+
+**注意：8.0x 的sql文件导入5.x版本的字段问题**
+
+## COLLATION ‘utf8_general_ci‘ is not valid for CHARACTER SET ‘utf8mb4‘（Mysql8.0转5.7sql文件）
+
+https://blog.csdn.net/qq_42946376/article/details/120005702
+
+```
+alter table lmz_record_unit change record_date record_time datetime not null;
+```
+
