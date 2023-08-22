@@ -40,6 +40,8 @@ title: codeOflI的学习笔记
 
 ## 观看视频笔记链接
 
+注：其余通过视频学习的笔记在markdown笔记文件底部标注了学习的视频地址。
+
 ### JS
 
 > 来源Bilibili尚硅谷李立超老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
