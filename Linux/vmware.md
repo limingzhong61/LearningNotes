@@ -23,6 +23,12 @@ D:\Users\Lenovo\Downloads\application\coder\CentOS-7-x86_64-DVD-2009.iso
 
 
 ```
+cd /etc/sysconfig/network-scripts/
+```
+
+
+
+```
 IPADDR=192.168.30.100 设置IP地址
 NETMASK=255.255.255.0 子网掩码
 GATEWAY=192.168.30.2 设置网关

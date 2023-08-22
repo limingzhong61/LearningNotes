@@ -32,6 +32,10 @@ https://blog.csdn.net/CHYabc123456hh/article/details/112890125
 
 **方法3解决**
 
+修改后：子网地址会改变
+
+![image-20230819151422660](img/img_Ubuntu/image-20230819151422660.png)
+
 ### ubuntu ssh
 
 https://blog.csdn.net/DCJwwh/article/details/128520453

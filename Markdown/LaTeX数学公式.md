@@ -207,6 +207,41 @@ https://blog.csdn.net/DUTwangtaiyu/article/details/114281954
 结果即只进行单纯换行，并无缩进
 ![在这里插入图片描述](LaTeX%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/20210302115440326.png)
 
+### 大括号
+
+Latex或Tex中大括号及分段公式的多种用法
+
+https://blog.csdn.net/CUMTB_ZHOU/article/details/123395126
+
+```latex
+\begin{equation}
+\left\{
+\begin{aligned}
+%\nonumber
+dx(t)&=[Ax(t-\delta)+Bu(t)+Cw(t)]dt +DdW(t), t\in(0,T],\\
+x(s)&=\xi(s), s\in [-\delta, 0].\\
+\end{aligned}
+\right.
+\end{equation}
+
+```
+
+
+$$
+\begin{equation}
+\left\{
+\begin{aligned}
+%\nonumber
+dx(t)&=[Ax(t-\delta)+Bu(t)+Cw(t)]dt +DdW(t), t\in(0,T],\\
+x(s)&=\xi(s), s\in [-\delta, 0].\\
+\end{aligned}
+\right.
+\end{equation}
+$$
+
+
+
+
 ## 三、矩阵和行列式
 
 ```latex

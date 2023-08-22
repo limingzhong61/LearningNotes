@@ -589,7 +589,7 @@ public LettuceClientConfigurationBuilderCustomizer configurationBuilderCustomize
 
 ## 散列插槽
 
-Redis会把每一个master节点映射到0~16383共16384个插槽（hash slot）上，查看集群信息时就能看到：
+Redis会把**每一个master节点映射到0~16383共16384个插槽（hash slot）上**，查看集群信息时就能看到：
 
 ![image-20211103221522246](Redis/image-20211103221522246.png)
 
@@ -599,11 +599,11 @@ Redis会把每一个master节点映射到0~16383共16384个插槽（hash slot）
 
 •key中不包含“{}”，整个key都是有效部分
 
-例如：key是num，那么就根据num计算，如果是{itcast}num，则根据itcast计算。计算方式是利用CRC16算法得到一个hash值，然后对16384取余，得到的结果就是slot值。
+例如：key是num，那么就根据num计算，如果是{itcast}num，则根据itcast计算。**计算方式是利用CRC16算法得到一个hash值，然后对16384取余，得到的结果就是slot值**。
 
 ![image-20211103221526947](Redis/image-20211103221526947.png)
 
-Redis如何判断某个key应该在哪个实例？
+### Redis如何判断某个key应该在哪个实例？
 
 •将16384个插槽分配到不同的实例
 
@@ -611,7 +611,7 @@ Redis如何判断某个key应该在哪个实例？
 
 •余数作为插槽，寻找插槽所在实例即可
 
-如何将同一类数据固定的保存在同一个Redis实例？
+### 如何将同一类数据固定的保存在同一个Redis实例？
 
 •这一类数据使用相同的有效部分，例如key都以{typeId}为前缀
 
