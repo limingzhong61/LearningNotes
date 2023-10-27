@@ -38,19 +38,21 @@ title: codeOflI的学习笔记
 
 如果觉得**本仓库**对您有帮助的话，希望朋友能够给博主star支持，谢谢~
 
-## 观看视频笔记链接
+## 学习资源链接
+
+### 观看视频笔记链接
 
 注：其余通过视频学习的笔记在markdown笔记文件底部标注了学习的视频地址。
 
-### JS
+#### JS
 
 > 来源Bilibili尚硅谷李立超老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1YW411T7GX?spm_id_from=333.337.search-card.all.click)
 
 [JavaScript笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JSNote/JavaScript/JavaScript.md)
 
-### Java
+#### Java
 
-#### Java-并发
+##### Java-并发
 
 > 来源Bilibili黑马老师的学习视频：
 
@@ -58,7 +60,7 @@ title: codeOflI的学习笔记
 
 
 
-#### JVM
+##### JVM
 
 > 来源Bilibili尚硅谷学习视频： [点我传送](https://www.bilibili.com/video/BV1PJ411n7xZ?spm_id_from=333.999.0.0)
 
@@ -66,23 +68,23 @@ title: codeOflI的学习笔记
 
 
 
-#### MyBatis
+##### MyBatis
 > 来源Bilibili尚硅谷学习视频：[点我传送](https://www.bilibili.com/video/BV1VP4y1c7j7?spm_id_from=333.337.search-card.all.click)
 
 [MyBatis笔记地址](https://github.com/codeOflI/LearningNotes/tree/master/JavaNote/MyBatis)
-#### SpringMVC
+##### SpringMVC
 > 来源Bilibili尚硅谷宋红康老师的学习视频： [点我传送](https://www.bilibili.com/video/BV1Ry4y1574R)
 
 [SpringMVC笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/SpringMVC/SpringMVC.md)
 
-#### SpringCloud
+##### SpringCloud
 > 来源Bilibili黑马程序员的学习视频： [点我传送](https://www.bilibili.com/video/BV1LQ4y127n4?spm_id_from=333.999.0.0)
 
 [SpringCloud笔记地址](https://github.com/codeOflI/LearningNotes/blob/master/JavaNote/SpringCloud/SpringCloud.md)
 
 
 
-### MySQL
+#### MySQL
 
 > 来源Bilibili尚硅谷宋红康老师老师的学习视频：[点我传送](https://www.bilibili.com/video/BV1iq4y1u7vj?spm_id_from=333.999.0.0)
 
