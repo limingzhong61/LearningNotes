@@ -30,7 +30,7 @@ title: codeOflI的学习笔记
 
   > 使用vuepress
 
-- 在线博客：<https://codeofli.github.io/>
+- 在线博客：<https://limingzhong61.github.io>
 
   > 使用hexo搭建,笔记内容未更新
 
